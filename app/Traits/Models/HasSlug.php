@@ -11,7 +11,7 @@ trait HasSlug
         // dump('tr');
 
         static::creating(function (Model $model) {
-            $model->slug = $model->slug ?? str($model->title)
+            $model->slug = $model->slug ?? str($model->{self::slugFrom()})
                 ->append(rand(1,100))
                 ->slug();
         });
