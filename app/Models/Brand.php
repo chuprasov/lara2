@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class Brand extends Model
 {
     use HasFactory;
-    // use HasSlug;
+    use HasSlug;
 
     protected $fillable = [
         'slug',
@@ -22,7 +22,7 @@ class Brand extends Model
         return $this->hasMany(Product::class);
     }
 
-    protected static function boot()
+    /* protected static function boot()
     {
         parent::boot();
 
@@ -31,5 +31,5 @@ class Brand extends Model
                 ->append(time())
                 ->slug();
         });
-    }
+    } */
 }

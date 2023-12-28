@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
     use HasFactory;
-    // use HasSlug;
+    use HasSlug;
 
     protected $fillable = [
         'slug',
@@ -21,7 +21,7 @@ class Category extends Model
         return $this->belongsToMany(Product::class);
     }
 
-    protected static function boot()
+    /* protected static function boot()
     {
         parent::boot();
 
@@ -30,6 +30,6 @@ class Category extends Model
                 ->append(time())
                 ->slug();
         });
-    }
+    } */
 
 }
