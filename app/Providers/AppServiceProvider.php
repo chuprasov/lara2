@@ -24,7 +24,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Model::shouldBeStrict(!app()->isProduction());
+        /* Model::shouldBeStrict(!app()->isProduction());
 
         if (app()->isProduction()) {
 
@@ -46,6 +46,14 @@ class AppServiceProvider extends ServiceProvider
                         ->debug('whenReqestLifecycleLongerThan: ' . request()->url());
                 }
             );
-        }
+        } */
+
+        /* DB::beforeExecuting(function($query, $params){
+            echo '<div>';
+            var_dump($query);
+            var_dump($params);
+            echo '<hr>';
+            echo '</div>';
+        }); */
     }
 }
