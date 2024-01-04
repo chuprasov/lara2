@@ -30,7 +30,6 @@ class RefreshCommand extends Command
         dd($files);
         Storage::delete($files); */
 
-
         $this->call('migrate:fresh', [
             '--seed' => true
         ]);
