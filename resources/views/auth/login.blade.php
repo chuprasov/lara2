@@ -3,10 +3,11 @@
 @section('title', 'Вход в аккаунт')
 
 @section('content')
-    <x-forms.auth-forms title="Вход в аккаунт" action="">
+    <x-forms.auth-forms title="Вход в аккаунт" action="{{ route('authenticate') }}" method="POST">
         @csrf
 
-        <x-forms.text-input type="email" name="email" placeholder="E-mail" required :isError="$errors->has('email')" />
+        <x-forms.text-input type="email" name="email" placeholder="E-mail" value="{{ old('email') }}" required
+            :isError="$errors->has('email')" />
 
         @error('email')
             <x-forms.error>
@@ -24,9 +25,9 @@
 
         <x-slot:buttons>
             <div class="space-y-3 mt-5">
-                <div class="text-xxs md:text-xs"><a href="lost-password.html"
+                <div class="text-xxs md:text-xs"><a href="{{ route('forgot') }}"
                         class="text-white hover:text-white/70 font-bold">Забыли пароль?</a></div>
-                <div class="text-xxs md:text-xs"><a href="register.html"
+                <div class="text-xxs md:text-xs"><a href="{{ route('register') }}"
                         class="text-white hover:text-white/70 font-bold">Регистрация</a></div>
             </div>
         </x-slot:buttons>
