@@ -16,6 +16,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'github_id',
     ];
 
      protected $hidden = [
@@ -30,6 +31,6 @@ class User extends Authenticatable
 
     public function socials()
     {
-        return $this->belongsToMany(UserSocial::class);
+        return $this->hasMany(UserSocial::class);
     }
 }
