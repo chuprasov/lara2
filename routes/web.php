@@ -11,12 +11,14 @@ use Illuminate\Support\Facades\Log;
 
 Route::get('/', HomeController::class)->name('home');
 
-Route::controller(AuthController::class)->group(function() {
+Route::controller(AuthController::class)->group(function () {
     Route::get('/login', 'login')->name('login');
     Route::post('/login', 'authenticate')->name('authenticate');
     Route::delete('/logout', 'logout')->name('logout');
     Route::get('/register', 'register')->name('register');
     Route::post('/store', 'store')->name('store');
-    Route::get('/forgot', 'forgot')->name('forgot');
-    Route::get('/restore', 'restore')->name('restore');
+    Route::get('/forgot', 'forgot')->middleware('guest')->name('forgot');
+    Route::post('/forgot', 'forgotPassword')->middleware('guest')->name('forgotPassword');
+    Route::get('/reset-password/{token}', 'reset')->middleware('guest')->name('password.reset');
+    Route::post('/reset', 'resetPassword')->middleware('guest')->name('resetPassword');
 });
