@@ -23,9 +23,12 @@ Route::controller(AuthController::class)->group(function () {
     Route::get('/reset-password/{token}', 'reset')->middleware('guest')->name('password.reset');
     Route::post('/reset', 'resetPassword')->middleware('guest')->name('resetPassword');
 
-    Route::get('/auth/github/redirect', function () {
-        return Socialite::driver('github')->redirect();
-    })->middleware('guest')->name('githubAuth');
-
+    Route::get('/auth/github/redirect', 'githubRedirect')->middleware('guest')->name('githubRedirect');
     Route::get('/auth/github/callback', 'githubAuth');
+
+    Route::get('/auth/google/redirect', 'googleRedirect')->middleware('guest')->name('googleRedirect');
+    Route::get('/auth/google/callback', 'googleAuth');
+
+    Route::get('/auth/{socialName}/redirect', 'socialRedirect')->middleware('guest')->name('socialRedirect');
+    Route::get('/auth/{socialName}/callback', 'socialAuth');
 });

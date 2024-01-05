@@ -1,6 +1,6 @@
 <ul class="space-y-3 my-2">
     <li>
-        <a href="{{ route('githubAuth') }}"
+        <a href="{{ route('socialRedirect', ['socialName' => 'github']) }}"
             class="relative flex items-center h-14 px-12 rounded-lg border border-[#A07BF0] bg-white/20 hover:bg-white/20 active:bg-white/10 active:translate-y-0.5">
             <svg class="shrink-0 absolute left-4 w-5 sm:w-6 h-5 sm:h-6" xmlns="http://www.w3.org/2000/svg"
                 fill="currentColor" viewBox="0 0 20 20">
@@ -9,6 +9,20 @@
                     clip-rule="evenodd" />
             </svg>
             <span class="grow text-xxs md:text-xs font-bold text-center">GitHub</span>
+        </a>
+    </li>
+    <li>
+        <a href="{{ route('socialRedirect', ['socialName' => 'google']) }}"
+            class="relative flex items-center h-14 px-12 rounded-lg border border-[#A07BF0] bg-white/20 hover:bg-white/20 active:bg-white/10 active:translate-y-0.5">
+            <svg class="shrink-0 absolute left-4 w-5 sm:w-6 h-5 sm:h-6" fill="currentColor"
+                enable-background="new 0 0 32 32" version="1.1" viewBox="0 0 32 32" xml:space="preserve"
+                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <g id="Flat_copy">
+                    <path
+                        d="M31.37,13c0.2,1.07,0.31,2.19,0.31,3.36C31.68,25.5,25.56,32,16.32,32c-8.84,0-16-7.16-16-16s7.16-16,16-16   c4.32,0,7.93,1.59,10.7,4.17L22.51,8.68V8.67c-1.68-1.6-3.81-2.42-6.189-2.42c-5.28,0-9.57,4.46-9.57,9.74   c0,5.279,4.29,9.75,9.57,9.75c4.79,0,8.05-2.74,8.721-6.5H16.32V13L31.37,13L31.37,13z" />
+                </g>
+            </svg>
+            <span class="grow text-xxs md:text-xs font-bold text-center">Google</span>
         </a>
     </li>
 </ul>

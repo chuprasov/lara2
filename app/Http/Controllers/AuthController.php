@@ -116,6 +116,11 @@ class AuthController extends Controller
             : back()->withErrors(['email' => [__($status)]]);
     }
 
+    public function githubRedirect()
+    {
+        return Socialite::driver('github')->redirect();
+    }
+
     public function githubAuth()
     {
         $githubUser = Socialite::driver('github')->user();
@@ -123,18 +128,90 @@ class AuthController extends Controller
         // dd($githubUser->id);
 
         $user = User::updateOrCreate([
-            'github_id' => $githubUser->id,
+            'email' => $githubUser->email,
         ], [
-            'name' => $githubUser->nickname,
+            'name' => $githubUser->nickname ?? $githubUser->name,
             'email' => $githubUser->email,
             'password' => bcrypt(Str::random(60)),
-            'github_id' => $githubUser->id,
-            // 'github_token' => $githubUser->token,
-            // 'github_refresh_token' => $githubUser->refreshToken,
+        ]);
+
+        $user->socials()->updateOrCreate([
+            'social_name' =>  'github',
+        ], [
+            'social_name' =>  'github',
+            'social_id' =>  $githubUser->id,
+        ]);
+
+        // dd($user->socials()->where('social_name', 'github')->first());
+
+        Auth::login($user);
+
+        return redirect(route('home'));
+    }
+
+    public function googleRedirect()
+    {
+        return Socialite::driver('google')->redirect();
+    }
+
+    public function googleAuth()
+    {
+        $googleUser = Socialite::driver('google')->user();
+
+        // dd($googleUser);
+
+        $user = User::updateOrCreate([
+            'email' => $googleUser->email,
+        ], [
+            'name' => $googleUser->nickname ?? $googleUser->name,
+            'email' => $googleUser->email,
+            'password' => bcrypt(Str::random(60)),
+        ]);
+
+        $user->socials()->updateOrCreate([
+            'social_name' =>  'google',
+        ], [
+            'social_name' =>  'google',
+            'social_id' =>  $googleUser->id,
         ]);
 
         Auth::login($user);
 
         return redirect(route('home'));
     }
+
+
+
+
+    public function socialRedirect(string $socialName)
+    {
+        return Socialite::driver($socialName)->redirect();
+    }
+
+    public function socialAuth(string $socialName)
+    {
+        $socialUser = Socialite::driver($socialName)->user();
+
+        $user = User::updateOrCreate([
+            'email' => $socialUser->email,
+        ], [
+            'name' => $socialUser->nickname ?? $socialUser->name,
+            'email' => $socialUser->email,
+            'password' => bcrypt(Str::random(60)),
+        ]);
+
+        $user->socials()->updateOrCreate([
+            'social_name' =>  $socialName,
+        ], [
+            'social_name' =>  $socialName,
+            'social_id' =>  $socialUser->id,
+        ]);
+
+        // dd($user->socials()->where('social_name', 'github')->first());
+
+        Auth::login($user);
+
+        return redirect(route('home'));
+    }
+
 }
