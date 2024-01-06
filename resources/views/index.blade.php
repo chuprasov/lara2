@@ -1,7 +1,7 @@
-@extends('layouts.auth')
+@extends('layouts.app')
 
 @section('content')
-    <div>{{ auth()->user() }}</div>
+{{--     <div>{{ auth()->user() }}</div>
 
     @guest
         <form action="{{ route('login') }}" method="GET">
@@ -15,5 +15,5 @@
             @method('DELETE')
             <x-forms.primary-button>Logout</x-forms.primary-button>
         </form>
-    @endauth
+    @endauth --}}
 @endsection

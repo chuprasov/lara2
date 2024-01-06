@@ -13,9 +13,9 @@
 
 <body class="antialiased">
 
-    @if (session()->has('message'))
-        {{ session('message') }}
-    @endif
+    @include('shared.flash')
+
+    @include('shared.header')
 
     <main class="md:min-h-screen md:flex md:items-center md:justify-center py-16 lg:py-20">
         <div class="container">
@@ -32,6 +32,9 @@
 
         </div>
     </main>
+
+    @include('shared.footer')
+
 </body>
 
 </html>

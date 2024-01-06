@@ -3,8 +3,9 @@
 namespace App\Models;
 
 use App\Traits\Models\HasSlug;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Product extends Model
 {
@@ -17,6 +18,8 @@ class Product extends Model
         'brand_id',
         'price',
         'thumbnail',
+        'on_home_page',
+        'sorting',
     ];
 
     public function brand()
@@ -39,5 +42,12 @@ class Product extends Model
                 ->slug();
         });
     } */
+
+    public function scopeHomePage(Builder $query): void
+    {
+        $query->where('on_home_page', true)
+            ->orderBy('sorting')
+            ->limit(6);
+    }
 
 }

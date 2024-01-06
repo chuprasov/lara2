@@ -25,6 +25,8 @@ class ProductFactory extends Factory
                 '/app/public/images/products'
             ),
             'price' => $this->faker->numberBetween(1000,100000),
+            'on_home_page' => $this->faker->boolean(),
+            'sorting' => $this->faker->numberBetween(1, 900),
         ];
     }
 }
