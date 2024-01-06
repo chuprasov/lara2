@@ -26,6 +26,12 @@ class RefreshCommand extends Command
             Storage::makeDirectory('images/products');
         }
 
+        Storage::deleteDirectory('images/brands');
+
+        if(!Storage::exists('images/brands')) {
+            Storage::makeDirectory('images/brands');
+        }
+
         /* $files = Storage::allFiles('images/products');
         dd($files);
         Storage::delete($files); */
