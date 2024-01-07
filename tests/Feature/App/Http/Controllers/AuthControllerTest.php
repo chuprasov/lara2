@@ -4,13 +4,14 @@ namespace Tests\Feature\App\Http\Controllers;
 
 // use Illuminate\Foundation\Testing\RefreshDatabase;
 
-use App\Listeners\SendEmailNewUserListener;
 use Tests\TestCase;
 use App\Models\User;
-use App\Notifications\NewUserNotification;
-use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Event;
+use Illuminate\Auth\Events\Registered;
+use App\Notifications\NewUserNotification;
+use App\Listeners\SendEmailNewUserListener;
 use Illuminate\Support\Facades\Notification;
+use Illuminate\Auth\Notifications\ResetPassword;
 
 class AuthControllerTest extends TestCase
 {
@@ -80,7 +81,7 @@ class AuthControllerTest extends TestCase
 
     public function test_forgot_page_success(): void
     {
-        $this->get(route('forgot'))
+        $this->get(route('forgotPassword'))
             ->assertOk()
             ->assertSee('Забыл пароль')
             ->assertViewIs('auth.forgot-password');
@@ -125,18 +126,20 @@ class AuthControllerTest extends TestCase
         $this->assertGuest();
     }
 
-    public function test_forgot_email_success(): void
+    public function test_send_reset_link_success(): void
     {
+        Notification::fake();
+
         $request = [
             'email' => self::USER_CREDENTIALS['email'],
         ];
 
-        $response = $this->post(route('forgotPassword'), $request);
+        $response = $this->post(route('sendResetLink'), $request);
 
-        $response->assertValid()->assertRedirect(route('home'));
+        $response->assertRedirect();
 
-        $user = User::query()->where(['email' => $request['email']])->first();
+        $user = User::query()->where(['email' => self::USER_CREDENTIALS['email']])->first();
 
-        $this->assertAuthenticatedAs($user);
+        Notification::assertSentTo($user, ResetPassword::class);
     }
 }
