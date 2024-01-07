@@ -6,7 +6,6 @@ namespace Tests\Feature\App\Http\Controllers;
 
 use Tests\TestCase;
 use App\Models\User;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Auth\Events\Registered;
@@ -67,7 +66,8 @@ class AuthControllerTest extends TestCase
 
     public function test_login_page_success(): void
     {
-        $this->get(route('login'))
+        $this
+            ->get(route('login'))
             ->assertOk()
             ->assertSee('Вход в аккаунт')
             ->assertViewIs('auth.login');
@@ -75,7 +75,8 @@ class AuthControllerTest extends TestCase
 
     public function test_register_page_success(): void
     {
-        $this->get(route('register'))
+        $this
+            ->get(route('register'))
             ->assertOk()
             ->assertSee('Регистрация')
             ->assertViewIs('auth.register');
@@ -83,7 +84,8 @@ class AuthControllerTest extends TestCase
 
     public function test_forgot_page_success(): void
     {
-        $this->get(route('forgotPassword'))
+        $this
+            ->get(route('forgotPassword'))
             ->assertOk()
             ->assertSee('Забыл пароль')
             ->assertViewIs('auth.forgot-password');
@@ -93,9 +95,10 @@ class AuthControllerTest extends TestCase
     {
         /* $user = User::query()->where(['email' => self::USER_CREDENTIALS['email']])->first();
         $token = app('auth.password.broker')->createToken($user); */
-        $token = '123';
+        $token = str()->random(60);
 
-        $this->get(route('password.reset', ['token' => $token]))
+        $this
+            ->get(route('password.reset', ['token' => $token]))
             ->assertOk()
             ->assertSee('Изменить пароль')
             ->assertViewIs('auth.reset-password');
