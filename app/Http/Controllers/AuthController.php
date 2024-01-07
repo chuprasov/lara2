@@ -6,8 +6,8 @@ use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Requests\LoginRequest;
+use Illuminate\Support\Facades\Log;
 use App\Http\Requests\ForgotRequest;
-use App\Http\Requests\PasswordUpdateRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\RegisterRequest;
@@ -15,6 +15,7 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Password;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Auth\Events\PasswordReset;
+use App\Http\Requests\PasswordUpdateRequest;
 
 class AuthController extends Controller
 {

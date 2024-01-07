@@ -6,6 +6,8 @@ namespace Tests\Feature\App\Http\Controllers;
 
 use Tests\TestCase;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Auth\Events\Registered;
 use App\Notifications\NewUserNotification;
@@ -89,7 +91,11 @@ class AuthControllerTest extends TestCase
 
     public function test_reset_password_page_success(): void
     {
-        $this->get(route('password.reset', ['token' => '123']))
+        /* $user = User::query()->where(['email' => self::USER_CREDENTIALS['email']])->first();
+        $token = app('auth.password.broker')->createToken($user); */
+        $token = '123';
+
+        $this->get(route('password.reset', ['token' => $token]))
             ->assertOk()
             ->assertSee('Изменить пароль')
             ->assertViewIs('auth.reset-password');
@@ -130,16 +136,45 @@ class AuthControllerTest extends TestCase
     {
         Notification::fake();
 
-        $request = [
-            'email' => self::USER_CREDENTIALS['email'],
-        ];
-
-        $response = $this->post(route('sendResetLink'), $request);
-
-        $response->assertRedirect();
-
         $user = User::query()->where(['email' => self::USER_CREDENTIALS['email']])->first();
 
+        $this
+            ->followingRedirects()
+            ->from(route('forgotPassword'))
+            ->post(route('sendResetLink'), [
+                'email' => $user->email,
+            ])
+            ->assertSuccessful()
+            ->assertSee(__('passwords.sent'));
+
         Notification::assertSentTo($user, ResetPassword::class);
+    }
+
+    public function test_password_update_success(): void
+    {
+        $user = User::query()->where(['email' => self::USER_CREDENTIALS['email']])->first();
+        $token = app('auth.password.broker')->createToken($user);
+
+        $password = str()->random(8);
+
+        $this
+            ->followingRedirects()
+            ->from(route('password.reset', [
+                'token' => $token,
+            ]))
+            ->post(route('updatePassword'), [
+                'token' => $token,
+                'email' => $user->email,
+                'password' => $password,
+                'password_confirmation' => $password,
+            ])
+            ->assertSuccessful()
+            ->assertSee(__('passwords.reset'));
+
+        $user->refresh();
+
+        $this->assertFalse(Hash::check(self::USER_CREDENTIALS['password'], $user->password));
+
+        $this->assertTrue(Hash::check($password, $user->password));
     }
 }
