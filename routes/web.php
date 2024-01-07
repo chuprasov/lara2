@@ -18,11 +18,16 @@ Route::controller(AuthController::class)->group(function () {
     Route::delete('/logout', 'logout')->name('logout');
     Route::get('/register', 'register')->name('register');
     Route::post('/store', 'store')->name('store');
-    Route::get('/forgot', 'forgot')->middleware('guest')->name('forgot');
-    Route::post('/forgot', 'forgotPassword')->middleware('guest')->name('forgotPassword');
-    Route::get('/reset-password/{token}', 'reset')->middleware('guest')->name('password.reset');
-    Route::post('/reset', 'resetPassword')->middleware('guest')->name('resetPassword');
+    Route::get('/forgot-password', 'forgotPassword')->middleware('guest')->name('forgotPassword');
+    Route::post('/send-reset-link', 'sendResetLink')->middleware('guest')->name('sendResetLink');
+    Route::get('/reset-password/{token}', 'resetPassword')->middleware('guest')->name('password.reset');
+    Route::post('/update-password', 'updatePassword')->middleware('guest')->name('updatePassword');
 
     Route::get('/auth/{socialName}/redirect', 'socialRedirect')->middleware('guest')->name('socialRedirect');
     Route::get('/auth/{socialName}/callback', 'socialAuth')->middleware('guest')->name('socialAuth');
 });
+
+/* route::get('/flash/{level}', function(string $level) {
+    return redirect()->route('home')->with($level, $level . '! Test flash message');
+}); */
+
