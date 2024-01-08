@@ -7,7 +7,6 @@ namespace Domain\Auth\Actions;
 use Domain\Auth\Contracts\RegisterUserContract;
 use Domain\Auth\Models\User;
 use Illuminate\Auth\Events\Registered;
-use Illuminate\Http\Request;
 
 class RegisterUserAction implements RegisterUserContract
 {
