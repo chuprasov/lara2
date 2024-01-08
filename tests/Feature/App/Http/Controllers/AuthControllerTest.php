@@ -5,7 +5,7 @@ namespace Tests\Feature\App\Http\Controllers;
 // use Illuminate\Foundation\Testing\RefreshDatabase;
 
 use Tests\TestCase;
-use App\Models\User;
+use Domain\Auth\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Auth\Events\Registered;
@@ -17,8 +17,8 @@ use Illuminate\Auth\Notifications\ResetPassword;
 class AuthControllerTest extends TestCase
 {
     const USER_CREDENTIALS = [
-        'name' => 'user333',
-        'email' => 'user333@gmail.com',
+        'name' => 'user_test',
+        'email' => 'user_test@gmail.com',
         'password' => 'password',
         'password_confirmation' => 'password',
     ];
