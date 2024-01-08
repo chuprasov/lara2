@@ -1,12 +1,19 @@
 <?php
 
-namespace App\Providers;
+namespace Domain\Auth\Providers;
 
 // use Illuminate\Support\Facades\Gate;
+
+use Domain\Auth\Actions\RegisterUserAction;
+use Domain\Auth\Contracts\RegisterUserContract;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
 {
+    public array $bindings = [
+        RegisterUserContract::class => RegisterUserAction::class
+    ];
+
     /**
      * The model to policy mappings for the application.
      *
@@ -16,11 +23,8 @@ class AuthServiceProvider extends ServiceProvider
         //
     ];
 
-    /**
-     * Register any authentication / authorization services.
-     */
     public function boot(): void
     {
-        //
+        $this->registerPolicies();
     }
 }

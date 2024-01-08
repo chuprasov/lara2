@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers\Auth;
 
-use Domain\Auth\Models\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\RegisterRequest;
-use Illuminate\Auth\Events\Registered;
+use Domain\Auth\Contracts\RegisterUserContract;
 
 class RegisterController extends Controller
 {
@@ -15,17 +14,16 @@ class RegisterController extends Controller
         return view('auth.register');
     }
 
-    public function handle(RegisterRequest $request): RedirectResponse
+    public function handle(RegisterRequest $request, RegisterUserContract $action): RedirectResponse
     {
-        $credentials = $request->validated();
 
-        $user = User::create([
-            'name' => $credentials['name'],
-            'email' => $credentials['email'],
-            'password' => bcrypt($credentials['password'])
-        ]);
+        //TODO DTO
 
-        event(new Registered($user));
+        $user = $action(
+            $request->get('name'),
+            $request->get('email'),
+            $request->get('password')
+        );
 
         auth()->login($user);
 

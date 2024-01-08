@@ -17,8 +17,8 @@ use Illuminate\Auth\Notifications\ResetPassword;
 class AuthControllerTest extends TestCase
 {
     const USER_CREDENTIALS = [
-        'name' => 'user_test',
-        'email' => 'user_test@gmail.com',
+        'name' => 'user333',
+        'email' => 'user333@gmail.com',
         'password' => 'password',
         'password_confirmation' => 'password',
     ];
