@@ -2,12 +2,15 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Traits\Models\HasSlug;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Product extends Model
 {
     use HasFactory;
+    use HasSlug;
 
     protected $fillable = [
         'slug',
@@ -15,16 +18,9 @@ class Product extends Model
         'brand_id',
         'price',
         'thumbnail',
+        'on_home_page',
+        'sorting',
     ];
-
-    protected static function boot()
-    {
-        parent::boot();
-
-        static::creating(function (Product $product) {
-            $product->slug = $product->slug ?? str($product->title)->slug();
-        });
-    }
 
     public function brand()
     {
@@ -35,4 +31,23 @@ class Product extends Model
     {
         return $this->belongsToMany(Category::class);
     }
+
+    /* protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function (Product $product) {
+            $product->slug = $product->slug ?? str($product->title)
+                ->append(time())
+                ->slug();
+        });
+    } */
+
+    public function scopeHomePage(Builder $query): void
+    {
+        $query->where('on_home_page', true)
+            ->orderBy('sorting')
+            ->limit(6);
+    }
+
 }
