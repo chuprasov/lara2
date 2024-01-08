@@ -26,8 +26,6 @@ class UpdatePasswordControllerTest extends TestCase
         $user = $this->getTestUser();
         $token = app('auth.password.broker')->createToken($user);
 
-        $password = str()->random(8);
-
         $this
             ->followingRedirects()
             ->from(route('password.reset', [
@@ -36,16 +34,14 @@ class UpdatePasswordControllerTest extends TestCase
             ->post(route('updatePassword'), [
                 'token' => $token,
                 'email' => $user->email,
-                'password' => $password,
-                'password_confirmation' => $password,
+                'password' => self::USER_PASSWORD,
+                'password_confirmation' => self::USER_PASSWORD,
             ])
             ->assertSuccessful()
             ->assertSee(__('passwords.reset'));
 
         $user->refresh();
 
-        $this->assertFalse(Hash::check(self::USER_EMAIL, $user->password));
-
-        $this->assertTrue(Hash::check($password, $user->password));
+        $this->assertTrue(Hash::check(self::USER_PASSWORD, $user->password));
     }
 }

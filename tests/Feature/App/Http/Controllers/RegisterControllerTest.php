@@ -14,7 +14,6 @@ use Illuminate\Support\Facades\Notification;
 
 class RegisterControllerTest extends TestCase
 {
-
     public function test_page_success(): void
     {
         $this
@@ -29,7 +28,12 @@ class RegisterControllerTest extends TestCase
         Event::fake();
         Notification::fake();
 
-        $request = $this->getUserRequest();
+        $request = [
+            'name' => self::USER_NAME,
+            'email' => self::USER_EMAIL,
+            'password' => self::USER_PASSWORD,
+            'password_confirmation' => self::USER_PASSWORD,
+        ];
 
         $user = $this->getTestUser();
 

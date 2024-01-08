@@ -28,7 +28,9 @@ class LoginControllerTest extends TestCase
 
         $response = $this->post(route('authenticate'), $request);
 
-        $response->assertValid()->assertRedirect(route('home'));
+        $response
+            ->assertValid()
+            ->assertRedirect(route('home'));
 
         $this->assertAuthenticatedAs($user);
     }

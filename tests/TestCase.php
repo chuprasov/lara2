@@ -2,7 +2,9 @@
 
 namespace Tests;
 
+use Domain\Auth\Actions\RegisterUserAction;
 use Domain\Auth\Models\User;
+use Domain\Auth\Contracts\RegisterUserContract;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 
 abstract class TestCase extends BaseTestCase
@@ -13,15 +15,6 @@ abstract class TestCase extends BaseTestCase
     const USER_EMAIL = 'user_test@gmail.com';
     const USER_PASSWORD = 'password';
 
-    public function getUserRequest()
-    {
-        return [
-            'name' => self::USER_NAME,
-            'email' => self::USER_EMAIL,
-            'password' => self::USER_PASSWORD,
-            'password_confirmation' => self::USER_PASSWORD,
-        ];
-    }
     public function getTestUser()
     {
         $user = User::query()->where(['email' => self::USER_EMAIL])->first();
@@ -31,12 +24,14 @@ abstract class TestCase extends BaseTestCase
 
     public function getOrCreateTestUser()
     {
-        $request = $this->getUserRequest();
-
         $user = User::query()->where(['email' => self::USER_EMAIL])->first();
 
         if (!isset($user)) {
-            $user = User::create($request);
+            $user = User::create([
+                'name' => self::USER_NAME,
+                'email' => self::USER_EMAIL,
+                'password' => bcrypt(self::USER_PASSWORD)
+            ]);
         }
 
         return $user;
