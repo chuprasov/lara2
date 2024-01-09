@@ -21,13 +21,13 @@ class AuthRegistrar implements RouteRegistrar
         Route::middleware('web')->group(function () {
             Route::controller(LoginController::class)->group(function () {
                 Route::get('/login', 'page')->name('login');
-                Route::post('/login', 'handle')->name('authenticate');
+                Route::post('/login', 'handle')->middleware('throttle:auth')->name('authenticate');
                 Route::delete('/logout', 'logout')->name('logout');
             });
 
             Route::controller(RegisterController::class)->group(function () {
                 Route::get('/register', 'page')->name('register');
-                Route::post('/store', 'handle')->name('store');
+                Route::post('/store', 'handle')->middleware('throttle:auth')->name('store');
             });
 
             Route::controller(SendResetLinkController::class)->group(function () {

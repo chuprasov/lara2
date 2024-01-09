@@ -12,12 +12,28 @@ class SocialController extends Controller
 {
     public function redirect(string $socialName)
     {
-        return Socialite::driver($socialName)->redirect();
+        if ($socialName !== 'github' && $socialName !== 'github') {
+            throw new \DomainException('Driver not supported');
+        }
+
+        try {
+            return Socialite::driver($socialName)->redirect();
+        } catch (\Throwable $th) {
+            throw new \DomainException('Social Auth error');
+        }
     }
 
     public function auth(string $socialName)
     {
-        $socialUser = Socialite::driver($socialName)->user();
+        if ($socialName !== 'github' && $socialName !== 'github') {
+            throw new \DomainException('Driver not supported');
+        }
+
+        try {
+            $socialUser = Socialite::driver($socialName)->user();
+        } catch (\Throwable $th) {
+            throw new \DomainException('Social Auth error');
+        }
 
         $user = User::updateOrCreate([
             'email' => $socialUser->email,
