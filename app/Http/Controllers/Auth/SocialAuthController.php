@@ -8,11 +8,11 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
 
-class SocialController extends Controller
+class SocialAuthController extends Controller
 {
     public function redirect(string $socialName)
     {
-        if ($socialName !== 'github' && $socialName !== 'github') {
+        if ($socialName !== 'github' && $socialName !== 'google') {
             throw new \DomainException('Driver not supported');
         }
 
@@ -25,7 +25,7 @@ class SocialController extends Controller
 
     public function auth(string $socialName)
     {
-        if ($socialName !== 'github' && $socialName !== 'github') {
+        if ($socialName !== 'github' && $socialName !== 'google') {
             throw new \DomainException('Driver not supported');
         }
 
@@ -36,18 +36,18 @@ class SocialController extends Controller
         }
 
         $user = User::updateOrCreate([
-            'email' => $socialUser->email,
+            'email' => $socialUser->getEmail(),
         ], [
-            'name' => $socialUser->nickname ?? $socialUser->name,
-            'email' => $socialUser->email,
-            'password' => bcrypt(Str::random(60)),
+            'name' => $socialUser->getNickName() ?? $socialUser->getName(),
+            'email' => $socialUser->getEmail(),
+            'password' => bcrypt(Str::random(20)),
         ]);
 
         $user->socials()->updateOrCreate([
             'social_name' =>  $socialName,
         ], [
             'social_name' =>  $socialName,
-            'social_id' =>  $socialUser->id,
+            'social_id' =>  $socialUser->getId(),
         ]);
 
         // dd($user->socials()->where('social_name', 'github')->first());

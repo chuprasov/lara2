@@ -6,12 +6,11 @@ namespace Domain\Auth\Routing;
 
 use App\Contracts\RouteRegistrar;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
 use Illuminate\Contracts\Routing\Registrar;
 use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\Auth\SocialController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\SendResetLinkController;
+use App\Http\Controllers\Auth\SocialAuthController;
 use App\Http\Controllers\Auth\UpdatePasswordController;
 
 class AuthRegistrar implements RouteRegistrar
@@ -40,7 +39,7 @@ class AuthRegistrar implements RouteRegistrar
                 Route::post('/update-password', 'handle')->middleware('guest')->name('updatePassword');
             });
 
-            Route::controller(SocialController::class)->group(function () {
+            Route::controller(SocialAuthController::class)->group(function () {
                 Route::get('/auth/{socialName}/redirect', 'redirect')->middleware('guest')->name('socialRedirect');
                 Route::get('/auth/{socialName}/callback', 'auth')->middleware('guest')->name('socialAuth');
             });

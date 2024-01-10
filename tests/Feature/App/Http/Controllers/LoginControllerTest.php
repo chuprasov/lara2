@@ -35,6 +35,19 @@ class LoginControllerTest extends TestCase
         $this->assertAuthenticatedAs($user);
     }
 
+    public function test_login_fail(): void
+    {
+        $request = [
+            'email' => self::USER_EMAIL,
+            'password' => str()->random(8),
+        ];
+
+        $this->post(route('authenticate'), $request);
+
+        $this->assertGuest();
+    }
+
+
     public function test_logout_success(): void
     {
         $this->assertDatabaseHas('users', [
@@ -43,9 +56,13 @@ class LoginControllerTest extends TestCase
 
         $user = $this->getTestUser();
 
-        $response = $this->actingAs($user)->delete(route('logout'));
+        $response = $this
+            ->actingAs($user)
+            ->delete(route('logout'));
 
-        $response->assertValid()->assertRedirect(route('home'));
+        $response
+            ->assertValid()
+            ->assertRedirect(route('home'));
 
         $this->assertGuest();
     }

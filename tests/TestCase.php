@@ -6,6 +6,8 @@ use Domain\Auth\Actions\RegisterUserAction;
 use Domain\Auth\Models\User;
 use Domain\Auth\Contracts\RegisterUserContract;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Notification;
 
 abstract class TestCase extends BaseTestCase
 {
@@ -15,16 +17,26 @@ abstract class TestCase extends BaseTestCase
     const USER_EMAIL = 'user_test@gmail.com';
     const USER_PASSWORD = 'password';
 
+    public function setUp(): void
+    {
+        parent::setUp();
+
+        Notification::fake();
+        Http::preventStrayRequests();
+    }
+
     public function getTestUser()
     {
-        $user = User::query()->where(['email' => self::USER_EMAIL])->first();
+        $user = User::query()
+            ->where(['email' => self::USER_EMAIL])
+            ->first();
 
         return $user;
     }
 
     public function getOrCreateTestUser()
     {
-        $user = User::query()->where(['email' => self::USER_EMAIL])->first();
+        $user = $this->getTestUser();
 
         if (!isset($user)) {
             $user = User::create([
@@ -35,6 +47,15 @@ abstract class TestCase extends BaseTestCase
         }
 
         return $user;
+    }
+
+    public function deleteTestUser(): void
+    {
+        $user = $this->getTestUser();
+
+        if (isset($user)) {
+            $user->delete();
+        }
     }
 
 }
