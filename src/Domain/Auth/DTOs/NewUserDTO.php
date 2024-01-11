@@ -17,6 +17,7 @@ class NewUserDTO
         public readonly string $password
     )
     {
+
     }
 
     public static function fromRequest(Request $request)

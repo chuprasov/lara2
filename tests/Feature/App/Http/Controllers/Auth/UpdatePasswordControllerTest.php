@@ -1,14 +1,15 @@
 <?php
 
-namespace Tests\Feature\App\Http\Controllers;
-
-// use Illuminate\Foundation\Testing\RefreshDatabase;
+namespace Tests\Feature\App\Http\Controllers\Auth;
 
 use Tests\TestCase;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class UpdatePasswordControllerTest extends TestCase
 {
+    use RefreshDatabase;
+
     public function test_page_success(): void
     {
         // $token = app('auth.password.broker')->createToken($user);
@@ -23,7 +24,7 @@ class UpdatePasswordControllerTest extends TestCase
 
     public function test_handle_success(): void
     {
-        $user = $this->getTestUser();
+        $user = $this->getOrCreateTestUser();
         $token = app('auth.password.broker')->createToken($user);
 
         $this

@@ -1,15 +1,16 @@
 <?php
 
-namespace Tests\Feature\App\Http\Controllers;
-
-// use Illuminate\Foundation\Testing\RefreshDatabase;
+namespace Tests\Feature\App\Http\Controllers\Auth;
 
 use Tests\TestCase;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Auth\Notifications\ResetPassword;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class SendResetLinkControllerTest extends TestCase
 {
+    use RefreshDatabase;
+
     public function test_page_success(): void
     {
         $this
@@ -23,7 +24,7 @@ class SendResetLinkControllerTest extends TestCase
     {
         Notification::fake();
 
-        $user = $this->getTestUser();
+        $user = $this->getOrCreateTestUser();
 
         $this
             ->followingRedirects()

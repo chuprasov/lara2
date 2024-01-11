@@ -1,8 +1,6 @@
 <?php
 
-namespace Tests\Feature\App\Http\Controllers;
-
-// use Illuminate\Foundation\Testing\RefreshDatabase;
+namespace Tests\Feature\App\Http\Controllers\Auth;
 
 use Tests\TestCase;
 use Illuminate\Support\Facades\Event;
@@ -10,9 +8,12 @@ use Illuminate\Auth\Events\Registered;
 use App\Notifications\NewUserNotification;
 use App\Listeners\SendEmailNewUserListener;
 use Illuminate\Support\Facades\Notification;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class RegisterControllerTest extends TestCase
 {
+    use RefreshDatabase;
+
     public function userRequest(): array
     {
         return [

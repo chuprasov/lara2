@@ -1,17 +1,18 @@
 <?php
 
-namespace Tests\Feature\App\Http\Controllers;
+namespace Tests\Feature\App\Http\Controllers\Auth;
 
-// use Illuminate\Foundation\Testing\RefreshDatabase;
-
-use Illuminate\Testing\TestResponse;
-use Laravel\Socialite\Contracts\User as SocialiteUser;
-use Laravel\Socialite\Facades\Socialite;
-use Mockery\MockInterface;
 use Tests\TestCase;
+use Mockery\MockInterface;
+use Illuminate\Testing\TestResponse;
+use Laravel\Socialite\Facades\Socialite;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Laravel\Socialite\Contracts\User as SocialiteUser;
 
 class SocialAuthControllerTest extends TestCase
 {
+    use RefreshDatabase;
+
     private function mockSocialiteCallback(string|int $socialId): MockInterface
     {
         $user = $this->mock(SocialiteUser::class, function (MockInterface $mockInterface) use ($socialId) {

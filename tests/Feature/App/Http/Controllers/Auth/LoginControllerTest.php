@@ -1,13 +1,14 @@
 <?php
 
-namespace Tests\Feature\App\Http\Controllers;
-
-// use Illuminate\Foundation\Testing\RefreshDatabase;
+namespace Tests\Feature\App\Http\Controllers\Auth;
 
 use Tests\TestCase;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class LoginControllerTest extends TestCase
 {
+    use RefreshDatabase;
+
     public function test_page_success(): void
     {
         $this
@@ -50,11 +51,11 @@ class LoginControllerTest extends TestCase
 
     public function test_logout_success(): void
     {
+        $user = $this->getOrCreateTestUser();
+
         $this->assertDatabaseHas('users', [
             'email' => self::USER_EMAIL,
         ]);
-
-        $user = $this->getTestUser();
 
         $response = $this
             ->actingAs($user)
