@@ -43,14 +43,14 @@ class SocialAuthController extends Controller
             'password' => bcrypt(Str::random(20)),
         ]);
 
-        $user->socials()->updateOrCreate([
+        /* $user->socials()->updateOrCreate([
             'social_name' =>  $socialName,
         ], [
             'social_name' =>  $socialName,
             'social_id' =>  $socialUser->getId(),
-        ]);
+        ]); */
 
-        // dd($user->socials()->where('social_name', 'github')->first());
+        $user[$socialName . '_id'] = $socialUser->getId();
 
         Auth::login($user);
 

@@ -42,4 +42,48 @@ class User extends Authenticatable
             get: fn()  => 'https://ui-avatars.com/api/?background=0D8ABC&color=fff&name=' . $this->name
         );
     }
+
+    private function getSocialId(string $socialName): ?string
+    {
+        $social = $this->hasMany(UserSocial::class)->where('social_name', $socialName)->first();
+
+        $socialId = null;
+
+        if ($social) {
+            $socialId = $social->getAttribute('social_id');
+        }
+
+        return $socialId;
+    }
+
+    private function setSocialId(string $socialName, string $id): void
+    {
+        $this->socials()->updateOrCreate([
+            'social_name' =>  $socialName,
+        ], [
+            'social_name' =>  $socialName,
+            'social_id' =>  $id,
+        ]);
+    }
+
+    public function getGithubIdAttribute()
+    {
+        return $this->getSocialId('github');
+    }
+
+    public function setGithubIdAttribute(string $id)
+    {
+        $this->setSocialId('github', $id);
+    }
+
+    public function getGoogleIdAttribute()
+    {
+        return $this->getSocialId('google');
+    }
+
+    public function setGoogleIdAttribute(string $id)
+    {
+        $this->setSocialId('google', $id);
+    }
+
 }

@@ -50,7 +50,17 @@
                             <div class="flex items-center mt-3">
                                 <img src="{{ auth()->user()->avatar }}" class="w-11 h-11 rounded-full"
                                     alt="{{ auth()->user()->name }}">
-                                <span class="ml-3 text-xs md:text-sm font-bold">{{ auth()->user()->name }}</span>
+                                <span class="ml-3 text-xs md:text-sm font-bold">
+                                    {{ auth()->user()->name }}
+                                    <span class="text-body text-xxs font-thin">
+                                        @isset(auth()->user()->github_id)
+                                            <br> {{ ' github: ' . auth()->user()->github_id ?? 'null' }}
+                                        @endisset
+                                        @isset(auth()->user()->google_id)
+                                            <br> {{ ' google: ' . auth()->user()->google_id ?? 'null' }}
+                                        @endisset
+                                    </span>
+                                </span>
                             </div>
                             <div class="mt-4">
                                 <ul class="space-y-2">
@@ -100,7 +110,6 @@
                                 d="M4 6h16M4 12h16M4 18h16"></path>
                         </svg>
                     </button>
-
                 @else
                     <a href="{{ route('login') }}" class="profile hidden xs:flex items-center">
                         <svg class="profile-icon w-8 h-8 text-purple" xmlns="http://www.w3.org/2000/svg"
