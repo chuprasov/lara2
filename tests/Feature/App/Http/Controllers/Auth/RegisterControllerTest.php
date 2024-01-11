@@ -48,8 +48,6 @@ class RegisterControllerTest extends TestCase
 
     public function test_handle_success(): void
     {
-        // Event::fake();
-
         $this->deleteTestUser();
 
         $request = $this->userRequest();
@@ -67,21 +65,6 @@ class RegisterControllerTest extends TestCase
         ]);
 
         $user = $this->getTestUser();
-
-        /* Event::assertDispatched(Registered::class);
-        Event::assertListening(
-            Registered::class,
-            SendEmailNewUserListener::class
-        );
-
-        $event = new Registered($user);
-        $listener = new SendEmailNewUserListener();
-        $listener->handle($event);
-
-        Notification::assertSentTo(
-            $user,
-            NewUserNotification::class
-        ); */
 
         $response->assertRedirect(route('home'));
 
