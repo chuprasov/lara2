@@ -12,7 +12,7 @@ class SocialAuthController extends Controller
 {
     public function redirect(string $socialName)
     {
-        if ($socialName !== 'github' && $socialName !== 'google') {
+        if (!in_array($socialName, ['github', 'google'])) {
             throw new \DomainException('Driver not supported');
         }
 
@@ -25,7 +25,7 @@ class SocialAuthController extends Controller
 
     public function auth(string $socialName)
     {
-        if ($socialName !== 'github' && $socialName !== 'google') {
+        if (!in_array($socialName, ['github', 'google'])) {
             throw new \DomainException('Driver not supported');
         }
 
@@ -43,18 +43,10 @@ class SocialAuthController extends Controller
             'password' => bcrypt(Str::random(20)),
         ]);
 
-        /* $user->socials()->updateOrCreate([
-            'social_name' =>  $socialName,
-        ], [
-            'social_name' =>  $socialName,
-            'social_id' =>  $socialUser->getId(),
-        ]); */
-
         $user[$socialName . '_id'] = $socialUser->getId();
 
         Auth::login($user);
 
         return redirect(route('home'));
     }
-
 }
