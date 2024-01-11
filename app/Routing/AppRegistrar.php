@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Route;
 use Services\Telegram\TelegramBotApi;
 use App\Http\Controllers\HomeController;
 use Illuminate\Contracts\Routing\Registrar;
+use Services\Telegram\TelegramBotApiContract;
 
 class AppRegistrar implements RouteRegistrar
 {
@@ -19,7 +20,7 @@ class AppRegistrar implements RouteRegistrar
             Route::get('/', HomeController::class)->name('home');
 
             route::get('/telegram/{message}', function(string $message) {
-                $result = TelegramBotApi::sendMessage(
+                $result = app(TelegramBotApiContract::class)::sendMessage(
                     env('TELEGRAM_TOKEN', ''),
                     (int) env('TELEGRAM_CHAT_ID', 0),
                     $message

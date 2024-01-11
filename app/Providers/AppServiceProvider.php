@@ -8,9 +8,15 @@ use Illuminate\Database\Connection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\ServiceProvider;
+use Services\Telegram\TelegramBotApi;
+use Services\Telegram\TelegramBotApiContract;
 
 class AppServiceProvider extends ServiceProvider
 {
+    public array $bindings = [
+        TelegramBotApiContract::class => TelegramBotApi::class
+    ];
+
     /**
      * Register any application services.
      */
