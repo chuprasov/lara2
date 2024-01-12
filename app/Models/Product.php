@@ -8,6 +8,8 @@ use Domain\Catalog\Models\Category;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Support\Casts\PriceCast;
 
 class Product extends Model
@@ -29,12 +31,12 @@ class Product extends Model
         'price' => PriceCast::class
     ];
 
-    public function brand()
+    public function brand(): BelongsTo
     {
         return $this->belongsTo(Brand::class);
     }
 
-    public function categories()
+    public function categories(): BelongsToMany
     {
         return $this->belongsToMany(Category::class);
     }

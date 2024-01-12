@@ -5,8 +5,9 @@ namespace Domain\Catalog\Models;
 use App\Models\Product;
 use Support\Traits\Models\HasSlug;
 use Database\Factories\BrandFactory;
+use Domain\Catalog\Collections\BrandCollection;
+use Domain\Catalog\QueryBuilders\BrandQueryBuilder;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Brand extends Model
@@ -27,22 +28,14 @@ class Brand extends Model
         return $this->hasMany(Product::class);
     }
 
-    /* protected static function boot()
+    public function newCollection($models = [])
     {
-        parent::boot();
+        return new BrandCollection($models);
+    }
 
-        static::creating(function (Brand $brand) {
-            $brand->slug = $brand->slug ?? str($brand->title)
-                ->append(time())
-                ->slug();
-        });
-    } */
-
-    public function scopeHomePage(Builder $query): void
+    public function newEloquentBuilder($query): BrandQueryBuilder
     {
-        $query->where('on_home_page', true)
-            ->orderBy('sorting')
-            ->limit(6);
+        return new BrandQueryBuilder($query);
     }
 
     protected static function newFactory(): BrandFactory

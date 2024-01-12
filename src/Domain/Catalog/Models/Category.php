@@ -4,6 +4,8 @@ namespace Domain\Catalog\Models;
 
 use App\Models\Product;
 use Database\Factories\CategoryFactory;
+use Domain\Catalog\Collections\CategoryCollection;
+use Domain\Catalog\QueryBuilders\CategoryQueryBuilder;
 use Support\Traits\Models\HasSlug;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
@@ -37,11 +39,14 @@ class Category extends Model
         });
     } */
 
-    public function scopeHomePage(Builder $query): void
+    public function newCollection($models = []): CategoryCollection
     {
-        $query->where('on_home_page', true)
-            ->orderBy('sorting')
-            ->limit(6);
+        return new CategoryCollection($models);
+    }
+
+    public function newEloquentBuilder($query): CategoryQueryBuilder
+    {
+        return new CategoryQueryBuilder($query);
     }
 
     protected static function newFactory(): CategoryFactory
