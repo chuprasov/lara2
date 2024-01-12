@@ -25,7 +25,7 @@ class Product extends Model
         'sorting',
     ];
 
-    protected $cast = [
+    protected $casts = [
         'price' => PriceCast::class
     ];
 
