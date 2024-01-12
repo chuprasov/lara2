@@ -2,10 +2,13 @@
 
 namespace App\Models;
 
-use App\Traits\Models\HasSlug;
+use Domain\Catalog\Models\Brand;
+use Support\Traits\Models\HasSlug;
+use Domain\Catalog\Models\Category;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Support\Casts\PriceCast;
 
 class Product extends Model
 {
@@ -20,6 +23,10 @@ class Product extends Model
         'thumbnail',
         'on_home_page',
         'sorting',
+    ];
+
+    protected $cast = [
+        'price' => PriceCast::class
     ];
 
     public function brand()

@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Models;
+namespace Domain\Catalog\Models;
 
-use App\Traits\Models\HasSlug;
+use App\Models\Product;
+use Support\Traits\Models\HasSlug;
+use Database\Factories\BrandFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -41,5 +43,10 @@ class Brand extends Model
         $query->where('on_home_page', true)
             ->orderBy('sorting')
             ->limit(6);
+    }
+
+    protected static function newFactory(): BrandFactory
+    {
+        return BrandFactory::new();
     }
 }
