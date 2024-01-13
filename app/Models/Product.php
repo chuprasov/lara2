@@ -11,11 +11,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Support\Casts\PriceCast;
+use Support\Traits\Models\HasThumbnail;
 
 class Product extends Model
 {
     use HasFactory;
     use HasSlug;
+    use HasThumbnail;
 
     protected $fillable = [
         'slug',
@@ -41,16 +43,10 @@ class Product extends Model
         return $this->belongsToMany(Category::class);
     }
 
-    /* protected static function boot()
+    protected function thumbnailDir():string
     {
-        parent::boot();
-
-        static::creating(function (Product $product) {
-            $product->slug = $product->slug ?? str($product->title)
-                ->append(time())
-                ->slug();
-        });
-    } */
+        return 'products';
+    }
 
     public function scopeHomePage(Builder $query): void
     {
