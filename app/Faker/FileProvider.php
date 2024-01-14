@@ -2,8 +2,8 @@
 
 namespace App\Faker;
 
-use Faker\Provider\Base;
 use Faker\Factory;
+use Faker\Provider\Base;
 
 class FileProvider extends Base
 {

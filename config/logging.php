@@ -3,8 +3,8 @@
 use Monolog\Handler\NullHandler;
 use Monolog\Handler\StreamHandler;
 use Monolog\Handler\SyslogUdpHandler;
-use Support\Logging\Telegram\TelegramLogger;
 use Monolog\Processor\PsrLogMessageProcessor;
+use Support\Logging\Telegram\TelegramLogger;
 
 return [
 

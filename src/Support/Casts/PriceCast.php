@@ -2,8 +2,8 @@
 
 namespace Support\Casts;
 
-use Support\ValueObjects\Price;
 use Illuminate\Contracts\Database\Eloquent\CastsAttributes;
+use Support\ValueObjects\Price;
 
 class PriceCast implements CastsAttributes
 {
@@ -14,7 +14,7 @@ class PriceCast implements CastsAttributes
 
     public function set($model, string $key, mixed $value, array $attributes): int
     {
-        if (!$value instanceof Price) {
+        if (! $value instanceof Price) {
             $value = Price::make($value);
         }
 

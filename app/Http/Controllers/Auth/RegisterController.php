@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use Domain\Auth\DTOs\NewUserDTO;
-use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\RegisterRequest;
 use Domain\Auth\Contracts\RegisterUserContract;
+use Domain\Auth\DTOs\NewUserDTO;
+use Illuminate\Http\RedirectResponse;
 
 class RegisterController extends Controller
 {

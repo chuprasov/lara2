@@ -2,10 +2,9 @@
 
 namespace Services\Telegram;
 
+use App\Exceptions\TelegramBotApiException;
 use Exception;
 use Illuminate\Support\Facades\Http;
-use Services\Telegram\TelegramBotApiFake;
-use App\Exceptions\TelegramBotApiException;
 
 final class TelegramBotApi
 {
@@ -22,7 +21,7 @@ final class TelegramBotApi
     public static function sendMessage(string $token, int $chatId, string $text): bool
     {
         try {
-            $response = Http::get(self::HOST . $token . '/sendMessage', [
+            $response = Http::get(self::HOST.$token.'/sendMessage', [
                 'chat_id' => $chatId,
                 'text' => $text,
             ])->throw()->json();
@@ -33,6 +32,6 @@ final class TelegramBotApi
             report(new TelegramBotApiException($e->getMessage()));
 
             return false;
-        };
+        }
     }
 }

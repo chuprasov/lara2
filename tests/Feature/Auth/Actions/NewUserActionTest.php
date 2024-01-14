@@ -3,10 +3,10 @@
 namespace Tests\Feature\Auth\DTOs;
 
 use Domain\Auth\Contracts\RegisterUserContract;
-use Tests\TestCase;
 use Domain\Auth\DTOs\NewUserDTO;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\Request;
+use Tests\TestCase;
 
 class NewUserActionTest extends TestCase
 {
@@ -27,5 +27,4 @@ class NewUserActionTest extends TestCase
         ]);
 
     }
-
 }

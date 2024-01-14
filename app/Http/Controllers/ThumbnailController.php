@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Nette\Utils\Image;
 use Illuminate\Support\Facades\Storage;
+use Nette\Utils\Image;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class ThumbnailController extends Controller
@@ -13,10 +13,9 @@ class ThumbnailController extends Controller
         string $method,
         string $size,
         string $file
-    ): BinaryFileResponse
-    {
+    ): BinaryFileResponse {
         abort_if(
-            !in_array($size, config('thumbnail.allowed_sizes')),
+            ! in_array($size, config('thumbnail.allowed_sizes')),
             403,
             'Size not allowed'
         );
@@ -27,11 +26,11 @@ class ThumbnailController extends Controller
         $newDirPath = "$dir/$method/$size";
         $resultPath = "$newDirPath/$file";
 
-        if (!$disk->exists($newDirPath)) {
+        if (! $disk->exists($newDirPath)) {
             $disk->makeDirectory($newDirPath);
         }
 
-        if (!$disk->exists($resultPath)) {
+        if (! $disk->exists($resultPath)) {
 
             $image = Image::fromFile($disk->path($realPath));
 
@@ -44,5 +43,4 @@ class ThumbnailController extends Controller
 
         return response()->file($disk->path($resultPath));
     }
-
 }

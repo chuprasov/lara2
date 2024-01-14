@@ -2,15 +2,15 @@
 
 namespace App\Providers;
 
-use RuntimeException;
-use Illuminate\Http\Request;
-use App\Routing\AppRegistrar;
 use App\Contracts\RouteRegistrar;
+use App\Routing\AppRegistrar;
 use App\Routing\AuthRegistrar;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Contracts\Routing\Registrar;
-use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\RateLimiter;
+use RuntimeException;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -50,7 +50,7 @@ class RouteServiceProvider extends ServiceProvider
     public function mapRoutes(Registrar $router, array $registrars): void
     {
         foreach ($registrars as $registrar) {
-            if (!class_exists($registrar) || !is_subclass_of($registrar, RouteRegistrar::class)) {
+            if (! class_exists($registrar) || ! is_subclass_of($registrar, RouteRegistrar::class)) {
                 throw new RuntimeException(sprintf(
                     'Cannot map routes \'%s\', it is not a valid routes class',
                     $registrar

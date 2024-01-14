@@ -2,7 +2,6 @@
 
 namespace Support\Traits\Models;
 
-
 use Illuminate\Database\Eloquent\Model;
 
 trait HasSlug
@@ -11,7 +10,7 @@ trait HasSlug
     {
         static::creating(function (Model $model) {
             $model->slug = $model->slug ?? str($model->{self::slugFrom()})
-                ->append(rand(1,100))
+                ->append(rand(1, 100))
                 ->slug();
         });
     }

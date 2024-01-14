@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Auth;
 
-use Illuminate\Support\Str;
-use Domain\Auth\Models\User;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Password;
-use Illuminate\Auth\Events\PasswordReset;
 use App\Http\Requests\PasswordUpdateRequest;
+use Domain\Auth\Models\User;
+use Illuminate\Auth\Events\PasswordReset;
+use Illuminate\Support\Facades\Password;
+use Illuminate\Support\Str;
 
 class UpdatePasswordController extends Controller
 {
@@ -22,7 +22,7 @@ class UpdatePasswordController extends Controller
             $request->only('email', 'password', 'password_confirmation', 'token'),
             function (User $user, string $password) {
                 $user->forceFill([
-                    'password' => bcrypt($password)
+                    'password' => bcrypt($password),
                 ])->setRememberToken(Str::random(60));
 
                 $user->save();

@@ -22,13 +22,13 @@ class RefreshCommand extends Command
 
         Storage::deleteDirectory('images/products');
 
-        if(!Storage::exists('images/products')) {
+        if (! Storage::exists('images/products')) {
             Storage::makeDirectory('images/products');
         }
 
         Storage::deleteDirectory('images/brands');
 
-        if(!Storage::exists('images/brands')) {
+        if (! Storage::exists('images/brands')) {
             Storage::makeDirectory('images/brands');
         }
 
@@ -37,7 +37,7 @@ class RefreshCommand extends Command
         Storage::delete($files); */
 
         $this->call('migrate:fresh', [
-            '--seed' => true
+            '--seed' => true,
         ]);
 
         return self::SUCCESS;

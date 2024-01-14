@@ -15,11 +15,10 @@ class CategoryViewModel
 
     public function homePage(): Collection|array
     {
-        return Cache::rememberForever('category_home_page', function() {
+        return Cache::rememberForever('category_home_page', function () {
             return Category::query()
-            ->homePage()
-            ->get();
+                ->homePage()
+                ->get();
         });
     }
-
 }

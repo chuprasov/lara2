@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Support\Logging\Telegram;
 
-use Services\Telegram\TelegramBotApi;
 use Monolog\Handler\AbstractProcessingHandler;
 use Monolog\Logger;
 use Monolog\LogRecord;

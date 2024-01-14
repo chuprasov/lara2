@@ -8,7 +8,7 @@ final class TelegramBotApiFake
 
     public function returnTrue(): static
     {
-        static::$success = true;
+        self::$success = true;
 
         return $this;
     }

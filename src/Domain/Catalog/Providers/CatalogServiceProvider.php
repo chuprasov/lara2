@@ -2,8 +2,8 @@
 
 namespace Domain\Catalog\Providers;
 
-
 use Illuminate\Support\ServiceProvider;
+
 // use Illuminate\Support\Facades\Gate;
 
 class CatalogServiceProvider extends ServiceProvider
@@ -19,5 +19,4 @@ class CatalogServiceProvider extends ServiceProvider
             ActionsServiceProvider::class
         );
     }
-
 }

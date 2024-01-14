@@ -2,8 +2,8 @@
 
 namespace Tests\Feature\App\Http\Controllers\Auth;
 
-use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
 class LoginControllerTest extends TestCase
 {
@@ -47,7 +47,6 @@ class LoginControllerTest extends TestCase
 
         $this->assertGuest();
     }
-
 
     public function test_logout_success(): void
     {

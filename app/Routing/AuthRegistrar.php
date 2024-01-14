@@ -5,13 +5,13 @@ declare(strict_types=1);
 namespace App\Routing;
 
 use App\Contracts\RouteRegistrar;
-use Illuminate\Support\Facades\Route;
-use Illuminate\Contracts\Routing\Registrar;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\SendResetLinkController;
 use App\Http\Controllers\Auth\SocialAuthController;
 use App\Http\Controllers\Auth\UpdatePasswordController;
+use Illuminate\Contracts\Routing\Registrar;
+use Illuminate\Support\Facades\Route;
 
 class AuthRegistrar implements RouteRegistrar
 {

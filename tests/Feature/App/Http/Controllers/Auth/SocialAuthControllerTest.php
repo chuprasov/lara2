@@ -2,12 +2,12 @@
 
 namespace Tests\Feature\App\Http\Controllers\Auth;
 
-use Tests\TestCase;
-use Mockery\MockInterface;
-use Illuminate\Testing\TestResponse;
-use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Testing\TestResponse;
 use Laravel\Socialite\Contracts\User as SocialiteUser;
+use Laravel\Socialite\Facades\Socialite;
+use Mockery\MockInterface;
+use Tests\TestCase;
 
 class SocialAuthControllerTest extends TestCase
 {
@@ -67,5 +67,4 @@ class SocialAuthControllerTest extends TestCase
     {
         $this->socialAuthSuccess('google');
     }
-
 }

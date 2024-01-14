@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers\Auth;
 
-use Illuminate\Support\Str;
-use Domain\Auth\Models\User;
 use App\Http\Controllers\Controller;
+use Domain\Auth\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 use Laravel\Socialite\Facades\Socialite;
 
 class SocialAuthController extends Controller
 {
     public function redirect(string $socialName)
     {
-        if (!in_array($socialName, ['github', 'google'])) {
+        if (! in_array($socialName, ['github', 'google'])) {
             throw new \DomainException('Driver not supported');
         }
 
@@ -25,7 +25,7 @@ class SocialAuthController extends Controller
 
     public function auth(string $socialName)
     {
-        if (!in_array($socialName, ['github', 'google'])) {
+        if (! in_array($socialName, ['github', 'google'])) {
             throw new \DomainException('Driver not supported');
         }
 
@@ -43,7 +43,7 @@ class SocialAuthController extends Controller
             'password' => bcrypt(Str::random(20)),
         ]);
 
-        $user[$socialName . '_id'] = $socialUser->getId();
+        $user[$socialName.'_id'] = $socialUser->getId();
 
         Auth::login($user);
 

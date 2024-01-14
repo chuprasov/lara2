@@ -6,10 +6,9 @@ use App\Models\Product;
 use Database\Factories\CategoryFactory;
 use Domain\Catalog\Collections\CategoryCollection;
 use Domain\Catalog\QueryBuilders\CategoryQueryBuilder;
-use Support\Traits\Models\HasSlug;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Support\Traits\Models\HasSlug;
 
 class Category extends Model
 {
@@ -21,7 +20,7 @@ class Category extends Model
         'title',
         'on_home_page',
         'sorting',
-];
+    ];
 
     public function products()
     {
@@ -53,5 +52,4 @@ class Category extends Model
     {
         return CategoryFactory::new();
     }
-
 }

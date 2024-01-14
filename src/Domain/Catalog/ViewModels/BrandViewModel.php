@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Domain\Catalog\ViewModels;
 
-use Support\Traits\Makeable;
 use Domain\Catalog\Models\Brand;
-use Illuminate\Support\Facades\Cache;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Facades\Cache;
+use Support\Traits\Makeable;
 
 class BrandViewModel
 {

@@ -4,23 +4,23 @@ namespace Domain\Auth\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
-use Laravel\Sanctum\HasApiTokens;
-use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-     protected $fillable = [
+    protected $fillable = [
         'name',
         'email',
         'password',
     ];
 
-     protected $hidden = [
+    protected $hidden = [
         'password',
         'remember_token',
     ];
@@ -38,7 +38,7 @@ class User extends Authenticatable
     public function avatar(): Attribute
     {
         return Attribute::make(
-            get: fn()  => 'https://ui-avatars.com/api/?background=0D8ABC&color=fff&name=' . $this->name
+            get: fn () => 'https://ui-avatars.com/api/?background=0D8ABC&color=fff&name='.$this->name
         );
     }
 
@@ -58,10 +58,10 @@ class User extends Authenticatable
     private function setSocialId(string $socialName, string $id): void
     {
         $this->socials()->updateOrCreate([
-            'social_name' =>  $socialName,
+            'social_name' => $socialName,
         ], [
-            'social_name' =>  $socialName,
-            'social_id' =>  $id,
+            'social_name' => $socialName,
+            'social_id' => $id,
         ]);
     }
 
@@ -84,5 +84,4 @@ class User extends Authenticatable
     {
         $this->setSocialId('google', $id);
     }
-
 }

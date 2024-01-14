@@ -2,13 +2,13 @@
 
 namespace Tests\Feature\App\Http\Controllers\Auth;
 
-use Tests\TestCase;
-use Illuminate\Support\Facades\Event;
-use Illuminate\Auth\Events\Registered;
-use App\Notifications\NewUserNotification;
 use App\Listeners\SendEmailNewUserListener;
-use Illuminate\Support\Facades\Notification;
+use App\Notifications\NewUserNotification;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Event;
+use Illuminate\Support\Facades\Notification;
+use Tests\TestCase;
 
 class RegisterControllerTest extends TestCase
 {

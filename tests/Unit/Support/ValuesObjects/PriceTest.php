@@ -2,10 +2,9 @@
 
 namespace Tests\Unit\Support\ValuesObjects;
 
-
-use Tests\TestCase;
 use InvalidArgumentException;
 use Support\ValueObjects\Price;
+use Tests\TestCase;
 
 class PriceTest extends TestCase
 {

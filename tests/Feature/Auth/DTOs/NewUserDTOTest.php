@@ -2,10 +2,10 @@
 
 namespace Tests\Feature\Auth\DTOs;
 
-use Tests\TestCase;
 use Domain\Auth\DTOs\NewUserDTO;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\Request;
+use Tests\TestCase;
 
 class NewUserDTOTest extends TestCase
 {
@@ -21,5 +21,4 @@ class NewUserDTOTest extends TestCase
 
         $this->assertInstanceOf(NewUserDTO::class, $user);
     }
-
 }

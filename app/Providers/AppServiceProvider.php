@@ -4,7 +4,6 @@ namespace App\Providers;
 
 use App\Http\Kernel;
 use Carbon\CarbonInterval;
-use Illuminate\Database\Connection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\ServiceProvider;
@@ -14,7 +13,7 @@ use Services\Telegram\TelegramBotApiContract;
 class AppServiceProvider extends ServiceProvider
 {
     public array $bindings = [
-        TelegramBotApiContract::class => TelegramBotApi::class
+        TelegramBotApiContract::class => TelegramBotApi::class,
     ];
 
     /**

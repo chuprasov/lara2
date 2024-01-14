@@ -2,9 +2,9 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\ServiceProvider;
 use Domain\Auth\Providers\ShopAuthServiceProvider;
 use Domain\Catalog\Providers\CatalogServiceProvider;
+use Illuminate\Support\ServiceProvider;
 
 class DomainServiceProvider extends ServiceProvider
 {

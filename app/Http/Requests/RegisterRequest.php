@@ -27,7 +27,7 @@ class RegisterRequest extends FormRequest
             'email' => str(request('email'))
                 ->squish()
                 ->lower()
-                ->value()
+                ->value(),
         ]);
     }
 }

@@ -10,5 +10,4 @@ trait Makeable
     {
         return new static(...$args);
     }
-
 }

@@ -5,12 +5,11 @@ declare(strict_types=1);
 namespace App\Routing;
 
 use App\Contracts\RouteRegistrar;
-use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Route;
-use Services\Telegram\TelegramBotApi;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ThumbnailController;
 use Illuminate\Contracts\Routing\Registrar;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Route;
 use Services\Telegram\TelegramBotApiContract;
 
 class AppRegistrar implements RouteRegistrar

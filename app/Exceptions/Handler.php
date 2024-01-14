@@ -22,7 +22,7 @@ class Handler extends ExceptionHandler
     public function register(): void
     {
         $this->reportable(function (Throwable $e) {
-            if (!app()->isLocal()) {
+            if (! app()->isLocal()) {
                 if (app()->bound('sentry')) {
                     app('sentry')->captureException($e);
                 }
@@ -33,9 +33,9 @@ class Handler extends ExceptionHandler
             return response('Not found 404');
         });
 
-
         $this->renderable(function (\DomainException $e) {
             session()->flash('error', $e->getMessage());
+
             return back();
         });
 

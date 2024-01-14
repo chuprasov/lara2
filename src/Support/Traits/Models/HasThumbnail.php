@@ -6,15 +6,15 @@ use Illuminate\Support\Facades\File;
 
 trait HasThumbnail
 {
-    abstract protected function thumbnailDir():string;
+    abstract protected function thumbnailDir(): string;
 
-    public function makeThumbnail (string $size, string $method = 'resize'): string
+    public function makeThumbnail(string $size, string $method = 'resize'): string
     {
         $route = route('thumbnail', [
             'dir' => $this->thumbnailDir(),
             'method' => $method,
             'size' => $size,
-            'file' => File::basename($this->{$this->thumbnailColumn()})
+            'file' => File::basename($this->{$this->thumbnailColumn()}),
         ]);
 
         return $route;

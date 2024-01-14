@@ -4,29 +4,28 @@ declare(strict_types=1);
 
 namespace Support\ValueObjects;
 
-use Support\Traits\Makeable;
 use InvalidArgumentException;
 use Stringable;
+use Support\Traits\Makeable;
 
 class Price implements Stringable
 {
     use Makeable;
 
     private array $currencies = [
-        'RUB' => '₽'
+        'RUB' => '₽',
     ];
 
     public function __construct(
         public readonly int $value,
         public readonly string $currency = 'RUB',
         public readonly int $precision = 100
-    )
-    {
+    ) {
         if ($value < 0) {
             throw new InvalidArgumentException('Price < 0');
         }
 
-        if (!isset($this->currencies[$currency])) {
+        if (! isset($this->currencies[$currency])) {
             throw new InvalidArgumentException('Currency not allowed');
         }
     }
@@ -45,6 +44,7 @@ class Price implements Stringable
     {
         return $this->currency;
     }
+
     public function symbol(): string
     {
         return $this->currencies[$this->currency];
@@ -52,6 +52,6 @@ class Price implements Stringable
 
     public function __toString(): string
     {
-        return number_format($this->value(), 2, ',', ' ') . ' ' . $this->symbol();
+        return number_format($this->value(), 2, ',', ' ').' '.$this->symbol();
     }
 }

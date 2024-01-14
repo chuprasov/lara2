@@ -24,7 +24,7 @@ class ProductFactory extends Factory
                 '/tests/Fixtures/images/products',
                 '/app/public/images/products'
             ),
-            'price' => $this->faker->numberBetween(10000,1000000),
+            'price' => $this->faker->numberBetween(10000, 1000000),
             'on_home_page' => $this->faker->boolean(),
             'sorting' => $this->faker->numberBetween(1, 900),
         ];

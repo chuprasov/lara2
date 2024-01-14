@@ -25,5 +25,4 @@ class SendResetLinkController extends Controller
             ? back()->with(['info' => __($status)])
             : back()->withErrors(['email' => __($status)]);
     }
-
 }

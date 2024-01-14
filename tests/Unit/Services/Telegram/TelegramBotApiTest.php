@@ -2,18 +2,17 @@
 
 namespace Tests\Unit\Services\Telegram;
 
-use Tests\TestCase;
 use Illuminate\Support\Facades\Http;
 use Services\Telegram\TelegramBotApi;
 use Services\Telegram\TelegramBotApiContract;
-use Services\Telegram\TelegramBotApiFake;
+use Tests\TestCase;
 
 class TelegramBotApiTest extends TestCase
 {
     public function test_send_message_success(): void
     {
         Http::fake([
-            TelegramBotApi::HOST . '*' => Http::response(['ok' => true])
+            TelegramBotApi::HOST.'*' => Http::response(['ok' => true]),
         ]);
 
         $result = TelegramBotApi::sendMessage(
@@ -50,5 +49,4 @@ class TelegramBotApiTest extends TestCase
 
         $this->assertFalse($result);
     }
-
 }

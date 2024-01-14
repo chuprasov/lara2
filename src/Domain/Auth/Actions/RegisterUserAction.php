@@ -16,7 +16,7 @@ class RegisterUserAction implements RegisterUserContract
         $user = User::create([
             'name' => $newUserDTO->name,
             'email' => $newUserDTO->email,
-            'password' => bcrypt($newUserDTO->password)
+            'password' => bcrypt($newUserDTO->password),
         ]);
 
         event(new Registered($user));

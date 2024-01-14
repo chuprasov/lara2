@@ -3,14 +3,14 @@
 namespace App\Models;
 
 use Domain\Catalog\Models\Brand;
-use Support\Traits\Models\HasSlug;
 use Domain\Catalog\Models\Category;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Support\Casts\PriceCast;
+use Support\Traits\Models\HasSlug;
 use Support\Traits\Models\HasThumbnail;
 
 class Product extends Model
@@ -30,7 +30,7 @@ class Product extends Model
     ];
 
     protected $casts = [
-        'price' => PriceCast::class
+        'price' => PriceCast::class,
     ];
 
     public function brand(): BelongsTo
@@ -43,7 +43,7 @@ class Product extends Model
         return $this->belongsToMany(Category::class);
     }
 
-    public function thumbnailDir():string
+    public function thumbnailDir(): string
     {
         return 'products';
     }
@@ -54,5 +54,4 @@ class Product extends Model
             ->orderBy('sorting')
             ->limit(6);
     }
-
 }
