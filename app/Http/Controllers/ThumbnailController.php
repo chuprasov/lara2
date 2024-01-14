@@ -15,8 +15,6 @@ class ThumbnailController extends Controller
         string $file
     ): BinaryFileResponse
     {
-        // dd('dir = ' . $dir, 'method = ' . $method, 'size = ' . $size, 'file = ' . $file);
-
         abort_if(
             !in_array($size, config('thumbnail.allowed_sizes')),
             403,

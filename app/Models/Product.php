@@ -43,7 +43,7 @@ class Product extends Model
         return $this->belongsToMany(Category::class);
     }
 
-    protected function thumbnailDir():string
+    public function thumbnailDir():string
     {
         return 'products';
     }

@@ -3,7 +3,6 @@
 namespace Support\Traits\Models;
 
 use Illuminate\Support\Facades\File;
-use App\Http\Controllers\ThumbnailController;
 
 trait HasThumbnail
 {
