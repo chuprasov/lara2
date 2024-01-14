@@ -7,9 +7,9 @@ use Illuminate\Support\Facades\Storage;
 
 class RefreshCommand extends Command
 {
-    protected $signature = 'app:refresh';
+    protected $signature = 'shop:refresh';
 
-    protected $description = 'App refresh';
+    protected $description = 'Shop app refresh';
 
     /**
      * Execute the console command.

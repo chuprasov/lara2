@@ -21,28 +21,28 @@ class ThumbnailController extends Controller
             'Size not allowed'
         );
 
-        $storage = Storage::disk('images');
+        $disk = Storage::disk('images');
 
         $realPath = "$dir/$file";
         $newDirPath = "$dir/$method/$size";
         $resultPath = "$newDirPath/$file";
 
-        if (!$storage->exists($newDirPath)) {
-            $storage->makeDirectory($newDirPath);
+        if (!$disk->exists($newDirPath)) {
+            $disk->makeDirectory($newDirPath);
         }
 
-        if (!$storage->exists($resultPath)) {
+        if (!$disk->exists($resultPath)) {
 
-            $image = Image::fromFile($storage->path($realPath));
+            $image = Image::fromFile($disk->path($realPath));
 
             [$w, $h] = explode('x', $size);
 
             $image->{$method}($w, $h);
 
-            $image->save($storage->path($resultPath));
+            $image->save($disk->path($resultPath));
         }
 
-        return response()->file($storage->path($resultPath));
+        return response()->file($disk->path($resultPath));
     }
 
 }
