@@ -11,9 +11,6 @@ class RefreshCommand extends Command
 
     protected $description = 'Shop app refresh';
 
-    /**
-     * Execute the console command.
-     */
     public function handle()
     {
         if (app()->isProduction()) {
@@ -39,6 +36,8 @@ class RefreshCommand extends Command
         $this->call('migrate:fresh', [
             '--seed' => true,
         ]);
+
+        $this->call('cache:clear');
 
         return self::SUCCESS;
     }
