@@ -13,49 +13,36 @@ class ThumbnailControllerTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_make_product_thumbnail(): void
+    private function makeThumbnailTesting(string $factory, string $modelDirlName)
     {
         $method = 'resize';
         $size = '200x200';
 
-        $product = ProductFactory::new()
+        $object = $factory::new()
             ->createOne([
                 'on_home_page' => true,
                 'sorting' => 1,
             ]);
 
         $this->get(route('thumbnail', [
-            'dir' => $product->thumbnailDir(),
+            'dir' => $object->thumbnailDir(),
             'method' => $method,
             'size' => $size,
-            'file' => File::basename($product->{$product->thumbnailColumn()}),
+            'file' => File::basename($object->{$object->thumbnailColumn()}),
         ]))->assertOk();
 
         Storage::disk('images')->assertExists(
-            "products/$method/$size/".File::basename($product->thumbnail)
+            "$modelDirlName/$method/$size/".File::basename($object->thumbnail)
         );
+    }
+
+    public function test_make_product_thumbnail(): void
+    {
+        $this->makeThumbnailTesting(ProductFactory::class, 'products');
     }
 
     public function test_make_brand_thumbnail(): void
     {
-        $method = 'resize';
-        $size = '200x200';
-
-        $brand = BrandFactory::new()
-            ->createOne([
-                'on_home_page' => true,
-                'sorting' => 1,
-            ]);
-
-        $this->get(route('thumbnail', [
-            'dir' => $brand->thumbnailDir(),
-            'method' => $method,
-            'size' => $size,
-            'file' => File::basename($brand->{$brand->thumbnailColumn()}),
-        ]))->assertOk();
-
-        Storage::disk('images')->assertExists(
-            "products/$method/$size/".File::basename($brand->$brand)
-        );
+        $this->makeThumbnailTesting(BrandFactory::class, 'brands');
     }
 }
