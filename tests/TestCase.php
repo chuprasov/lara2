@@ -6,6 +6,7 @@ use Domain\Auth\Models\User;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Notification;
+use Storage;
 
 abstract class TestCase extends BaseTestCase
 {
@@ -22,6 +23,8 @@ abstract class TestCase extends BaseTestCase
         parent::setUp();
 
         Notification::fake();
+        Storage::fake();
+
         Http::preventStrayRequests();
     }
 

@@ -19,7 +19,7 @@ class AppRegistrar implements RouteRegistrar
         Route::middleware('web')->group(function () {
             Route::get('/', HomeController::class)->name('home');
 
-            Route::get('/thumbnail/{dir}/{method}/{size}/{file}', ThumbnailController::class)->name('thumbnail');
+            Route::get('/storage/images/{dir}/{method}/{size}/{file}', ThumbnailController::class)->name('thumbnail');
 
             route::get('/telegram/{message}', function (string $message) {
                 $result = app(TelegramBotApiContract::class)::sendMessage(
