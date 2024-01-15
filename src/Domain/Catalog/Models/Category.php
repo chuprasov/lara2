@@ -3,13 +3,13 @@
 namespace Domain\Catalog\Models;
 
 use App\Models\Product;
-use Support\Traits\Models\HasSlug;
-use Illuminate\Support\Facades\Cache;
 use Database\Factories\CategoryFactory;
-use Illuminate\Database\Eloquent\Model;
 use Domain\Catalog\Collections\CategoryCollection;
 use Domain\Catalog\QueryBuilders\CategoryQueryBuilder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Cache;
+use Support\Traits\Models\HasSlug;
 
 class Category extends Model
 {
@@ -57,15 +57,15 @@ class Category extends Model
     protected static function booted()
     {
         static::creating(function () {
-            Cache::forget('brand_home_page');
+            Cache::forget('category_home_page');
         });
 
         static::updating(function ($user) {
-            Cache::forget('brand_home_page');
+            Cache::forget('category_home_page');
         });
 
         static::deleting(function ($user) {
-            Cache::forget('brand_home_page');
+            Cache::forget('category_home_page');
         });
 
     }
