@@ -36,7 +36,7 @@ class Brand extends Model
         return 'brands';
     }
 
-    public function newCollection($models = [])
+    public function newCollection($models = []): BrandCollection
     {
         return new BrandCollection($models);
     }
