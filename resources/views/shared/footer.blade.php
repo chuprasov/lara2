@@ -12,12 +12,12 @@
             </div><!-- /.footer-copyright -->
             <div class="footer-social order-1 lg:order-2 basis-full sm:basis-1/2 lg:basis-1/3 mt-8 sm:mt-0">
                 <div class="flex flex-wrap items-center justify-center sm:justify-end space-x-6">
-                    <a href="#" class="inline-flex items-center text-white hover:text-pink" target="_blank"
+                    <a href="https://youtube.com" class="inline-flex items-center text-white hover:text-pink" target="_blank"
                         rel="nofollow noopener">
                         <img class="h-5 lg:h-6" src="{{ Vite::image('icons/youtube.svg') }}" alt="YouTube">
                         <span class="ml-2 lg:ml-3 text-xxs font-semibold">YouTube</span>
                     </a>
-                    <a href="#" class="inline-flex items-center text-white hover:text-pink" target="_blank"
+                    <a href="https://telegram.org" class="inline-flex items-center text-white hover:text-pink" target="_blank"
                         rel="nofollow noopener">
                         <img class="h-5 lg:h-6" src="{{ Vite::image('icons/telegram.svg') }}" alt="Telegram">
                         <span class="ml-2 lg:ml-3 text-xxs font-semibold">Telegram</span>
@@ -78,12 +78,12 @@
                 <a href="cart.html" class="self-start py-1 text-dark hover:text-pink text-md font-bold">Корзина</a>
             </nav>
             <div class="flex flex-wrap items-center space-x-6 mt-8">
-                <a href="#" class="inline-flex items-center text-darkblue hover:text-purple" target="_blank"
+                <a href="https://youtube.com" class="inline-flex items-center text-darkblue hover:text-purple" target="_blank"
                     rel="nofollow noopener">
                     <img class="h-5 lg:h-6" src="{{ Vite::image('icons/youtube.svg') }}" alt="YouTube">
                     <span class="ml-2 lg:ml-3 text-xxs font-semibold">YouTube</span>
                 </a>
-                <a href="#" class="inline-flex items-center text-darkblue hover:text-purple" target="_blank"
+                <a href="https://telegram.org" class="inline-flex items-center text-darkblue hover:text-purple" target="_blank"
                     rel="nofollow noopener">
                     <img class="h-5 lg:h-6" src="{{ Vite::image('icons/telegram.svg') }}" alt="Telegram">
                     <span class="ml-2 lg:ml-3 text-xxs font-semibold">Telegram</span>

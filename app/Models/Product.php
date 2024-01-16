@@ -48,6 +48,31 @@ class Product extends Model
         return 'products';
     }
 
+    public function scopeFiltered(Builder $query): void
+    {
+        $query->when(request('filters.brands'), function (Builder $builder) {
+            $builder->whereIn('brand_id', request('filters.brands'));
+        })->when(request('filters.price'), function (Builder $builder) {
+            $builder->whereBetween('price', [
+                request('filters.price.from', 0) * 100,
+                request('filters.price.to', 100000) * 100,
+            ]);
+        });
+    }
+
+    public function scopeSorted(Builder $query): void
+    {
+        $query->when(request('sort'), function (Builder $builder) {
+            $column = request()->str('sort');
+
+            if ($column->contains(['price', 'title'])) {
+                $direction = $column->contains('-') ? 'DESC' : 'ASC';
+
+                $builder->orderBy((string) $column->remove('-'), $direction);
+            }
+        });
+    }
+
     public function scopeHomePage(Builder $query): void
     {
         $query->where('on_home_page', true)
