@@ -21,9 +21,14 @@
         <!-- Section heading -->
         <h2 class="text-lg lg:text-[32px] font-black">Категории</h2>
 
+        <a href="{{ route('catalog') }}">Все категории</a>
+
         <!-- Categories -->
         <div class="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-5 gap-3 sm:gap-4 md:gap-5 mt-8">
-            @each('catalog.shared.category', $categories, 'category')
+            {{-- @each('catalog.shared.category', $categories, 'categoryEach') --}}
+            @foreach ($categories as $categoryEach)
+                @include('catalog.shared.category', ['categoryEach' => $categoryEach])
+            @endforeach
         </div>
     </section>
 
@@ -74,7 +79,7 @@
                     </div>
 
                     <div>
-                        <button type="submit" class="w-full !h-16 btn btn-pink">Поиск</button>
+                        <button type="submit" class="w-full !h-16 btn btn-pink">Применить</button>
                     </div>
 
                     @if (request('filters'))
