@@ -23,7 +23,7 @@ class CatalogController extends Controller
 
         $products = Product::search(request('search'))
             ->query(function (Builder $builder) use ($category) {
-                $builder->select(['id', 'title', 'slug', 'price', 'thumbnail'])
+                $builder->select(['id', 'title', 'slug', 'price', 'thumbnail', 'brand_id'])
                     ->when($category->exists, function (Builder $builder) use ($category) {
                         $builder->whereRelation(
                             'categories',

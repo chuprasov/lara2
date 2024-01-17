@@ -15,7 +15,7 @@ class ThumbnailController extends Controller
         string $file
     ): BinaryFileResponse {
         abort_if(
-            ! in_array($size, config('thumbnail.allowed_sizes')),
+            !in_array($size, config('thumbnail.allowed_sizes')),
             403,
             'Size not allowed'
         );
@@ -23,19 +23,23 @@ class ThumbnailController extends Controller
         $disk = Storage::disk('images');
 
         $realPath = "$dir/$file";
+
+        if ($size === 'original') {
+            return response()->file($disk->path($realPath));
+        }
+
         $newDirPath = "$dir/$method/$size";
         $resultPath = "$newDirPath/$file";
 
-        if (! $disk->exists($newDirPath)) {
+        if (!$disk->exists($newDirPath)) {
             $disk->makeDirectory($newDirPath);
         }
 
-        if (! $disk->exists($resultPath)) {
+        if (!$disk->exists($resultPath)) {
 
             $image = Image::fromFile($disk->path($realPath));
 
             [$w, $h] = explode('x', $size);
-
             $image->{$method}($w, $h);
 
             $image->save($disk->path($resultPath));

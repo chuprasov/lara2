@@ -3,14 +3,14 @@
     <a href="product.html" class="product-card-photo overflow-hidden h-[320px] rounded-3xl">
         {{-- <img src="{{ asset('storage') . '/images/products/' . (empty($product->thumbnail) ? 'default.png' : $product->thumbnail) }}"
             class="object-cover w-full h-full" alt="{{ $product->title }}"> --}}
-        <img src="{{ $product->makeThumbnail('200x200') }}"
-            class="object-cover w-full h-full" alt="{{ $product->title }}">
+        <img src="{{ $product->makeThumbnail('original') }}" class="object-cover w-full h-full" alt="{{ $product->title }}">
     </a>
     <div class="grow flex flex-col py-8 px-6">
         <h3 class="text-sm lg:text-md font-black">
             <a href="product.html" class="inline-block text-white hover:text-pink">
                 {{ $product->title }}
             </a>
+            <div class="text-body text-xxs sm:text-xs font-thin">{{ $product->brand->title }}</div>
         </h3>
         <div class="mt-auto pt-6">
             <div class="mb-3 text-sm font-semibold">
