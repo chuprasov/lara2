@@ -2,19 +2,19 @@
 
 namespace App\Models;
 
-use Support\Casts\PriceCast;
-use Laravel\Scout\Searchable;
 use Domain\Catalog\Models\Brand;
-use Illuminate\Pipeline\Pipeline;
-use Support\Traits\Models\HasSlug;
 use Domain\Catalog\Models\Category;
-use Illuminate\Database\Eloquent\Model;
-use Support\Traits\Models\HasThumbnail;
 use Illuminate\Database\Eloquent\Builder;
-use Laravel\Scout\Attributes\SearchUsingFullText;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Pipeline\Pipeline;
+use Laravel\Scout\Attributes\SearchUsingFullText;
+use Laravel\Scout\Searchable;
+use Support\Casts\PriceCast;
+use Support\Traits\Models\HasSlug;
+use Support\Traits\Models\HasThumbnail;
 
 class Product extends Model
 {

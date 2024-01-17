@@ -13,7 +13,8 @@
             value="{{ $filter->requestValue('from', 0) }}"
             type="number"
             class="w-full h-12 px-4 rounded-lg border border-body/10 focus:border-pink focus:shadow-[0_0_0_3px_#EC4176] bg-white/5 text-white text-xs shadow-transparent outline-0 transition"
-            value="9800" placeholder="От">
+            value="9800" placeholder="От"
+        >
         <span class="text-body text-sm font-medium">–</span>
         <input
             id="{{ $filter->id('to') }}"
@@ -21,6 +22,7 @@
             type="number"
             value="{{ $filter->requestValue('to', 100000) }}"
             class="w-full h-12 px-4 rounded-lg border border-body/10 focus:border-pink focus:shadow-[0_0_0_3px_#EC4176] bg-white/5 text-white text-xs shadow-transparent outline-0 transition"
-            value="142800" placeholder="До">
+            value="142800" placeholder="До"
+        >
     </div>
 </div>

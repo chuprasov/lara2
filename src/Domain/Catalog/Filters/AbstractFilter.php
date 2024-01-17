@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Domain\Catalog\Filters;
 
-use Stringable;
 use Illuminate\Database\Eloquent\Builder;
+use Stringable;
 
 abstract class AbstractFilter implements Stringable
 {
@@ -28,13 +28,8 @@ abstract class AbstractFilter implements Stringable
 
     public function requestValue(?string $index = null, mixed $default = null): mixed
     {
-        /* dump(request(
-            'filters.'.$this->key().($index ? ".$index" : ''),
-            $default
-        )); */
-
         return request(
-            'filters.' . $this->key() . ($index ? ".$index" : ''),
+            'filters.'.$this->key().($index ? ".$index" : ''),
             $default
         );
     }
@@ -58,7 +53,7 @@ abstract class AbstractFilter implements Stringable
     public function __toString(): string
     {
         return view($this->view(), [
-            'filter' => $this
+            'filter' => $this,
         ])->render();
     }
 }
