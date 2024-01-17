@@ -14,6 +14,7 @@ class HomeController extends Controller
         $categories = CategoryViewModel::make()->homePage();
 
         $products = Product::query()
+            ->with('brand')
             ->homePage()
             ->get();
 
