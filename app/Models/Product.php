@@ -5,12 +5,12 @@ namespace App\Models;
 use Support\Casts\PriceCast;
 use Laravel\Scout\Searchable;
 use Domain\Catalog\Models\Brand;
+use Illuminate\Pipeline\Pipeline;
 use Support\Traits\Models\HasSlug;
 use Domain\Catalog\Models\Category;
 use Illuminate\Database\Eloquent\Model;
 use Support\Traits\Models\HasThumbnail;
 use Illuminate\Database\Eloquent\Builder;
-use Laravel\Scout\Attributes\SearchUsingPrefix;
 use Laravel\Scout\Attributes\SearchUsingFullText;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -62,14 +62,19 @@ class Product extends Model
         ];
     }
 
-    public function scopeFiltered(Builder $query): void
+    public function scopeFiltered(Builder $builder)
     {
-        foreach (filters() as $filter) {
-            $query = $filter->apply($query);
-        }
+        /* foreach (filters() as $filter) {
+            $builder = $filter->apply($builder);
+        } */
+
+        return app(Pipeline::class)
+            ->send($builder)
+            ->through(filters())
+            ->thenReturn();
     }
 
-    public function scopeSorted(Builder $query): void
+    public function scopeSorted(Builder $query)
     {
         $query->when(request('sort'), function (Builder $builder) {
             $column = request()->str('sort');
