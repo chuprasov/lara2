@@ -43,7 +43,7 @@
                 <form action="{{ route('catalog', $category) }}"
                     class="overflow-auto max-h-[320px] lg:max-h-[100%] space-y-10 p-6 2xl:p-8 rounded-2xl bg-card">
                     <!-- Filter item -->
-                    <div>
+                    {{-- <div>
                         <h5 class="mb-4 text-sm 2xl:text-md font-bold">Цена</h5>
 
                         <div class="flex items-center justify-between gap-3 mb-2">
@@ -61,7 +61,10 @@
                                 class="w-full h-12 px-4 rounded-lg border border-body/10 focus:border-pink focus:shadow-[0_0_0_3px_#EC4176] bg-white/5 text-white text-xs shadow-transparent outline-0 transition"
                                 value="142800" placeholder="До">
                         </div>
-                    </div>
+                    </div> --}}
+                    @foreach (filters() as $filter)
+                        @include($filter->view(), ['filter' => $filter])
+                    @endforeach
                     <!-- Filter item -->
                     <div>
                         <h5 class="mb-4 text-sm 2xl:text-md font-bold">Бренд</h5>
