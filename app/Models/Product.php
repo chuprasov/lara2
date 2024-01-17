@@ -2,22 +2,26 @@
 
 namespace App\Models;
 
-use Domain\Catalog\Models\Brand;
-use Domain\Catalog\Models\Category;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Support\Casts\PriceCast;
+use Laravel\Scout\Searchable;
+use Domain\Catalog\Models\Brand;
 use Support\Traits\Models\HasSlug;
+use Domain\Catalog\Models\Category;
+use Illuminate\Database\Eloquent\Model;
 use Support\Traits\Models\HasThumbnail;
+use Illuminate\Database\Eloquent\Builder;
+use Laravel\Scout\Attributes\SearchUsingPrefix;
+use Laravel\Scout\Attributes\SearchUsingFullText;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Product extends Model
 {
     use HasFactory;
     use HasSlug;
     use HasThumbnail;
+    use Searchable;
 
     protected $fillable = [
         'slug',
@@ -27,6 +31,7 @@ class Product extends Model
         'thumbnail',
         'on_home_page',
         'sorting',
+        'text',
     ];
 
     protected $casts = [
@@ -46,6 +51,15 @@ class Product extends Model
     public function thumbnailDir(): string
     {
         return 'products';
+    }
+
+    #[SearchUsingFullText(['title', 'text'])]
+    public function toSearchableArray()
+    {
+        return [
+            'title' => $this->title,
+            'text' => $this->text,
+        ];
     }
 
     public function scopeFiltered(Builder $query): void
