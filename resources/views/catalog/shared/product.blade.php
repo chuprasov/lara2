@@ -1,8 +1,6 @@
 <!-- Product card -->
 <div class="product-card flex flex-col rounded-3xl bg-card">
     <a href="product.html" class="product-card-photo overflow-hidden h-[320px] rounded-3xl">
-        {{-- <img src="{{ asset('storage') . '/images/products/' . (empty($product->thumbnail) ? 'default.png' : $product->thumbnail) }}"
-            class="object-cover w-full h-full" alt="{{ $product->title }}"> --}}
         <img src="{{ $product->makeThumbnail('original') }}" class="object-cover w-full h-full" alt="{{ $product->title }}">
     </a>
     <div class="grow flex flex-col py-8 px-6">

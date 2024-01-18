@@ -64,32 +64,20 @@ class Product extends Model
 
     public function scopeFiltered(Builder $builder)
     {
-        /* foreach (filters() as $filter) {
-            $builder = $filter->apply($builder);
-        } */
-
         return app(Pipeline::class)
             ->send($builder)
             ->through(filters())
             ->thenReturn();
     }
 
-    public function scopeSorted(Builder $query)
+    public function scopeSorted(Builder $builder)
     {
-        $query->when(request('sort'), function (Builder $builder) {
-            $column = request()->str('sort');
-
-            if ($column->contains(['price', 'title'])) {
-                $direction = $column->contains('-') ? 'DESC' : 'ASC';
-
-                $builder->orderBy((string) $column->remove('-'), $direction);
-            }
-        });
+        sorter()->run($builder);
     }
 
-    public function scopeHomePage(Builder $query): void
+    public function scopeHomePage(Builder $builder): void
     {
-        $query->where('on_home_page', true)
+        $builder->where('on_home_page', true)
             ->orderBy('sorting')
             ->limit(6);
     }

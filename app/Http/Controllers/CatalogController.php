@@ -11,8 +11,6 @@ class CatalogController extends Controller
 {
     public function __invoke(?Category $category)
     {
-        // dd(session()->get('view-products') === 'list' ? 'pointer-events-none text-pink' : '');
-
         $categories = Category::query()
             ->select(['id', 'title', 'slug'])
             ->has('products')

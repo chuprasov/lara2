@@ -1,7 +1,5 @@
 @extends('layouts.app')
 
-{{-- @section('title', $category->title ?? 'Каталог') --}}
-
 @section('content')
     <!-- Breadcrumbs -->
     <ul class="breadcrumbs flex flex-wrap gap-y-1 gap-x-4 mb-6">
@@ -25,7 +23,6 @@
 
         <!-- Categories -->
         <div class="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-5 gap-3 sm:gap-4 md:gap-5 mt-8">
-            {{-- @each('catalog.shared.category', $categories, 'categoryEach') --}}
             @foreach ($categories as $categoryEach)
                 @include('catalog.shared.category', ['categoryEach' => $categoryEach])
             @endforeach
@@ -69,8 +66,8 @@
                     <div class="flex items-center gap-4">
                         <div class="flex items-center gap-2">
 
-                            <a href="{{ route('catalog', ['view-products' => 'grid']) }}"
-                                class="{{ session()->get('view-products') === 'grid' ? 'pointer-events-none text-pink' : ''}} inline-flex items-center justify-center w-10 h-10 rounded-md bg-card ">
+                            <a href="{{ filters_url($category, ['view-products' => 'grid']) }}"
+                                class="{{ session()->get('view-products') === 'grid' ? 'pointer-events-none text-pink' : '' }} inline-flex items-center justify-center w-10 h-10 rounded-md bg-card ">
                                 <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                                     viewBox="0 0 52 52">
                                     <path fill-rule="evenodd"
@@ -79,8 +76,8 @@
                                 </svg>
                             </a>
 
-                            <a href="{{ route('catalog', ['view-products' => 'list']) }}"
-                                class="{{ session()->get('view-products') === 'list' ? 'pointer-events-none text-pink' : ''}} inline-flex items-center justify-center w-10 h-10 rounded-md bg-card hover:text-pink">
+                            <a href="{{ filters_url($category, ['view-products' => 'list']) }}"
+                                class="{{ session()->get('view-products') === 'list' ? 'pointer-events-none text-pink' : '' }} inline-flex items-center justify-center w-10 h-10 rounded-md bg-card hover:text-pink">
                                 <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                                     viewBox="0 0 52 52">
                                     <path fill-rule="evenodd"
@@ -88,41 +85,40 @@
                                         clip-rule="evenodd" />
                                 </svg>
                             </a>
-                            
+
                         </div>
                         <div class="text-body text-xxs sm:text-xs">Найдено: {{ $products->total() }} товаров</div>
                     </div>
-                    <div x-data="{}" class="flex flex-col sm:flex-row sm:items-center gap-3">
+
+                    <div x-data="{ sort: '{{ filters_url($category, ['sort' => request('sort')]) }}' }" class="flex flex-col sm:flex-row sm:items-center gap-3">
                         <span class="text-body text-xxs sm:text-xs">Сортировать по</span>
-                        <form x-ref="sortForm" action="{{ route('catalog', $category) }}">
-                            <select name="sort" x-on:change="$refs.sortForm.submit()"
-                                class="form-select w-full h-12 px-4 rounded-lg border border-body/10 focus:border-pink focus:shadow-[0_0_0_3px_#EC4176] bg-white/5 text-white text-xxs sm:text-xs shadow-transparent outline-0 transition">
-                                <option value="" class="text-dark">
-                                    умолчанию
-                                </option>
-                                <option @selected(request('sort') === 'price') value="price" class="text-dark">
-                                    возрастанию цены
-                                </option>
-                                <option @selected(request('sort') === '-price') value="-price" class="text-dark">
-                                    убыванию цены
-                                </option>
-                                <option @selected(request('sort') === 'title') value="title" class="text-dark">
-                                    наименованию
-                                </option>
-                            </select>
-                        </form>
+                        <select name="sort" x-model="sort" x-on:change="window.location = sort"
+                            class="form-select w-full h-12 px-4 rounded-lg border border-body/10 focus:border-pink focus:shadow-[0_0_0_3px_#EC4176] bg-white/5 text-white text-xxs sm:text-xs shadow-transparent outline-0 transition">
+                            <option value="{{ filters_url($category, ['sort' => '']) }}" class="text-dark">
+                                умолчанию
+                            </option>
+                            <option value="{{ filters_url($category, ['sort' => 'price']) }}" class="text-dark">
+                                возрастанию цены
+                            </option>
+                            <option value="{{ filters_url($category, ['sort' => '-price']) }}" class="text-dark">
+                                убыванию цены
+                            </option>
+                            <option value="{{ filters_url($category, ['sort' => 'title']) }}" class="text-dark">
+                                наименованию
+                            </option>
+                        </select>
                     </div>
                 </div>
 
                 <!-- Products list -->
-                @if (session()->get('view-products') === 'grid')
+                @if (session()->get('view-products') === 'list')
+                    <div class="products grid grid-cols-1 gap-y-8">
+                        @each('catalog.shared.product-list', $products, 'product')
+                    </div>
+                @else
                     <div
                         class="products grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-x-8 gap-y-8 lg:gap-y-10 2xl:gap-y-12 mt-8">
                         @each('catalog.shared.product', $products, 'product')
-                    </div>
-                @else
-                    <div class="products grid grid-cols-1 gap-y-8">
-                        @each('catalog.shared.product-list', $products, 'product')
                     </div>
                 @endif
 

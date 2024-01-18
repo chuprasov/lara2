@@ -30,11 +30,6 @@ class AppRegistrar implements RouteRegistrar
 
                 return $result;
             });
-
-            /* route::get('/flash/{level}', function(string $level) {
-                return redirect()->route('home')->with($level, $level . '! Test flash message');
-            }); */
-            // Log::channel('telegram')->debug('Test 111');
         });
     }
 }
