@@ -43,9 +43,10 @@
                 <form action="{{ route('catalog', $category) }}"
                     class="overflow-auto max-h-[320px] lg:max-h-[100%] space-y-10 p-6 2xl:p-8 rounded-2xl bg-card">
 
+                    <input type="hidden" name="sort" value="{{ request('sort') }}">
+
                     <!-- Filter items -->
                     @foreach (filters() as $filter)
-                        {{-- @include($filter->view(), ['filter' => $filter]) --}}
                         {!! $filter !!}
                     @endforeach
 
@@ -67,8 +68,9 @@
                 <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
                     <div class="flex items-center gap-4">
                         <div class="flex items-center gap-2">
-                            <a href="catalog.html"
-                                class="pointer-events-none inline-flex items-center justify-center w-10 h-10 rounded-md bg-card text-pink">
+
+                            <a href="{{ route('catalog', ['view-products' => 'grid']) }}"
+                                class="{{ session()->get('view-products') === 'grid' ? 'pointer-events-none text-pink' : ''}} inline-flex items-center justify-center w-10 h-10 rounded-md bg-card ">
                                 <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                                     viewBox="0 0 52 52">
                                     <path fill-rule="evenodd"
@@ -76,8 +78,9 @@
                                         clip-rule="evenodd" />
                                 </svg>
                             </a>
-                            <a href="catalog-list.html"
-                                class="inline-flex items-center justify-center w-10 h-10 rounded-md bg-card text-white hover:text-pink">
+
+                            <a href="{{ route('catalog', ['view-products' => 'list']) }}"
+                                class="{{ session()->get('view-products') === 'list' ? 'pointer-events-none text-pink' : ''}} inline-flex items-center justify-center w-10 h-10 rounded-md bg-card hover:text-pink">
                                 <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                                     viewBox="0 0 52 52">
                                     <path fill-rule="evenodd"
@@ -85,6 +88,7 @@
                                         clip-rule="evenodd" />
                                 </svg>
                             </a>
+                            
                         </div>
                         <div class="text-body text-xxs sm:text-xs">Найдено: {{ $products->total() }} товаров</div>
                     </div>
@@ -111,10 +115,16 @@
                 </div>
 
                 <!-- Products list -->
-                <div
-                    class="products grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-x-8 gap-y-8 lg:gap-y-10 2xl:gap-y-12 mt-8">
-                    @each('catalog.shared.product', $products, 'product')
-                </div>
+                @if (session()->get('view-products') === 'grid')
+                    <div
+                        class="products grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-x-8 gap-y-8 lg:gap-y-10 2xl:gap-y-12 mt-8">
+                        @each('catalog.shared.product', $products, 'product')
+                    </div>
+                @else
+                    <div class="products grid grid-cols-1 gap-y-8">
+                        @each('catalog.shared.product-list', $products, 'product')
+                    </div>
+                @endif
 
                 <!-- Page pagination -->
                 <div class="mt-12">
