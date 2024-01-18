@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Domain\Catalog\Sorters;
 
-use Illuminate\Support\Stringable;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Stringable;
 
 class Sorter
 {
@@ -48,10 +48,9 @@ class Sorter
         $column = trim($column, '-');
 
         if (strtoupper($direction) === 'DESC') {
-            $column = '-' . $column;
+            $column = '-'.$column;
         }
 
         return request($this->key()) === $column;
     }
-
 }

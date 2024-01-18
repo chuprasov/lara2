@@ -8,7 +8,6 @@ use App\Contracts\RouteRegistrar;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ThumbnailController;
 use Illuminate\Contracts\Routing\Registrar;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
 use Services\Telegram\TelegramBotApiContract;
 
@@ -21,7 +20,7 @@ class AppRegistrar implements RouteRegistrar
 
             Route::get('/storage/images/{dir}/{method}/{size}/{file}', ThumbnailController::class)->name('thumbnail');
 
-            route::get('/telegram/{message}', function (string $message) {
+            /* route::get('/telegram/{message}', function (string $message) {
                 $result = app(TelegramBotApiContract::class)::sendMessage(
                     env('TELEGRAM_TOKEN', ''),
                     (int) env('TELEGRAM_CHAT_ID', 0),
@@ -29,7 +28,7 @@ class AppRegistrar implements RouteRegistrar
                 );
 
                 return $result;
-            });
+            }); */
         });
     }
 }

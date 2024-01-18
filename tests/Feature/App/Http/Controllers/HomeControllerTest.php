@@ -15,17 +15,11 @@ class HomeControllerTest extends TestCase
 
     public function test_page_success(): void
     {
-        ProductFactory::new()
+        /* ProductFactory::new()
             ->count(5)
             ->create([
                 'on_home_page' => true,
                 'sorting' => 900,
-            ]);
-
-        $product = ProductFactory::new()
-            ->createOne([
-                'on_home_page' => true,
-                'sorting' => 1,
             ]);
 
         CategoryFactory::new()
@@ -35,21 +29,28 @@ class HomeControllerTest extends TestCase
                 'sorting' => 900,
             ]);
 
+        BrandFactory::new()
+            ->count(5)
+            ->create([
+                'on_home_page' => true,
+                'sorting' => 900,
+            ]); */
+
         $category = CategoryFactory::new()
             ->createOne([
                 'on_home_page' => true,
                 'sorting' => 1,
             ]);
 
-        BrandFactory::new()
-            ->count(5)
-            ->create([
-                'on_home_page' => true,
-                'sorting' => 900,
-            ]);
-
         $brand = BrandFactory::new()
             ->createOne([
+                'on_home_page' => true,
+                'sorting' => 1,
+            ]);
+
+        $product = ProductFactory::new()
+            ->createOne([
+                'brand_id' => $brand->id,
                 'on_home_page' => true,
                 'sorting' => 1,
             ]);

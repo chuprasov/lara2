@@ -25,7 +25,7 @@ class CatalogServiceProvider extends ServiceProvider
         $this->app->bind(Sorter::class, function () {
             return new Sorter([
                 'title',
-                'price'
+                'price',
             ]);
         });
     }

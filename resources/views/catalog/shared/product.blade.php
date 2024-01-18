@@ -1,11 +1,12 @@
 <!-- Product card -->
 <div class="product-card flex flex-col rounded-3xl bg-card">
-    <a href="product.html" class="product-card-photo overflow-hidden h-[320px] rounded-3xl">
-        <img src="{{ $product->makeThumbnail('original') }}" class="object-cover w-full h-full" alt="{{ $product->title }}">
+    <a href="{{ route('product', $product) }}" class="product-card-photo overflow-hidden h-[320px] rounded-3xl">
+        <img src="{{ $product->makeThumbnail('original') }}" class="object-cover w-full h-full"
+            alt="{{ $product->title }}">
     </a>
     <div class="grow flex flex-col py-8 px-6">
         <h3 class="text-sm lg:text-md font-black">
-            <a href="product.html" class="inline-block text-white hover:text-pink">
+            <a href="{{ route('product', $product) }}" class="inline-block text-white hover:text-pink">
                 {{ $product->title }}
             </a>
             <div class="text-body text-xxs sm:text-xs font-thin">{{ $product->brand->title }}</div>

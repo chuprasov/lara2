@@ -17,7 +17,7 @@ if (! function_exists('filters_url')) {
         return route('catalog', [
             ...request()->only(['filters', 'sort']),
             ...$params,
-            'category'  => $category
+            'category' => $category,
         ]);
     }
 }
@@ -28,4 +28,3 @@ if (! function_exists('sorter')) {
         return app(Sorter::class);
     }
 }
-
