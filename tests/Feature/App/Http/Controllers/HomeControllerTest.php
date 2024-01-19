@@ -15,14 +15,7 @@ class HomeControllerTest extends TestCase
 
     public function test_page_success(): void
     {
-        /* ProductFactory::new()
-            ->count(5)
-            ->create([
-                'on_home_page' => true,
-                'sorting' => 900,
-            ]);
-
-        CategoryFactory::new()
+        /* CategoryFactory::new()
             ->count(5)
             ->create([
                 'on_home_page' => true,
@@ -30,6 +23,13 @@ class HomeControllerTest extends TestCase
             ]);
 
         BrandFactory::new()
+            ->count(5)
+            ->create([
+                'on_home_page' => true,
+                'sorting' => 900,
+            ]);
+
+        ProductFactory::new()
             ->count(5)
             ->create([
                 'on_home_page' => true,
