@@ -14,14 +14,14 @@ class ProductController extends Controller
         $product->load(['optionValues.option']);
 
         $options = $product->optionValues->mapToGroups(function ($item) {
-            return [$item->option->title  => $item];
+            return [$item->option->title => $item];
         });
 
         $watchedProducts = Product::query()
-            ->whereIn('id', session()->get('watched'))
+            ->whereIn('id', session('watched') ?? [])
             ->get();
 
-        session()->put('watched.' . $product->id, $product->id);
+        session()->put('watched.'.$product->id, $product->id);
 
         return view('product.show', compact('product', 'options', 'watchedProducts'));
     }
