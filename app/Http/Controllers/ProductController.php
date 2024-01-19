@@ -17,6 +17,12 @@ class ProductController extends Controller
             return [$item->option->title  => $item];
         });
 
-        return view('product.show', compact('product', 'options'));
+        $watchedProducts = Product::query()
+            ->whereIn('id', session()->get('watched'))
+            ->get();
+
+        session()->put('watched.' . $product->id, $product->id);
+
+        return view('product.show', compact('product', 'options', 'watchedProducts'));
     }
 }

@@ -25,7 +25,7 @@
 
                 <div class="basis-full lg:basis-3/5 xl:basis-2/4">
                     <div class="grow flex flex-col lg:py-8">
-                        <h1 class="text-lg md:text-xl xl:text-[42px] font-black">{{ $product->title }}</h1>
+                        <h1 class="text-lg md:text-xl xl:text-[32px] font-black">{{ $product->title }}</h1>
                         <ul class="flex items-center gap-2 mt-4">
                             <li class="text-[#FFC107]">
                                 <svg class="w-4 md:w-6 h-4 md:h-6" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
@@ -80,7 +80,8 @@
                             <div class="grid grid-cols-2 md:grid-cols-3 2xl:grid-cols-4 gap-4">
                                 @foreach ($options as $option => $values)
                                     <div class="flex flex-col gap-2">
-                                        <label for="option-{{ $loop->index }}" class="cursor-pointer text-body text-xxs font-medium">
+                                        <label for="option-{{ $loop->index }}"
+                                            class="cursor-pointer text-body text-xxs font-medium">
                                             {{ $option }}
                                         </label>
                                         <select id="option-{{ $loop->index }}"
@@ -126,38 +127,22 @@
 
             <!-- Description -->
             <section class="mt-12 xl:mt-16 pt-8 lg:pt-12 border-t border-white/10">
-                <h2 class="mb-12 text-lg lg:text-[42px] font-black">Описание</h2>
+                <h2 class="mb-12 text-lg lg:text-[32px] font-black">Описание</h2>
                 <article class="text-xs md:text-sm">
                     {{-- {!! $product->text !!} --}}
-                    <h5 class="mb-4 text-md lg:text-lg font-black">AEROX 3</h5>
-                    <ul class="mb-12 list-outside space-y-3">
-                        <li>Сверхлегкий корпус весом 57 грамм для быстрого игрового процесса.</li>
-                        <li>Съемный кабель Super Mesh USB-C для уменьшения сопротивления.</li>
-                        <li>Отлично скользящие глайды из PTFE для плавных движений мыши.</li>
-                        <li>Оптический игровой сенсор TrueMove Core с технологией Pixel perfect.</li>
-                        <li>AquaBarrier™ для водонепроницаемости, защиты от пыли и других загрязнений.</li>
-                    </ul>
-                    <h5 class="mb-4 text-md lg:text-lg font-black">МОЛНИЕНОСНАЯ</h5>
-                    <p class="mb-12">Aerox 3 оптимизирована для получения самых быстрых движений в играх, поэтому вы всегда
-                        на шаг впереди конкурентов. Когда на счету миллисекунды, скорость имеет значение.</p>
-                    <h5 class="mb-4 text-md text-md lg:text-lg font-black">УЛЬТРАЛЕГКАЯ - 57 ГРАММ</h5>
-                    <p class="mb-12">Уникальный перфорированный внешний корпус и уменьшенная электроника - все это с
-                        высокой точностью спроектировано так, чтобы обеспечить потрясающе легкий вес и новый уровень
-                        прочности.</p>
+                    {{ $product->text }}
                 </article>
             </section>
 
             <!-- Watched products  -->
-            {{-- <section class="mt-16 xl:mt-24">
-			<h2 class="mb-12 text-lg lg:text-[42px] font-black">Просмотренные товары</h2>
-			<!-- Products list -->
-			<div class="products grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-x-8 gap-y-8 lg:gap-y-10 2xl:gap-y-12">
-				@@include('parts/products/1.html')
-				@@include('parts/products/2.html')
-				@@include('parts/products/3.html')
-				@@include('parts/products/4.html')
-			</div>
-		</section> --}}
+            <section class="mt-16 xl:mt-24">
+                <h2 class="mb-12 text-lg lg:text-[32px] font-black">Просмотренные товары</h2>
+                <!-- Products list -->
+                <div
+                    class="products grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-x-8 gap-y-8 lg:gap-y-10 2xl:gap-y-12">
+                    @each('catalog.shared.product', $watchedProducts, 'product')
+                </div>
+            </section>
 
         </div>
     </main>

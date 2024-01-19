@@ -3,7 +3,7 @@
 @section('content')
     <section class="mt-16 lg:mt-24">
         <!-- Section heading -->
-        <h2 class="text-lg lg:text-[42px] font-black">Категории</h2>
+        <h2 class="text-lg lg:text-[32px] font-black">Категории</h2>
 
         <!-- Categories -->
         <div class="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-5 gap-3 sm:gap-4 md:gap-5 mt-8">
@@ -16,7 +16,7 @@
 
     <section class="mt-16 lg:mt-24">
         <!-- Section heading -->
-        <h2 class="text-lg lg:text-[42px] font-black">Каталог товаров</h2>
+        <h2 class="text-lg lg:text-[32px] font-black">Каталог товаров</h2>
 
         <!-- Products list -->
         <div
@@ -31,7 +31,7 @@
 
     <section class="mt-20">
         <!-- Section heading -->
-        <h2 class="text-lg lg:text-[42px] font-black">Брэнды</h2>
+        <h2 class="text-lg lg:text-[32px] font-black">Брэнды</h2>
 
         <!-- Brands list -->
         <div class="grid grid-cols-2 md:grid-cols-3 2xl:grid-cols-6 gap-4 md:gap-8 mt-12">
