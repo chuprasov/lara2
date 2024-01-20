@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Models;
+namespace Domain\Product\Models;
 
 use App\Jobs\ProductJsonPropertiesJob;
+use Database\Factories\ProductFactory;
 use Domain\Catalog\Models\Brand;
 use Domain\Catalog\Models\Category;
 use Illuminate\Database\Eloquent\Builder;
@@ -40,6 +41,11 @@ class Product extends Model
         'price' => PriceCast::class,
         'json_properties' => 'array',
     ];
+
+    protected static function newFactory()
+    {
+        return ProductFactory::new();
+    }
 
     protected static function boot()
     {

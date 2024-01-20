@@ -12,7 +12,7 @@
 
 namespace App\Models{
 /**
- * App\Models\Option
+ * Domain\Product\Models\Option
  *
  * @property int $id
  * @property string $title
@@ -32,14 +32,14 @@ namespace App\Models{
 
 namespace App\Models{
 /**
- * App\Models\OptionValue
+ * Domain\Product\Models\OptionValue
  *
  * @property int $id
  * @property int $option_id
  * @property string $title
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \App\Models\Option $option
+ * @property-read \Domain\Product\Models\Option $option
  * @method static \Database\Factories\OptionValueFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|OptionValue newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|OptionValue newQuery()
@@ -55,7 +55,7 @@ namespace App\Models{
 
 namespace App\Models{
 /**
- * App\Models\Product
+ * Domain\Product\Models\Product
  *
  * @property int $id
  * @property string $slug
@@ -72,9 +72,9 @@ namespace App\Models{
  * @property-read \Domain\Catalog\Models\Brand|null $brand
  * @property-read \Domain\Catalog\Collections\CategoryCollection<int, \Domain\Catalog\Models\Category> $categories
  * @property-read int|null $categories_count
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\OptionValue> $optionValues
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \Domain\Product\Models\OptionValue> $optionValues
  * @property-read int|null $option_values_count
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Property> $properties
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \Domain\Product\Models\Property> $properties
  * @property-read int|null $properties_count
  * @method static \Database\Factories\ProductFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|Product filtered()
@@ -101,7 +101,7 @@ namespace App\Models{
 
 namespace App\Models{
 /**
- * App\Models\Property
+ * Domain\Product\Models\Property
  *
  * @property int $id
  * @property string $title
