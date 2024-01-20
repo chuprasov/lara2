@@ -29,15 +29,13 @@ class RefreshCommand extends Command
             Storage::makeDirectory('images/brands');
         }
 
-        /* $files = Storage::allFiles('images/products');
-        dd($files);
-        Storage::delete($files); */
-
         $this->call('migrate:fresh', [
             '--seed' => true,
         ]);
 
         $this->call('cache:clear');
+
+        // $this->call('queue:work');
 
         return self::SUCCESS;
     }

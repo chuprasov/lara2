@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Jobs\ProductJsonPropertiesJob;
 use Domain\Catalog\Models\Brand;
 use Domain\Catalog\Models\Category;
 use Illuminate\Database\Eloquent\Builder;
@@ -32,11 +33,23 @@ class Product extends Model
         'on_home_page',
         'sorting',
         'text',
+        'json_properties',
     ];
 
     protected $casts = [
         'price' => PriceCast::class,
+        'json_properties' => 'array',
     ];
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::created(function (Product $product) {
+            ProductJsonPropertiesJob::dispatch($product)
+                ->delay(now()->addSeconds(10));
+        });
+    }
 
     public function brand(): BelongsTo
     {

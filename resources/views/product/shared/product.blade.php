@@ -9,7 +9,9 @@
             <a href="{{ route('product', $product) }}" class="inline-block text-white hover:text-pink">
                 {{ $product->title }}
             </a>
-            <div class="text-body text-xxs sm:text-xs font-thin">{{ $product->brand->title }}</div>
+            <div class="text-body text-xxs sm:text-xs font-thin">
+                {{ isset($product->brand) ? $product->brand->title : '- no brand -' }}
+            </div>
         </h3>
         <div class="mt-auto pt-6">
             <div class="mb-3 text-sm font-semibold">

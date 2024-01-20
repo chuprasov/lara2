@@ -68,7 +68,7 @@ namespace App\Models{
  * @property int $on_home_page
  * @property int $sorting
  * @property string|null $text
- * @property mixed|null $json_properties
+ * @property array|null $json_properties
  * @property-read \Domain\Catalog\Models\Brand|null $brand
  * @property-read \Domain\Catalog\Collections\CategoryCollection<int, \Domain\Catalog\Models\Category> $categories
  * @property-read int|null $categories_count
