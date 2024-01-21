@@ -7,13 +7,10 @@ use Illuminate\Support\Facades\Storage;
 
 class RefreshCommand extends Command
 {
-    protected $signature = 'app:refresh';
+    protected $signature = 'shop:refresh';
 
-    protected $description = 'App refresh';
+    protected $description = 'Shop app refresh';
 
-    /**
-     * Execute the console command.
-     */
     public function handle()
     {
         if (app()->isProduction()) {
@@ -22,23 +19,23 @@ class RefreshCommand extends Command
 
         Storage::deleteDirectory('images/products');
 
-        if(!Storage::exists('images/products')) {
+        if (! Storage::exists('images/products')) {
             Storage::makeDirectory('images/products');
         }
 
         Storage::deleteDirectory('images/brands');
 
-        if(!Storage::exists('images/brands')) {
+        if (! Storage::exists('images/brands')) {
             Storage::makeDirectory('images/brands');
         }
 
-        /* $files = Storage::allFiles('images/products');
-        dd($files);
-        Storage::delete($files); */
-
         $this->call('migrate:fresh', [
-            '--seed' => true
+            '--seed' => true,
         ]);
+
+        $this->call('cache:clear');
+
+        $this->call('queue:work');
 
         return self::SUCCESS;
     }

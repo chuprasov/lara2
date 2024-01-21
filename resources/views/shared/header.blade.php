@@ -1,15 +1,17 @@
 <header class="header pt-6 xl:pt-12">
     <div class="container">
         <div class="header-inner flex items-center justify-between lg:justify-start">
+            <!-- header-logo -->
             <div class="header-logo shrink-0">
                 <a href="{{ route('home') }}" rel="home">
                     <img src={{ Vite::image('logo.svg') }}
-                        class="w-[120px] xs:w-[148px] md:w-[201px] h-[30px] xs:h-[36px] md:h-[50px]" alt="CutCode">
+                        class="w-[30px] xs:w-[36px] md:w-[100px] h-[30px] xs:h-[36px] md:h-[100px]" alt="CutCode">
                 </a>
-            </div><!-- /.header-logo -->
+            </div>
+            
             <div class="header-menu grow hidden lg:flex items-center ml-8 mr-8 gap-8">
-                <form class="hidden lg:flex gap-3">
-                    <input type="search"
+                <form action="{{ route('catalog') }}" class="hidden lg:flex gap-3">
+                    <input name="search" value="{{ request('search') }}" type="search"
                         class="w-full h-12 px-4 rounded-lg border border-body/10 focus:border-pink focus:shadow-[0_0_0_3px_#EC4176] bg-white/5 text-white text-xs shadow-transparent outline-0 transition"
                         placeholder="Поиск..." required>
                     <button type="submit" class="shrink-0 w-12 !h-12 !px-0 btn btn-pink">
@@ -19,11 +21,9 @@
                         </svg>
                     </button>
                 </form>
-                <nav class="hidden 2xl:flex gap-8">
-                    <a href="{{ route('home') }}" class="text-white hover:text-pink font-bold">Главная</a>
-                    <a href="catalog.html" class="text-white hover:text-pink font-bold">Каталог товаров</a>
-                    <a href="cart.html" class="text-white hover:text-pink font-bold">Корзина</a>
-                </nav>
+
+                @include('shared.menu')
+
             </div><!-- /.header-menu -->
             <div class="header-actions flex items-center gap-3 md:gap-5">
                 @auth
@@ -50,7 +50,17 @@
                             <div class="flex items-center mt-3">
                                 <img src="{{ auth()->user()->avatar }}" class="w-11 h-11 rounded-full"
                                     alt="{{ auth()->user()->name }}">
-                                <span class="ml-3 text-xs md:text-sm font-bold">{{ auth()->user()->name }}</span>
+                                <span class="ml-3 text-xs md:text-sm font-bold">
+                                    {{ auth()->user()->name }}
+                                    <span class="text-body text-xxs font-thin">
+                                        @isset(auth()->user()->github_id)
+                                            <br> {{ ' github: ' . auth()->user()->github_id ?? 'null' }}
+                                        @endisset
+                                        @isset(auth()->user()->google_id)
+                                            <br> {{ ' google: ' . auth()->user()->google_id ?? 'null' }}
+                                        @endisset
+                                    </span>
+                                </span>
                             </div>
                             <div class="mt-4">
                                 <ul class="space-y-2">
@@ -82,7 +92,7 @@
                     </div>
 
                     <a href="cart.html" class="flex items-center gap-3 text-pink hover:text-white">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 md:w-7 w-6 md:h-7" fill="currentColor"
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 md:w-7 md:h-7" fill="currentColor"
                             viewBox="0 0 52 52">
                             <path
                                 d="M26 0a10.4 10.4 0 0 0-10.4 10.4v1.733h-1.439a5.668 5.668 0 0 0-5.668 5.408L7.124 46.055A5.685 5.685 0 0 0 12.792 52h26.416a5.686 5.686 0 0 0 5.668-5.945l-1.37-28.514a5.668 5.668 0 0 0-5.667-5.408H36.4V10.4A10.4 10.4 0 0 0 26 0Zm-6.933 10.4a6.934 6.934 0 0 1 13.866 0v1.733H19.067V10.4Zm-2.843 8.996a1.734 1.734 0 1 1 3.468 0 1.734 1.734 0 0 1-3.468 0Zm16.085 0a1.733 1.733 0 1 1 3.467 0 1.733 1.733 0 0 1-3.467 0Z" />
@@ -100,7 +110,6 @@
                                 d="M4 6h16M4 12h16M4 18h16"></path>
                         </svg>
                     </button>
-
                 @else
                     <a href="{{ route('login') }}" class="profile hidden xs:flex items-center">
                         <svg class="profile-icon w-8 h-8 text-purple" xmlns="http://www.w3.org/2000/svg"
