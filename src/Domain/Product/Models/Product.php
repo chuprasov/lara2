@@ -2,21 +2,20 @@
 
 namespace Domain\Product\Models;
 
+use Support\Casts\PriceCast;
+use Laravel\Scout\Searchable;
+use Domain\Catalog\Models\Brand;
+use Support\Traits\Models\HasSlug;
+use Domain\Catalog\Models\Category;
 use App\Jobs\ProductJsonPropertiesJob;
 use Database\Factories\ProductFactory;
-use Domain\Catalog\Models\Brand;
-use Domain\Catalog\Models\Category;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Pipeline\Pipeline;
-use Laravel\Scout\Attributes\SearchUsingFullText;
-use Laravel\Scout\Searchable;
-use Support\Casts\PriceCast;
-use Support\Traits\Models\HasSlug;
 use Support\Traits\Models\HasThumbnail;
+use Laravel\Scout\Attributes\SearchUsingFullText;
+use Domain\Product\QueryBuilders\ProductQueryBuilder;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Product extends Model
 {
@@ -83,6 +82,11 @@ class Product extends Model
         return 'products';
     }
 
+    public function newEloquentBuilder($query): ProductQueryBuilder
+    {
+        return new ProductQueryBuilder($query);
+    }
+
     #[SearchUsingFullText(['title', 'text'])]
     public function toSearchableArray()
     {
@@ -90,25 +94,5 @@ class Product extends Model
             'title' => $this->title,
             'text' => $this->text,
         ];
-    }
-
-    public function scopeFiltered(Builder $builder)
-    {
-        return app(Pipeline::class)
-            ->send($builder)
-            ->through(filters())
-            ->thenReturn();
-    }
-
-    public function scopeSorted(Builder $builder)
-    {
-        sorter()->run($builder);
-    }
-
-    public function scopeHomePage(Builder $builder): void
-    {
-        $builder->where('on_home_page', true)
-            ->orderBy('sorting')
-            ->limit(6);
     }
 }
