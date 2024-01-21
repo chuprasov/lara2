@@ -37,7 +37,7 @@
         <div class="mmenu-heading flex items-center pt-6 xl:pt-12">
             <div class="shrink-0 grow">
                 <a href="{{ route('home') }}" rel="home">
-                    <img src="{{ Vite::image('logo-dark.svg') }}" class="w-[148px] md:w-[201px] h-[36px] md:h-[50px]"
+                    <img src="{{ Vite::image('logo.svg') }}" class="w-[148px] md:w-[201px] h-[36px] md:h-[50px]"
                         alt="CutCode">
                 </a>
             </div>
