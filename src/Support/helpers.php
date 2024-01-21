@@ -1,8 +1,8 @@
 <?php
 
+use Domain\Catalog\Models\Category;
 use Domain\Catalog\Sorters\Sorter;
 use Support\Filters\FilterManager;
-use Domain\Catalog\Models\Category;
 
 if (! function_exists('filters')) {
     function filters(): array

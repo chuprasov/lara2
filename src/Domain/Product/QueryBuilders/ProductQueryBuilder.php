@@ -28,5 +28,4 @@ class ProductQueryBuilder extends Builder
     {
         return sorter()->run($this);
     }
-
 }
