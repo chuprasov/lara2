@@ -30,7 +30,7 @@ jobs:
     - name: Set up MySQL
       env:
         DB_USERNAME: root
-        DB_PASSWORD: 
+        DB_PASSWORD: root
         DB_DATABASE: lara2
       run: |
         sudo /etc/init.d/mysql start
