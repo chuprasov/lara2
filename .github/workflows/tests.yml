@@ -38,10 +38,6 @@ jobs:
         mysql -e 'CREATE DATABASE ${{ env.DB_DATABASE }};' -u${{ env.DB_USERNAME }} -p${{ env.DB_PASSWORD }} 
     - name: Shop app install
       run: php artisan shop:install
-    - name: npm install
-      run: npm install
-    - name: npm r d
-      run: npm run dev
     - name: Execute tests (Unit and Feature tests) via PHPUnit
       env:
         DB_PASSWORD: root
