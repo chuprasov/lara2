@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Filters;
 
-use Domain\Catalog\Filters\AbstractFilter;
+use Support\Filters\AbstractFilter;
 use Illuminate\Database\Eloquent\Builder;
 
 class PriceFilter extends AbstractFilter

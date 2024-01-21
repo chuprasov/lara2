@@ -35,7 +35,7 @@ class RefreshCommand extends Command
 
         $this->call('cache:clear');
 
-        // $this->call('queue:work');
+        $this->call('queue:work');
 
         return self::SUCCESS;
     }

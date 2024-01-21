@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Domain\Catalog\Filters;
+namespace Support\Filters;
 
 use Illuminate\Database\Eloquent\Builder;
 use Stringable;

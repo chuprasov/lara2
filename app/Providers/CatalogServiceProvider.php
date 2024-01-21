@@ -4,8 +4,8 @@ namespace App\Providers;
 
 use App\Filters\BrandFilter;
 use App\Filters\PriceFilter;
-use Domain\Catalog\Filters\FilterManager;
 use Domain\Catalog\Sorters\Sorter;
+use Support\Filters\FilterManager;
 use Illuminate\Support\ServiceProvider;
 
 class CatalogServiceProvider extends ServiceProvider
