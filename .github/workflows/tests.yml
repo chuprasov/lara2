@@ -4,8 +4,7 @@ on:
   push:
     branches:
       - stage2-3
-  pull_request:
-
+      
 jobs:
   laravel-tests:
 
