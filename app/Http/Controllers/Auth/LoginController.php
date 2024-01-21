@@ -17,7 +17,6 @@ class LoginController extends Controller
 
     public function handle(LoginRequest $request): RedirectResponse
     {
-        // dd($request->validated());
         $credentials = $request->validated();
 
         if (Auth::attempt($credentials)) {
