@@ -14,7 +14,6 @@ class InstallCommand extends Command
     {
         $this->call('storage:link');
         $this->call('migrate');
-        // $this->call('route:list');
 
         return self::SUCCESS;
     }
