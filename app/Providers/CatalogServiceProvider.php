@@ -2,10 +2,10 @@
 
 namespace App\Providers;
 
-use App\Filters\BrandFilter;
-use App\Filters\PriceFilter;
 use Domain\Catalog\Sorters\Sorter;
 use Support\Filters\FilterManager;
+use Domain\Catalog\Filters\BrandFilter;
+use Domain\Catalog\Filters\PriceFilter;
 use Illuminate\Support\ServiceProvider;
 
 class CatalogServiceProvider extends ServiceProvider

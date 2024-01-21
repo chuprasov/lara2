@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Filters;
+namespace Domain\Catalog\Filters;
 
 use Domain\Catalog\Models\Brand;
 use Support\Filters\AbstractFilter;
@@ -31,6 +31,7 @@ class BrandFilter extends AbstractFilter
     {
         return Brand::query()
             ->select(['id', 'title'])
+            ->orderBy('title')
             ->has('products')
             ->get()
             ->pluck('title', 'id')
