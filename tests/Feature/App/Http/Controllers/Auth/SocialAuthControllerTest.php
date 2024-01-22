@@ -20,10 +20,6 @@ class SocialAuthControllerTest extends TestCase
                 ->once()
                 ->andReturn($socialId);
 
-            /* $mockInterface->shouldReceive('getName')
-                ->once()
-                ->andReturn('test_social'); */
-
             $mockInterface->shouldReceive('getNickName')
                 ->once()
                 ->andReturn('test_social');

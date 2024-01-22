@@ -3,7 +3,9 @@ name: Laravel
 on:
   workflow_dispatch:
   push:
-      
+    branches:
+      - 'stage2-3'
+
 jobs:
   laravel-tests:
 
@@ -32,13 +34,13 @@ jobs:
         DB_DATABASE: lara2
       run: |
         sudo /etc/init.d/mysql start
-        mysql -e 'CREATE DATABASE ${{ env.DB_DATABASE }};' -u${{ env.DB_USERNAME }} -p${{ env.DB_PASSWORD }} 
+        mysql -e 'CREATE DATABASE ${{ env.DB_DATABASE }};' -u${{ env.DB_USERNAME }} -p${{ env.DB_PASSWORD }}
     - name: Shop app install
       run: php artisan shop:install
     - name: npm install
       run: npm install
     - name: npm r b
-      run: npm run build      
+      run: npm run build
     - name: Execute tests (Unit and Feature tests) via PHPUnit
       env:
         DB_PASSWORD: root

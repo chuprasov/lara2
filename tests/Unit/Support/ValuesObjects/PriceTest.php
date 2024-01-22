@@ -20,7 +20,12 @@ class PriceTest extends TestCase
 
         $this->expectException(InvalidArgumentException::class);
         $price = Price::make(-10000);
-
-        // $price = Price::make(10000, 'USD'); //TODO to separate test
     }
+
+    public function test_price_invalid_currency(): void
+    {
+        $this->expectException(InvalidArgumentException::class);
+        Price::make(10000, 'USD');
+    }
+
 }
