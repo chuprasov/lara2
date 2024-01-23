@@ -29,7 +29,7 @@ class CartManager
         ];
 
         if (auth()->check()) {
-            $data['user_id'] = auth()->$id;
+            $data['user_id'] = auth()->user()->id;
         }
 
         return $data;
