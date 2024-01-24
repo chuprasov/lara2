@@ -11,7 +11,7 @@ class SessionRegenerator
 {
     public static function run(Closure $closure)
     {
-        $oldSID = cart()->cartIdentityStorage->get();
+        $oldCIS = cart()->cartIdentityStorage->get();
 
         $response = null;
 
@@ -23,7 +23,7 @@ class SessionRegenerator
         request()->session()->regenerateToken();
 
         event(new AfterSessionRegenerated(
-            $oldSID,
+            $oldCIS,
             cart()->cartIdentityStorage->get()
         ));
 
