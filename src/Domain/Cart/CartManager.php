@@ -37,7 +37,7 @@ class CartManager
 
     private function cacheKey(): string
     {
-        return str('cart_' . $this->cartIdentityStorage->get())
+        return str('cart_'.$this->cartIdentityStorage->get())
             ->slug('_')
             ->value();
     }
@@ -116,7 +116,7 @@ class CartManager
 
     public function items(): Collection
     {
-        if (!$this->get()) {
+        if (! $this->get()) {
             return collect([]);
         }
 
@@ -146,5 +146,4 @@ class CartManager
             })
         );
     }
-
 }

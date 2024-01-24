@@ -17,13 +17,9 @@ class LoginController extends Controller
 
     public function handle(LoginRequest $request): RedirectResponse
     {
-        $old = cart()->cartIdentityStorage->get();
-
         $credentials = $request->validated();
 
-        if (auth()->attempt($credentials)) {
-            SessionRegenerator::run($old);
-
+        if (SessionRegenerator::run(fn () => auth()->attempt($credentials))) {
             return redirect()->intended(route('home'));
         }
 
@@ -34,7 +30,7 @@ class LoginController extends Controller
 
     public function logout(Request $request)
     {
-        SessionRegenerator::run(null, fn () => auth()->logout());
+        SessionRegenerator::run(fn () => auth()->logout());
 
         return redirect(route('home'));
     }

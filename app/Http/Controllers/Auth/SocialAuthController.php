@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 
-use Illuminate\Support\Str;
-use Domain\Auth\Models\User;
-use Support\SessionRegenerator;
 use App\Http\Controllers\Controller;
+use Domain\Auth\Models\User;
+use Illuminate\Support\Str;
 use Laravel\Socialite\Facades\Socialite;
+use Support\SessionRegenerator;
 
 class SocialAuthController extends Controller
 {
@@ -45,7 +45,7 @@ class SocialAuthController extends Controller
 
         $user[$socialName.'_id'] = $socialUser->getId();
 
-        SessionRegenerator::run(null, fn() => auth()->login($user));
+        SessionRegenerator::run(fn () => auth()->login($user));
 
         return redirect(route('home'));
     }

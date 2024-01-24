@@ -9,22 +9,24 @@ use Closure;
 
 class SessionRegenerator
 {
-    public static function run(string $old = null, Closure $closure = null): void
+    public static function run(Closure $closure)
     {
         $oldSID = cart()->cartIdentityStorage->get();
 
-        if (!is_null($closure)) {
-            $closure();
+        $response = null;
+
+        if (! is_null($closure)) {
+            $response = $closure();
         }
 
-        if (is_null($old)) {
-            request()->session()->regenerate();
-            request()->session()->regenerateToken();
-        }
+        request()->session()->regenerate();
+        request()->session()->regenerateToken();
 
         event(new AfterSessionRegenerated(
-            $old ?? $oldSID,
+            $oldSID,
             cart()->cartIdentityStorage->get()
         ));
+
+        return $response;
     }
 }
