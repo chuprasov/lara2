@@ -3,6 +3,7 @@
 namespace Tests;
 
 use Domain\Auth\Models\User;
+use Domain\Cart\CartManager;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Notification;
@@ -30,6 +31,8 @@ abstract class TestCase extends BaseTestCase
         Notification::fake();
         Storage::fake();
         Queue::fake();
+
+        CartManager::fake();
 
         Http::preventStrayRequests();
     }

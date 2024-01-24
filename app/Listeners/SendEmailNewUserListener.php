@@ -2,8 +2,8 @@
 
 namespace App\Listeners;
 
-use Illuminate\Auth\Events\Registered;
 use App\Notifications\NewUserNotification;
+use Illuminate\Auth\Events\Registered;
 
 class SendEmailNewUserListener
 {

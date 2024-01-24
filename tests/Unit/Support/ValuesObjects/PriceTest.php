@@ -27,5 +27,4 @@ class PriceTest extends TestCase
         $this->expectException(InvalidArgumentException::class);
         Price::make(10000, 'USD');
     }
-
 }
