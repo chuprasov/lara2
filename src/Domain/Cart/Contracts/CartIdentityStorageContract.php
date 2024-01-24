@@ -6,5 +6,5 @@ namespace Domain\Cart\Contracts;
 
 interface CartIdentityStorageContract
 {
-    public function get(): string;
+    public static function get(): string;
 }

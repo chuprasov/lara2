@@ -18,7 +18,7 @@ use Support\ValueObjects\Price;
 class CartManager
 {
     public function __construct(
-        protected CartIdentityStorageContract $cartIdentityStorage
+        public CartIdentityStorageContract $cartIdentityStorage
     ) {
     }
 
@@ -37,7 +37,7 @@ class CartManager
 
     private function cacheKey(): string
     {
-        return str('cart_'.$this->cartIdentityStorage->get())
+        return str('cart_' . $this->cartIdentityStorage->get())
             ->slug('_')
             ->value();
     }
@@ -45,6 +45,13 @@ class CartManager
     private function forgetCache(): void
     {
         Cache::forget($this->cacheKey());
+    }
+
+    public function updateStorageId(string $old, string $current): void
+    {
+        Cart::query()
+            ->where('storage_id', $old)
+            ->update($this->storageData($current));
     }
 
     public function add(Product $product, int $quantity, array $optionValues = []): Builder|Model
@@ -109,7 +116,7 @@ class CartManager
 
     public function items(): Collection
     {
-        if (! $this->get()) {
+        if (!$this->get()) {
             return collect([]);
         }
 
@@ -139,4 +146,5 @@ class CartManager
             })
         );
     }
+
 }

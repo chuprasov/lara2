@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use Support\SessionRegenerator;
 
 class LoginController extends Controller
 {
@@ -17,10 +17,12 @@ class LoginController extends Controller
 
     public function handle(LoginRequest $request): RedirectResponse
     {
+        $old = cart()->cartIdentityStorage->get();
+
         $credentials = $request->validated();
 
-        if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
+        if (auth()->attempt($credentials)) {
+            SessionRegenerator::run($old);
 
             return redirect()->intended(route('home'));
         }
@@ -32,11 +34,7 @@ class LoginController extends Controller
 
     public function logout(Request $request)
     {
-        Auth::logout();
-
-        $request->session()->invalidate();
-
-        $request->session()->regenerateToken();
+        SessionRegenerator::run(null, fn () => auth()->logout());
 
         return redirect(route('home'));
     }
