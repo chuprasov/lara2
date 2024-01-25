@@ -51,8 +51,10 @@ class Brand extends Model
         return BrandFactory::new();
     }
 
-    protected static function booted()
+    protected static function boot()
     {
+        parent::boot();
+
         static::creating(function () {
             Cache::forget('brand_home_page');
         });

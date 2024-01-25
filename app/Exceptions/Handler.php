@@ -22,7 +22,7 @@ class Handler extends ExceptionHandler
     public function register(): void
     {
         $this->reportable(function (Throwable $e) {
-            if (! app()->isLocal()) {
+            if (!app()->isLocal()) {
                 if (app()->bound('sentry')) {
                     app('sentry')->captureException($e);
                 }
@@ -36,8 +36,9 @@ class Handler extends ExceptionHandler
         $this->renderable(function (\DomainException $e) {
             session()->flash('error', $e->getMessage());
 
-            return back();
+            return session()->previousUrl()
+                ? back()
+                : redirect(route('home'));
         });
-
     }
 }
