@@ -1,4 +1,4 @@
-<div>
+<div class="pb-8">
     <h5 class="mb-4 text-sm 2xl:text-md font-bold">{{ $filter->title() }}</h5>
 
     @foreach ($filter->values() as $id => $title)
