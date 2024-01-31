@@ -24,7 +24,7 @@ class NavigationComposer
         $checkedCategory = request('category');
 
         foreach ($categories as $category) {
-            $subMenuItem = MenuItem::make('category-' . $category->id, route('catalog', $category), $category->title);
+            $subMenuItem = MenuItem::make('category-'.$category->id, route('catalog', $category), $category->title);
 
             if (isset($checkedCategory) && ($checkedCategory->id === $category->id)) {
                 $subMenuItem->check();

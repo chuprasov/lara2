@@ -16,7 +16,7 @@ class MenuItem
         protected string $id,
         protected string $link,
         protected string $label,
-        protected null|Menu $subMenu = null
+        protected ?Menu $subMenu = null
     ) {
     }
 
@@ -35,7 +35,7 @@ class MenuItem
         return $this->label;
     }
 
-    public function subMenu(): null|Menu
+    public function subMenu(): ?Menu
     {
         return $this->subMenu;
     }
@@ -58,6 +58,6 @@ class MenuItem
             return request()->path() === $path;
         }
 
-        return request()->fullUrlIs($this->link() . '*');
+        return request()->fullUrlIs($this->link().'*');
     }
 }

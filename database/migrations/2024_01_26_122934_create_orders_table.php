@@ -4,13 +4,12 @@ use Domain\Auth\Models\User;
 use Domain\Order\Enums\OrderStates;
 use Domain\Order\Models\DeliveryType;
 use Domain\Order\Models\PaymentMethod;
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-
     public function up(): void
     {
         Schema::create('orders', function (Blueprint $table) {

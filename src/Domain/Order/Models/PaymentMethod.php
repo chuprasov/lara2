@@ -13,5 +13,4 @@ class PaymentMethod extends Model
         'title',
         'redirect_to_pay',
     ];
-
 }

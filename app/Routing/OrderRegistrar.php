@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace App\Routing;
 
 use App\Contracts\RouteRegistrar;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\OrderController;
 use Illuminate\Contracts\Routing\Registrar;
+use Illuminate\Support\Facades\Route;
 
 class OrderRegistrar implements RouteRegistrar
 {

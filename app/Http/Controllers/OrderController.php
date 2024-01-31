@@ -5,9 +5,9 @@ namespace App\Http\Controllers;
 use Domain\Order\Models\DeliveryType;
 use Domain\Order\Models\PaymentMethod;
 use DomainException;
-use Illuminate\Contracts\View\View;
-use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 
 class OrderController
@@ -17,7 +17,7 @@ class OrderController
         $items = cart()->items();
 
         if ($items->isEmpty()) {
-            throw new DomainException("В корзине пусто");
+            throw new DomainException('В корзине пусто');
         }
 
         return view('order.index', [

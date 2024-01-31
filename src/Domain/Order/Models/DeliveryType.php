@@ -2,9 +2,9 @@
 
 namespace Domain\Order\Models;
 
-use Support\Casts\PriceCast;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Support\Casts\PriceCast;
 
 class DeliveryType extends Model
 {

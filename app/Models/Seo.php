@@ -2,10 +2,10 @@
 
 namespace App\Models;
 
-use Support\Casts\SeoUrlCast;
-use Illuminate\Support\Facades\Cache;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Cache;
+use Support\Casts\SeoUrlCast;
 
 class Seo extends Model
 {

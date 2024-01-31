@@ -1,11 +1,12 @@
-<header class="header py-4 xl:py-4 bg-bgheader">
+<header class="header py-4 xl:py-4 bg-bgheader sticky top-0 z-50 shadow-md">
     <div class="container">
         <div class="header-inner flex items-center justify-between lg:justify-start">
             <!-- header-logo -->
             <div class="header-logo shrink-0">
                 <a href="{{ route('home') }}" rel="home">
                     <img src={{ Vite::image('logo.svg') }}
-                        class="w-[30px] xs:w-[36px] md:w-[100px] h-[30px] xs:h-[36px] md:h-[100px] absolute -mt-6" alt="CutCode">
+                        class="w-[30px] xs:w-[36px] md:w-[100px] h-[30px] xs:h-[36px] md:h-[100px] absolute -mt-6"
+                        alt="CutCode">
                 </a>
             </div>
 
@@ -27,9 +28,7 @@
             </div><!-- /.header-menu -->
 
             <div class="header-actions flex items-center gap-3 md:gap-5">
-
                 @auth
-
                     <div x-data="{ dropdownProfile: false }" class="profile relative">
                         <button @click="dropdownProfile = ! dropdownProfile"
                             class="flex items-center text-darkblue hover:text-blue transition lg: none">
@@ -44,7 +43,7 @@
                                     clip-rule="evenodd" />
                             </svg>
                         </button>
-                        <div x-show="dropdownProfile" @click.away="dropdownProfile = false"
+                        <div x-show="dropdownProfile" @click.away="dropdownProfile = false" x-cloak
                             x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0"
                             x-transition:enter-end="opacity-100" x-transition:leave="ease-in duration-150"
                             x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"
@@ -93,7 +92,6 @@
                             </div>
                         </div>
                     </div>
-
                 @endauth
 
                 <a href="{{ route('cart') }}" class="flex items-center gap-3 text-darkblue hover:text-purple">
