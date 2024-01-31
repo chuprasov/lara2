@@ -3,12 +3,12 @@
 @section('content')
     <!-- Breadcrumbs -->
     <ul class="breadcrumbs flex flex-wrap gap-y-1 gap-x-4 mb-6">
-        <li><a href={{ route('home') }} class="text-body hover:text-pink text-xs">Главная</a></li>
-        <li><a href={{ route('catalog') }} class="text-body hover:text-pink text-xs">Каталог</a></li>
+        <li><a href={{ route('home') }} class="text-gray hover:text-purple text-xs">Главная</a></li>
+        <li><a href={{ route('catalog') }} class="text-gray hover:text-purple text-xs">Каталог</a></li>
 
         @if ($category->exists)
             <li>
-                <span class="text-body text-xs">
+                <span class="text-gray text-xs">
                     {{ $category->title }}
                 </span>
             </li>
@@ -17,7 +17,7 @@
 
     {{-- <section class="mt-16 lg:mt-10">
         <!-- Section heading -->
-        <h2 class="text-lg lg:text-[32px] font-black">Категории</h2>
+        <h2 class="text-lg lg:text-[32px] font-black text-darkblue">Каталог товаров</h2>
 
         <a href="{{ route('catalog') }}">Все категории</a>
 
@@ -48,13 +48,13 @@
                     @endforeach
 
                     <div>
-                        <button type="submit" class="w-full !h-16 btn btn-pink">Применить</button>
+                        <button type="submit" class="w-full !h-16 mt-4 btn btn-purple">Применить</button>
                     </div>
 
                     @if (request('filters'))
                         <div>
                             <a href={{ route('catalog', $category) }} type="reset"
-                                class="w-full !h-16 btn btn-outline">Сбросить фильтры</a>
+                                class="w-full !h-16 mt-4 btn btn-outline">Сбросить фильтры</a>
                         </div>
                     @endif
                 </form>
@@ -67,7 +67,7 @@
                         <div class="flex items-center gap-2">
 
                             <a href="{{ filters_url($category, ['view-products' => 'grid']) }}"
-                                class="{{ session()->get('view-products') === 'grid' ? 'pointer-events-none text-pink' : '' }} inline-flex items-center justify-center w-10 h-10 rounded-md bg-card ">
+                                class="{{ session()->get('view-products') === 'grid' ? 'pointer-events-none text-purple' : '' }} inline-flex items-center justify-center w-10 h-10 rounded-md bg-card hover:text-blue-600">
                                 <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                                     viewBox="0 0 52 52">
                                     <path fill-rule="evenodd"
@@ -77,7 +77,7 @@
                             </a>
 
                             <a href="{{ filters_url($category, ['view-products' => 'list']) }}"
-                                class="{{ session()->get('view-products') === 'list' ? 'pointer-events-none text-pink' : '' }} inline-flex items-center justify-center w-10 h-10 rounded-md bg-card hover:text-pink">
+                                class="{{ session()->get('view-products') === 'list' ? 'pointer-events-none text-purple' : '' }} inline-flex items-center justify-center w-10 h-10 rounded-md bg-card hover:text-blue-600">
                                 <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                                     viewBox="0 0 52 52">
                                     <path fill-rule="evenodd"
@@ -87,13 +87,13 @@
                             </a>
 
                         </div>
-                        <div class="text-body text-xxs sm:text-xs">Найдено: {{ $products->total() }} товаров</div>
+                        <div class="text-gray text-xxs sm:text-xs">Найдено: {{ $products->total() }} товаров</div>
                     </div>
 
                     <div x-data="{ sort: '{{ filters_url($category, ['sort' => request('sort')]) }}' }" class="flex flex-col sm:flex-row sm:items-center gap-3">
-                        <span class="text-body text-xxs sm:text-xs">Сортировать по</span>
+                        <span class="text-gray text-xxs sm:text-xs w-full">Сортировать по</span>
                         <select name="sort" x-model="sort" x-on:change="window.location = sort"
-                            class="form-select w-full h-12 px-4 rounded-lg border border-body/10 focus:border-pink focus:shadow-[0_0_0_3px_#EC4176] bg-white/5 text-white text-xxs sm:text-xs shadow-transparent outline-0 transition">
+                            class="form-select w-full h-12 px-4 rounded-lg border border-body/10  bg-white/5 text-gray text-xxs sm:text-xs shadow-transparent outline-0 transition">
                             <option value="{{ filters_url($category, ['sort' => '']) }}" class="text-dark">
                                 умолчанию
                             </option>
@@ -117,7 +117,7 @@
                     </div>
                 @else
                     <div
-                        class="products grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-x-8 gap-y-8 lg:gap-y-10 2xl:gap-y-12 mt-8">
+                        class="products grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 2xl:grid-cols-4 gap-4 mt-8">
                         @each('product.shared.product', $products, 'product')
                     </div>
                 @endif

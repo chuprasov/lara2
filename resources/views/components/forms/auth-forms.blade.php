@@ -1,8 +1,8 @@
-<div class="max-w-[640px] mt-12 mx-auto p-6 xs:p-8 md:p-12 2xl:p-16 rounded-[20px] bg-purple">
+<div class="max-w-[640px] mt-12 mx-auto p-6 xs:p-8 md:p-12 2xl:p-16 rounded-lg bg-darkblue">
     <h1 class="mb-5 text-lg font-semibold">
         {{ $title }}
     </h1>
-    <form class="space-y-3" action="{{ $action }}" method="{{ $method }}">
+    <form class="space-y-6 mb-4" action="{{ $action }}" method="{{ $method }}">
         {{ $slot }}
     </form>
 

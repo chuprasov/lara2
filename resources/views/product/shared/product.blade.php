@@ -1,22 +1,23 @@
 <!-- Product card -->
-<div class="product-card flex flex-col rounded-3xl bg-card">
-    <a href="{{ route('product', $product) }}" class="product-card-photo overflow-hidden h-[320px] rounded-3xl">
-        <img src="{{ $product->makeThumbnail('original') }}" class="object-cover w-full h-full"
+<div class="product-card flex flex-col rounded-lg bg-card">
+    <a href="{{ route('product', $product) }}" class="product-card-photo overflow-hidden h-[320px] rounded-lg">
+        <img src="{{ $product->makeThumbnail('original') }}" class="object-cover w-full h-full p-2 pb-0"
             alt="{{ $product->title }}">
     </a>
     <div class="grow flex flex-col py-8 px-6">
         <h3 class="text-sm lg:text-md font-black">
-            <a href="{{ route('product', $product) }}" class="inline-block text-white hover:text-pink">
+            <a href="{{ route('product', $product) }}" class="inline-block text-white hover:text-purple">
                 {{ $product->title }}
             </a>
             <div class="text-body text-xxs sm:text-xs font-thin">
                 {{ isset($product->brand) ? $product->brand->title : '- no brand -' }}
             </div>
         </h3>
-        <div class="mt-auto pt-6">
-            <div class="mb-3 text-sm font-semibold">
+        <div class="mt-auto pt-6 flex items-center justify-betwen">
+            <div class="flex text-sm font-semibold w-full">
                 {{ $product->price }}
             </div>
+            
             <div class="flex flex-wrap items-center gap-4">
                 <a href="{{ route('product', $product) }}" class="w-[56px] !h-[56px] !px-0 btn btn-pink">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 52 52">

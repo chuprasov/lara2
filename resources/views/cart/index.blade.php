@@ -9,16 +9,16 @@
 
             <!-- Breadcrumbs -->
             <ul class="breadcrumbs flex flex-wrap gap-y-1 gap-x-4 mb-6">
-                <li><a href="{{ route('home') }}" class="text-body hover:text-pink text-xs">Главная</a></li>
-                <li><span class="text-body text-xs">Корзина покупок</span></li>
+                <li><a href="{{ route('home') }}" class="text-gray hover:text-purple text-xs">Главная</a></li>
+                <li><span class="text-gray text-xs">Корзина покупок</span></li>
             </ul>
 
             <section>
                 <!-- Section heading -->
-                <h1 class="mb-8 text-lg lg:text-[42px] font-black">Корзина покупок</h1>
+                <h1 class="mb-8 text-lg lg:text-[42px] font-black text-darkblue">Корзина покупок</h1>
 
                 @if ($cartItems->isEmpty())
-                    <div class="py-3 px-6 rounded-lg bg-pink text-white">В корзине пусто</div>
+                    <div class="py-3 px-6 rounded-lg bg-purple text-white">В корзине пусто</div>
                 @else
                     <!-- Adaptive table -->
                     <div class="overflow-auto">

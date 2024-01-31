@@ -1,4 +1,4 @@
-<nav class="2xl:flex gap-8">
+<nav class="lg:flex text-sm 2xl:flex gap-8 items-center">
     @foreach ($menu->all() as $item)
         @if (is_null($item->subMenu()))
             <a href="{{ $item->link() }}"
@@ -48,5 +48,4 @@
             </div>
         @endif
     @endforeach
-
 </nav>

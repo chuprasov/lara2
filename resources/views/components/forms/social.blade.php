@@ -1,7 +1,7 @@
 <ul class="space-y-3 my-2">
     <li>
         <a href="{{ route('socialRedirect', ['socialName' => 'github']) }}"
-            class="relative flex items-center h-14 px-12 rounded-lg border border-[#A07BF0] bg-white/20 hover:bg-white/20 active:bg-white/10 active:translate-y-0.5">
+            class="relative flex items-center h-14 px-12 rounded-lg border bg-white/20 hover:bg-white/20 active:bg-white/10 active:translate-y-0.5">
             <svg class="shrink-0 absolute left-4 w-5 sm:w-6 h-5 sm:h-6" xmlns="http://www.w3.org/2000/svg"
                 fill="currentColor" viewBox="0 0 20 20">
                 <path fill-rule="evenodd"
@@ -13,7 +13,7 @@
     </li>
     <li>
         <a href="{{ route('socialRedirect', ['socialName' => 'google']) }}"
-            class="relative flex items-center h-14 px-12 rounded-lg border border-[#A07BF0] bg-white/20 hover:bg-white/20 active:bg-white/10 active:translate-y-0.5">
+            class="relative flex items-center h-14 px-12 rounded-lg border bg-white/20 hover:bg-white/20 active:bg-white/10 active:translate-y-0.5">
             <svg class="shrink-0 absolute left-4 w-5 sm:w-6 h-5 sm:h-6" fill="currentColor"
                 enable-background="new 0 0 32 32" version="1.1" viewBox="0 0 32 32" xml:space="preserve"
                 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
