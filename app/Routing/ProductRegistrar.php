@@ -14,8 +14,7 @@ class ProductRegistrar implements RouteRegistrar
     public function map(Registrar $registrar): void
     {
         Route::middleware('web')->group(function () {
-            Route::get('/product/{product:slug}', ProductController::class)
-                ->name('product');
+            Route::get('/product/{product:slug}', ProductController::class)->name('product');
         });
     }
 }

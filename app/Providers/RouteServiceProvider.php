@@ -2,18 +2,19 @@
 
 namespace App\Providers;
 
-use App\Contracts\RouteRegistrar;
+use RuntimeException;
+use Illuminate\Http\Request;
 use App\Routing\AppRegistrar;
 use App\Routing\AuthRegistrar;
 use App\Routing\CartRegistrar;
+use App\Routing\OrderRegistrar;
+use App\Contracts\RouteRegistrar;
 use App\Routing\CatalogRegistrar;
 use App\Routing\ProductRegistrar;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Contracts\Routing\Registrar;
-use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\RateLimiter;
-use RuntimeException;
+use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -25,6 +26,7 @@ class RouteServiceProvider extends ServiceProvider
         CatalogRegistrar::class,
         ProductRegistrar::class,
         CartRegistrar::class,
+        OrderRegistrar::class
     ];
 
     public function boot(): void

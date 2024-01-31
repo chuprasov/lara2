@@ -54,8 +54,10 @@ class Category extends Model
         return CategoryFactory::new();
     }
 
-    protected static function booted()
+    protected static function boot()
     {
+        parent::boot();
+        
         static::creating(function () {
             Cache::forget('category_home_page');
         });

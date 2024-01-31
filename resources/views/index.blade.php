@@ -1,7 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-
+    {{-- <section class="mt-16 lg:mt-24">
+        <!-- Section heading -->
+        <h2 class="text-lg lg:text-[32px] font-black">Категории</h2>
     <section class="">
         <div x-data="{ dropdownCategories: false }" class="categories relative">
             <h2 @click="dropdownCategories = ! dropdownCategories" class="flex items-center cursor-pointer text-darkblue hover:text-blue-600 transition">Категории</h2>
@@ -11,7 +13,8 @@
                 @endforeach
             </div>
         </div>
-    </section>
+    </section> --}}
+
 
     <section class="mt-16 lg:mt-4">
         <!-- Section heading -->

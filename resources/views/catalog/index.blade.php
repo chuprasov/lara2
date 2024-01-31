@@ -15,16 +15,30 @@
         @endif
     </ul>
 
-    <section class="mt-16 lg:mt-10">
+    {{-- <section class="mt-16 lg:mt-10">
         <!-- Section heading -->
         <h2 class="text-lg lg:text-[32px] font-black text-darkblue">Каталог товаров</h2>
 
-        <div class="flex flex-col lg:flex-row gap-12 lg:gap-2 2xl:gap-8 mt-8">
+        <a href="{{ route('catalog') }}">Все категории</a>
+
+        <!-- Categories -->
+        <div class="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-5 gap-3 sm:gap-4 md:gap-5 mt-8">
+            @foreach ($categories as $categoryEach)
+                @include('catalog.shared.category', ['categoryEach' => $categoryEach])
+            @endforeach
+        </div>
+    </section> --}}
+
+    <section class="mt-16 lg:mt-10">
+        <!-- Section heading -->
+        <h2 class="text-lg lg:text-[32px] font-black">Каталог товаров</h2>
+
+        <div class="flex flex-col lg:flex-row gap-12 lg:gap-6 2xl:gap-8 mt-8">
 
             <!-- Filters -->
             <aside class="basis-2/5 xl:basis-1/4">
                 <form action="{{ route('catalog', $category) }}"
-                    class="overflow-auto max-h-[320px] lg:max-h-[100%] p-6 rounded-lg bg-card">
+                    class="overflow-auto max-h-[320px] lg:max-h-[100%] space-y-1 p-6 2xl:p-8 rounded-2xl bg-card">
 
                     <input type="hidden" name="sort" value="{{ request('sort') }}">
 
