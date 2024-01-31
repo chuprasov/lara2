@@ -2,9 +2,10 @@
 
 namespace App\Exceptions;
 
+use Throwable;
+use DomainException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-use Throwable;
 
 class Handler extends ExceptionHandler
 {
@@ -33,7 +34,7 @@ class Handler extends ExceptionHandler
             return response('Not found 404');
         });
 
-        $this->renderable(function (\DomainException $e) {
+        $this->renderable(function (DomainException $e) {
             session()->flash('error', $e->getMessage());
 
             return session()->previousUrl()

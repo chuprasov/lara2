@@ -15,7 +15,7 @@
         @endif
     </ul>
 
-    <section class="mt-16 lg:mt-10">
+    {{-- <section class="mt-16 lg:mt-10">
         <!-- Section heading -->
         <h2 class="text-lg lg:text-[32px] font-black">Категории</h2>
 
@@ -27,7 +27,7 @@
                 @include('catalog.shared.category', ['categoryEach' => $categoryEach])
             @endforeach
         </div>
-    </section>
+    </section> --}}
 
     <section class="mt-16 lg:mt-10">
         <!-- Section heading -->

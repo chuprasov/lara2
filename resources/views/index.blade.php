@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="mt-16 lg:mt-24">
+    {{-- <section class="mt-16 lg:mt-24">
         <!-- Section heading -->
         <h2 class="text-lg lg:text-[32px] font-black">Категории</h2>
 
@@ -12,7 +12,7 @@
             @endforeach
         </div>
 
-    </section>
+    </section> --}}
 
     <section class="mt-16 lg:mt-24">
         <!-- Section heading -->
