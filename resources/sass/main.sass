@@ -13,13 +13,19 @@
 @include font('Gilroy', normal, 900, 'Gilroy-Black')
 
 // Vars
+$black:    #000000
+$some:     #F0F8FF
 $white:    #FFF
 $purple:   #7843E9
+$green:    #228B22
 $pink:     #EC4176
 $dark:     #222
 $gray:     #454545
+$bgmain:   #DCDCDC
+$bgheader: #F5F5F5
 $darkblue: #1E1F43
 $body:     #BDBECA
+$red:      #FF0000
 $trsp:     transparent
 $trs:      .3s ease
 
@@ -29,12 +35,12 @@ $trs:      .3s ease
 
 // Basic rules
 ::selection
-	background-color: $pink
-	color: $white
+	background-color: $white
+	color: $black
 
 body
 	min-width: 320px
-	background-color: $darkblue
+	background-color: $bgmain
 	color: $white
 a
 	transition: $trs
@@ -42,7 +48,7 @@ a
 // Error inputs
 input._is-error,
 textarea._is-error
-	border-color: $pink
+	border-color: $black
 
 // Header
 .header-actions .profile,
@@ -54,7 +60,7 @@ textarea._is-error
 		right: 0
 		bottom: 0
 		height: 2px
-		background-color: $purple
+		background-color: $bgheader
 		opacity: 0
 		transition: $trs
 	&:hover
@@ -66,8 +72,8 @@ textarea._is-error
 	&-value
 		&._is-active
 			pointer-events: none
-			border-color: $pink
-			background-color: $pink
+			border-color: $green
+			background-color: $green
 			color: $white
 
 // Product card

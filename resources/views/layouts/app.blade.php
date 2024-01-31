@@ -17,7 +17,7 @@
 
     @include('shared.header')
 
-    <main class="py-8 lg:py-10">
+    <main class="py-8 lg:pb-40">
         <div class="container">
             @yield('content')
         </div>

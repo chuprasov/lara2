@@ -35,11 +35,25 @@
 	&:hover
 		background-color: darken($pink, 10%)
 
-.btn-outline
-	border: 1px solid $pink
+.btn-red
+	box-shadow: 0px 3px 0px rgba($red, 0.3)
+	background-color: $red
 	color: $white
 	&:hover
-		background-color: darken($pink, 10%)
+		background-color: darken($red, 10%)
+
+.btn-blue
+	box-shadow: 0px 3px 0px rgba($darkblue, 0.3)
+	background-color: $darkblue
+	color: $white
+	&:hover
+		background-color: darken($darkblue, 5%)
+
+.btn-outline
+	border: 1px solid $purple
+	color: $white
+	&:hover
+		background-color: darken($some, 10%)
 
 
 // Form
@@ -82,7 +96,7 @@ input[type=number]
 	cursor: pointer
 	appearance: none
 	padding-right: 32px
-	background-image: url('../images/icons/dropdown-arrow.svg')
+	background-image: url('../images/icons/drop-down-double.svg')
 	background-repeat: no-repeat
 	background-position: right 8px center
 	background-size: 20px
@@ -126,13 +140,13 @@ input[type=number]
 			background-color: $trsp
 			transition: border .3s ease, opacity .15s ease
 		&::after
-			border-color: $pink
-			background: $pink url('../images/icons/checked-white.svg') no-repeat center/10px
+			border-color: $purple
+			background: $purple url('../images/icons/checked-white.svg') no-repeat center/10px
 			opacity: 0
 		&:hover
 			&::before,
 			&::after
-				border-color: $pink
+				border-color: $purple
 	input:checked + label::after
 		opacity: 1
 
