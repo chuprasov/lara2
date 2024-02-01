@@ -7,7 +7,7 @@
             </a>
         @else
             <div class="header-actions flex items-center gap-3 md:gap-5">
-                <div x-data="{ {{ $item->id() }}: false }" class="relative inline-block">
+                <div x-data="{ {{ $item->id() }}: false }" class="relative inline-block -ml-4">
                     <button @click="{{ $item->id() }} = ! {{ $item->id() }}"
                         class="flex items-center text-darkblue hover:text-purple transition">
                         <span class="hidden md:block ml-2">
@@ -24,10 +24,10 @@
                         x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0"
                         x-transition:enter-end="opacity-100" x-transition:leave="ease-in duration-150"
                         x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"
-                        class="absolute z-50 top-0 -right-20 xs:-right-8 sm:right-0 w-[280px] sm:w-[300px] mt-14 p-4 rounded-lg shadow-xl bg-card divide-y divide-gray-100">
+                        class="absolute z-50 top-0 -right-[100px] w-[280px] sm:w-[300px] mt-14 p-4 rounded-lg shadow-xl bg-card divide-y divide-gray-100">
                         <div class="pb-3">
                             <a href="{{ route('catalog') }}"
-                                class="text-white hover:text-white bg-card text-xs font-medium">
+                                class="text-white hover:text-purple bg-card text-xs font-medium">
                                 Все категории
                             </a>
                         </div>
@@ -37,7 +37,7 @@
                                     <div class={{ $subItem->isChecked() ? 'bg-pink' : 'bg-card' }}>
                                         <li>
                                             <a href="{{ $subItem->link() }}"
-                                                class="text-white hover:text-white  text-xs font-medium">
+                                                class="text-white hover:text-purple  text-xs font-medium">
                                                 {{ $subItem->label() }}
                                             </a>
                                         </li>

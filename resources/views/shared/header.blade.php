@@ -11,7 +11,7 @@
             </div>
 
             <div class="header-menu grow hidden lg:flex items-center ml-8 gap-8">
-                <form action="{{ route('catalog') }}" class="hidden lg:flex ml-24 gap-4 w-1/2">
+                <form action="{{ route('catalog') }}" class="hidden lg:flex ml-24 gap-4 w-2/5">
                     <input name="search" value="{{ request('search') }}" type="search"
                         class="w-full h-12 px-4  rounded border border-black focus:border-black focus:shadow-[0_0_0_1px_#000000] bg-white/5 text-black text-xs shadow-transparent outline-0 transition"
                         placeholder="Поиск..." required>
