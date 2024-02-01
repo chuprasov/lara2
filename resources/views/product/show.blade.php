@@ -8,16 +8,16 @@
 
             <!-- Breadcrumbs -->
             <ul class="breadcrumbs flex flex-wrap gap-y-1 gap-x-4 mb-6">
-                <li><a href="{{ route('home') }}" class="text-body hover:text-pink text-xs">Главная</a></li>
-                <li><a href="{{ route('catalog') }}" class="text-body hover:text-pink text-xs">Каталог</a></li>
-                <li><span class="text-body text-xs">{{ $product->title }}</span></li>
+                <li><a href="{{ route('home') }}" class="text-gray hover:text-purple text-xs">Главная</a></li>
+                <li><a href="{{ route('catalog') }}" class="text-gray hover:text-purple text-xs">Каталог</a></li>
+                <li><span class="text-gray text-xs">{{ $product->title }}</span></li>
             </ul>
 
             <!-- Main product -->
             <section class="flex flex-col lg:flex-row gap-10 xl:gap-14 2xl:gap-20 mt-12">
 
                 <div class="basis-full lg:basis-2/5 xl:basis-2/4">
-                    <div class="overflow-hidden h-auto max-h-[620px] lg:h-[480px] xl:h-[620px] rounded-3xl">
+                    <div class="overflow-hidden h-auto max-h-[580px] lg:h-[480px] xl:h-[580px] rounded-xl">
                         <img src="{{ $product->makeThumbnail('original') }}" class="object-cover w-full h-full"
                             alt="SteelSeries Aerox 3 Snow">
                     </div>
@@ -25,7 +25,7 @@
 
                 <div class="basis-full lg:basis-3/5 xl:basis-2/4">
                     <div class="grow flex flex-col lg:py-8">
-                        <h1 class="text-lg md:text-xl xl:text-[32px] font-black">{{ $product->title }}</h1>
+                        <h1 class="text-lg md:text-xl xl:text-[32px] font-black text-darkblue">{{ $product->title }}</h1>
                         <ul class="flex items-center gap-2 mt-4">
                             <li class="text-[#FFC107]">
                                 <svg class="w-4 md:w-6 h-4 md:h-6" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
@@ -64,11 +64,11 @@
                             </li>
                         </ul>
                         <div class="flex items-baseline gap-4 mt-4">
-                            <div class="text-pink text-lg md:text-xl font-black">{{ $product->price }}</div>
+                            <div class="text-dark text-lg md:text-xl font-black">{{ $product->price }}</div>
                         </div>
                         <ul class="sm:max-w-[360px] space-y-2 mt-8">
                             @foreach ($product->properties as $property)
-                                <li class="flex justify-between text-body"><strong class="text-white">
+                                <li class="flex justify-between text-gray"><strong class="text-dark">
                                         {{ $property->title }}:</strong> {{ $property->pivot->value }}
                                 </li>
                             @endforeach
@@ -81,11 +81,11 @@
                                 @foreach ($options as $option => $values)
                                     <div class="flex flex-col gap-2">
                                         <label for="option-{{ $loop->index }}"
-                                            class="cursor-pointer text-body text-xxs font-medium">
+                                            class="cursor-pointer text-dark text-xxs font-medium">
                                             {{ $option }}
                                         </label>
                                         <select name="options[]" id="option-{{ $loop->index }}"
-                                            class="form-select w-full h-12 px-4 rounded-lg border border-body/10 focus:border-pink focus:shadow-[0_0_0_3px_#EC4176] bg-white/5 text-white text-xs shadow-transparent outline-0 transition">
+                                            class="form-select w-full h-12 px-4 rounded-lg border border-solid border-black bg-gray/5 text-dark text-xs shadow-transparent outline-0 transition">
 
                                             @foreach ($values as $value)
                                                 <option value="{{ $value->id }}" class="text-dark">
@@ -98,18 +98,18 @@
                                 @endforeach
                             </div>
 
-                            <div class="flex flex-wrap items-center gap-3 xs:gap-4">
-                                <div class="flex items-stretch h-[54px] lg:h-[72px] gap-2">
+                            <div class="flex flex-wrap items-center gap-3">
+                                <div class="flex items-stretch h-[54px] lg:h-[72px] gap-1">
                                     <button type="button"
-                                        class="w-12 h-full rounded-lg border border-body/10 hover:bg-card/20 active:bg-card/50 focus:border-pink focus:shadow-[0_0_0_3px_#EC4176] bg-white/5 text-white text-xs text-center font-bold shadow-transparent outline-0 transition">-</button>
+                                        class="w-12 h-full rounded-lg border border-solid border-black bg-gray/5 text-dark text-xs shadow-transparent outline-0 transition">-</button>
                                     <input name="quantity" type="number"
-                                        class="h-full px-2 md:px-4 rounded-lg border border-body/10 focus:border-pink focus:shadow-[0_0_0_3px_#EC4176] bg-white/5 text-white text-xs text-center font-bold shadow-transparent outline-0 transition"
+                                        class="h-full px-2 md:px-4 text-center rounded-lg border border-solid border-black bg-gray/5 text-dark placeholder:text-dark text-xs  shadow-transparent outline-0 transition"
                                         min="1" max="999" value="1" placeholder="К-во">
                                     <button type="button"
-                                        class="w-12 h-full rounded-lg border border-body/10 hover:bg-card/20 active:bg-card/50 focus:border-pink focus:shadow-[0_0_0_3px_#EC4176] bg-white/5 text-white text-xs text-center font-bold shadow-transparent outline-0 transition">+</button>
+                                        class="w-12 h-full rounded-lg border border-solid border-black bg-gray/5 text-dark text-xs shadow-transparent outline-0 transition">+</button>
                                 </div>
-                                <button type="submit" class="!px-6 xs:!px-8 btn btn-pink">Добавить в корзину</button>
-                                <a href="#" class="w-[68px] !px-0 btn btn-purple" title="В избранное">
+                                <button type="submit" class="!px-6 xs:!px-8 btn btn-purple">Добавить в корзину</button>
+                                <a href="#" class="w-[68px] !px-0 btn btn-red" title="В избранное">
                                     <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                                         viewBox="0 0 52 52">
                                         <path
@@ -126,20 +126,20 @@
             </section>
 
             <!-- Description -->
-            <section class="mt-12 xl:mt-16 pt-8 lg:pt-12 border-t border-white/10">
-                <h2 class="mb-12 text-lg lg:text-[32px] font-black">Описание</h2>
-                <article class="text-xs md:text-sm">
+            <section class="mt-12 xl:mt-8 pt-6 lg:pt-12 border-t border-white/10">
+                <h2 class="mb-8 text-lg lg:text-[32px] font-black text-dark">Описание</h2>
+                <article class="text-xs md:text-sm text-dark">
                     {{-- {!! $product->text !!} --}}
                     {{ $product->text }}
                 </article>
             </section>
 
             <!-- Watched products  -->
-            <section class="mt-16 xl:mt-24">
-                <h2 class="mb-12 text-lg lg:text-[32px] font-black">Просмотренные товары</h2>
+            <section class="mt-10">
+                <h2 class="mb-12 text-lg lg:text-[32px] font-black text-dark">Просмотренные товары</h2>
                 <!-- Products list -->
                 <div
-                    class="products grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-x-8 gap-y-8 lg:gap-y-10 2xl:gap-y-12">
+                    class="products grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
                     @each('product.shared.product', $watchedProducts, 'product')
                 </div>
             </section>

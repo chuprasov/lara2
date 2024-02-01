@@ -37,7 +37,7 @@
 
                                 @foreach ($cartItems as $cartItem)
                                     <tr>
-                                        <td scope="row" class="py-4 px-4 md:px-6 rounded-l-2xl bg-card">
+                                        <td scope="row" class="py-4 px-4 md:px-6 rounded-l-lg bg-card">
                                             <div class="flex flex-col lg:flex-row min-w-[200px] gap-2 lg:gap-6">
                                                 <div
                                                     class="shrink-0 overflow-hidden w-[64px] lg:w-[84px] h-[64px] lg:h-[84px] rounded-2xl">
@@ -91,7 +91,7 @@
                                                 {{ $cartItem->amount }}
                                             </div>
                                         </td>
-                                        <td class="py-4 px-4 md:px-6 rounded-r-2xl bg-card">
+                                        <td class="py-4 px-4 md:px-6 rounded-r-lg bg-card">
                                             <form action="{{ route('cart.delete', $cartItem->id) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
