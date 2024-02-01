@@ -2,14 +2,14 @@
     @foreach ($menu->all() as $item)
         @if (is_null($item->subMenu()))
             <a href="{{ $item->link() }}"
-                class="text-darkblue hover:text-pink @if ($item->isActive()) font-bold @endif">
+                class="text-darkblue hover:text-purple @if ($item->isActive()) font-bold @endif">
                 {{ $item->label() }}
             </a>
         @else
             <div class="header-actions flex items-center gap-3 md:gap-5">
                 <div x-data="{ {{ $item->id() }}: false }" class="relative inline-block">
                     <button @click="{{ $item->id() }} = ! {{ $item->id() }}"
-                        class="flex items-center text-darkblue hover:text-pink transition">
+                        class="flex items-center text-darkblue hover:text-purple transition">
                         <span class="hidden md:block ml-2">
                             {{ $item->label() }}
                         </span>
