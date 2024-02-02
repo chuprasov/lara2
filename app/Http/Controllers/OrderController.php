@@ -2,15 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\OrderFormRequest;
-use Domain\Order\Actions\NewOrderAction;
-use Domain\Order\Models\DeliveryType;
-use Domain\Order\Models\PaymentMethod;
 use DomainException;
-use Illuminate\Contracts\Foundation\Application;
-use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Domain\Order\Models\DeliveryType;
 use Illuminate\Http\RedirectResponse;
+use Domain\Order\Models\PaymentMethod;
+use Illuminate\Contracts\View\Factory;
+use Domain\Order\Actions\NewOrderAction;
+use Domain\Order\Processes\OrderProcess;
+use Domain\Order\Processes\AssignCustomer;
+use Domain\Order\Processes\AssignProducts;
+use Domain\Order\Requests\OrderFormRequest;
+use Illuminate\Contracts\Foundation\Application;
+use Domain\Order\Processes\CheckProductQuantities;
 
 class OrderController
 {
@@ -32,6 +36,14 @@ class OrderController
     public function handle(OrderFormRequest $request, NewOrderAction $action): RedirectResponse
     {
         $order = $action($request);
+
+        $orderProcess = new OrderProcess($order);
+
+        $orderProcess->processes([
+            new CheckProductQuantities(),
+            new AssignCustomer(request('customer')),
+            new AssignProducts()
+        ])->run();
 
         return redirect()->route('home');
     }

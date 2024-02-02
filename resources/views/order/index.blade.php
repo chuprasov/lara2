@@ -20,6 +20,7 @@
 
                 <form action="{{ route('order.handle') }}" method="POST"
                     class="grid xl:grid-cols-3 items-start gap-6 2xl:gap-8 mt-12">
+                    @csrf
 
                     <!-- Contact information -->
                     <div class="p-6 2xl:p-8 rounded-[20px] bg-card">
@@ -44,7 +45,7 @@
                                 </x-forms.error>
                             @enderror
 
-                            <x-forms.text-input type="text" name="customer[last_name]" placeholder="Номер телефона"
+                            <x-forms.text-input type="text" name="customer[phone]" placeholder="Номер телефона"
                                 value="{{ old('customer.phone') }}" required :isError="$errors->has('customer.phone')" />
 
                             @error('customer.phone')
@@ -113,9 +114,9 @@
                                     <div class="space-y-3">
 
                                         <div class="form-radio">
-                                            <input type="radio" name="delivery-type-id"
+                                            <input type="radio" name="delivery_type_id"
                                                 id="delivery-type-{{ $delivery->id }}" value="{{ $delivery->id }}"
-                                                @checked($loop->first || old('delivery_type_id') === $delivery->id)>
+                                                @checked($loop->first || old('delivery_id') === $delivery->id)>
                                             <label for="delivery-type-{{ $delivery->id }}" class="form-radio-label">
                                                 {{ $delivery->title }}
                                             </label>
@@ -153,7 +154,7 @@
                             <div class="space-y-5">
                                 @foreach ($payments as $payment)
                                     <div class="form-radio">
-                                        <input type="radio" name="payment-method-id"
+                                        <input type="radio" name="payment_method_id"
                                             id="payment-method-{{ $payment->id }}" value="{{ $payment->id }}"
                                             @checked($loop->first || old('payment_method_id') === $payment->id)>
                                         <label for="payment-method-{{ $payment->id }}" class="form-radio-label">

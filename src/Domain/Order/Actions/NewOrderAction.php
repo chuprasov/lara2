@@ -2,10 +2,10 @@
 
 namespace Domain\Order\Actions;
 
-use App\Http\Requests\OrderFormRequest;
-use Domain\Auth\Contracts\RegisterUserContract;
-use Domain\Auth\DTOs\NewUserDTO;
 use Domain\Order\Models\Order;
+use Domain\Auth\DTOs\NewUserDTO;
+use Domain\Order\Requests\OrderFormRequest;
+use Domain\Auth\Contracts\RegisterUserContract;
 
 class NewOrderAction
 {
