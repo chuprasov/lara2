@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\OrderFormRequest;
+use Domain\Order\Actions\NewOrderAction;
 use Domain\Order\Models\DeliveryType;
 use Domain\Order\Models\PaymentMethod;
 use DomainException;
@@ -27,8 +29,10 @@ class OrderController
         ]);
     }
 
-    public function handle(): RedirectResponse
+    public function handle(OrderFormRequest $request, NewOrderAction $action): RedirectResponse
     {
+        $order = $action($request);
+
         return redirect()->route('home');
     }
 }
