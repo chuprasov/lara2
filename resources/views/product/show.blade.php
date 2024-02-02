@@ -8,8 +8,8 @@
 
             <!-- Breadcrumbs -->
             <ul class="breadcrumbs flex flex-wrap gap-y-1 gap-x-4 mb-6">
-                <li><a href="{{ route('home') }}" class="text-gray hover:text-purple text-xs">Главная</a></li>
-                <li><a href="{{ route('catalog') }}" class="text-gray hover:text-purple text-xs">Каталог</a></li>
+                <li><a href="{{ route('home') }}" class="text-gray hover:text-darkblue text-xs">Главная</a></li>
+                <li><a href="{{ route('catalog') }}" class="text-gray hover:text-darkblue text-xs">Каталог</a></li>
                 <li><span class="text-gray text-xs">{{ $product->title }}</span></li>
             </ul>
 
@@ -108,8 +108,8 @@
                                     <button type="button"
                                         class="w-12 h-full rounded-lg border border-solid border-black bg-gray/5 text-dark text-xs shadow-transparent outline-0 transition">+</button>
                                 </div>
-                                <button type="submit" class="!px-6 xs:!px-8 btn btn-purple">Добавить в корзину</button>
-                                <a href="#" class="w-[68px] !px-0 btn btn-red" title="В избранное">
+                                <button type="submit" class="!px-6 xs:!px-8 btn btn-gray">Добавить в корзину</button>
+                                <a href="#" class="w-[68px] !px-0 btn btn-blue" title="В избранное">
                                     <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                                         viewBox="0 0 52 52">
                                         <path

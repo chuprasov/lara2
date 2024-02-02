@@ -9,14 +9,14 @@
 
             <!-- Breadcrumbs -->
             <ul class="breadcrumbs flex flex-wrap gap-y-1 gap-x-4 mb-6">
-                <li><a href="{{ route('home') }}" class="text-body hover:text-pink text-xs">Главная</a></li>
-                <li><a href="{{ route('cart') }}" class="text-body hover:text-pink text-xs">Корзина покупок</a></li>
-                <li><span class="text-body text-xs">Оформление заказа</span></li>
+                <li><a href="{{ route('home') }}" class="text-gray hover:text-purple text-xs">Главная</a></li>
+                <li><a href="{{ route('cart') }}" class="text-gray hover:text-purple text-xs">Корзина покупок</a></li>
+                <li><span class="text-gray text-xs">Оформление заказа</span></li>
             </ul>
 
             <section>
                 <!-- Section heading -->
-                <h1 class="mb-8 text-lg lg:text-[42px] font-black">Оформление заказа</h1>
+                <h1 class="mb-8 text-lg lg:text-[42px] font-black text-darkblue">Оформление заказа</h1>
 
                 <form action="{{ route('order.handle') }}" method="POST"
                     class="grid xl:grid-cols-3 items-start gap-6 2xl:gap-8 mt-12">
@@ -183,7 +183,7 @@
                                         <td scope="row" class="pb-3 border-b border-body/10">
                                             <h4 class="font-bold">
                                                 <a href="{{ route('product', $item->product) }}"
-                                                    class="inline-block text-white hover:text-pink break-words pr-3">
+                                                    class="inline-block text-white hover:text-purple break-words pr-3">
                                                     {{ $item->product->title }}
                                                 </a>
                                             </h4>
@@ -253,7 +253,7 @@
                             </table>
 
                             <!-- Process to checkout -->
-                            <button type="submit" class="w-full btn btn-pink">Оформить заказ</button>
+                            <button type="submit" class="w-full btn btn-purple">Оформить заказ</button>
                         </div>
                     </div>
 
