@@ -23,5 +23,4 @@ class NewOrderState extends OrderState
     {
         return 'Новый заказ';
     }
-
 }

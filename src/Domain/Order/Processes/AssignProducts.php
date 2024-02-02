@@ -2,8 +2,8 @@
 
 namespace Domain\Order\Processes;
 
-use Domain\Order\Models\Order;
 use Domain\Order\Contracts\OrderProcessContract;
+use Domain\Order\Models\Order;
 
 class AssignProducts implements OrderProcessContract
 {
@@ -13,9 +13,9 @@ class AssignProducts implements OrderProcessContract
             ->createMany(
                 cart()->items()->map(function ($item) {
                     return [
-                        'product_id'  => $item->product_id,
-                        'price'  => $item->price,
-                        'quantity'  => $item->quantity,
+                        'product_id' => $item->product_id,
+                        'price' => $item->price,
+                        'quantity' => $item->quantity,
                     ];
                 })->toArray()
             );

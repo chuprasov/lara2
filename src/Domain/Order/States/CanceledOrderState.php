@@ -22,5 +22,4 @@ class CanceledOrderState extends OrderState
     {
         return 'Отменен';
     }
-
 }

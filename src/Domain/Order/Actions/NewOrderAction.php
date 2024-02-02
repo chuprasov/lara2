@@ -2,10 +2,10 @@
 
 namespace Domain\Order\Actions;
 
-use Domain\Order\Models\Order;
-use Domain\Auth\DTOs\NewUserDTO;
-use Domain\Order\Requests\OrderFormRequest;
 use Domain\Auth\Contracts\RegisterUserContract;
+use Domain\Auth\DTOs\NewUserDTO;
+use Domain\Order\Models\Order;
+use Domain\Order\Requests\OrderFormRequest;
 
 class NewOrderAction
 {
@@ -17,7 +17,7 @@ class NewOrderAction
 
         if (request()->boolean('create_account')) {
             $registerAction(NewUserDTO::make(
-                $customer['first_name'] . ' ' . $customer['last_name'],
+                $customer['first_name'].' '.$customer['last_name'],
                 $customer['email'],
                 $request->get('password')
             ));
@@ -29,5 +29,4 @@ class NewOrderAction
             'delivery_type_id' => $request->get('delivery_type_id'),
         ]);
     }
-
 }

@@ -2,12 +2,12 @@
 
 namespace Domain\Order\Processes;
 
-use Throwable;
-use DomainException;
-use Support\Transaction;
-use Domain\Order\Models\Order;
-use Illuminate\Pipeline\Pipeline;
 use Domain\Order\Events\OrderCreated;
+use Domain\Order\Models\Order;
+use DomainException;
+use Illuminate\Pipeline\Pipeline;
+use Support\Transaction;
+use Throwable;
 
 class OrderProcess
 {
@@ -33,7 +33,7 @@ class OrderProcess
                 ->through($this->processes)
                 ->thenReturn();
         }, function (Order $order) {
-            session()->flash('info', 'Заказ ' . $order->id . ' создан');
+            session()->flash('info', 'Заказ '.$order->id.' создан');
 
             event(new OrderCreated($order));
         }, function (Throwable $e) {

@@ -28,7 +28,7 @@
                         <div class="space-y-3">
 
                             <x-forms.text-input type="text" name="customer[first_name]" placeholder="Имя"
-                                value="{{ old('customer.first_name') }}" required :isError="$errors->has('customer.first_name')" />
+                                value="{{ old('customer.first_name') }}" :isError="$errors->has('customer.first_name')" />
 
                             @error('customer.first_name')
                                 <x-forms.error>
@@ -37,7 +37,7 @@
                             @enderror
 
                             <x-forms.text-input type="text" name="customer[last_name]" placeholder="Фамилия"
-                                value="{{ old('customer.last_name') }}" required :isError="$errors->has('customer.last_name')" />
+                                value="{{ old('customer.last_name') }}" :isError="$errors->has('customer.last_name')" />
 
                             @error('customer.last_name')
                                 <x-forms.error>
@@ -46,7 +46,7 @@
                             @enderror
 
                             <x-forms.text-input type="text" name="customer[phone]" placeholder="Номер телефона"
-                                value="{{ old('customer.phone') }}" required :isError="$errors->has('customer.phone')" />
+                                value="{{ old('customer.phone') }}" :isError="$errors->has('customer.phone')" />
 
                             @error('customer.phone')
                                 <x-forms.error>
@@ -55,7 +55,7 @@
                             @enderror
 
                             <x-forms.text-input type="email" name="customer[email]" placeholder="E-mail"
-                                value="{{ old('customer.email') }}" required :isError="$errors->has('customer.email')" />
+                                value="{{ old('customer.email') }}" :isError="$errors->has('customer.email')" />
 
                             @error('customer.email')
                                 <x-forms.error>
@@ -79,7 +79,7 @@
                                         x-transition:leave-end="opacity-0" class="mt-4 space-y-3">
 
                                         <x-forms.text-input type="password" name="password" placeholder="Придумайте пароль"
-                                            required :isError="$errors->has('password')" />
+                                            :isError="$errors->has('password')" />
 
                                         @error('password')
                                             <x-forms.error>
@@ -88,7 +88,7 @@
                                         @enderror
 
                                         <x-forms.text-input type="password" name="password_confirmation"
-                                            placeholder="Повторите пароль" required :isError="$errors->has('password_confirmation')" />
+                                            placeholder="Повторите пароль" :isError="$errors->has('password_confirmation')" />
 
                                         @error('password_confirmation')
                                             <x-forms.error>
@@ -124,7 +124,7 @@
 
                                         @if ($delivery->with_address)
                                             <x-forms.text-input type="text" name="customer[city]" placeholder="Город"
-                                                value="{{ old('customer.city') }}" required :isError="$errors->has('customer.city')" />
+                                                value="{{ old('customer.city') }}" :isError="$errors->has('customer.city')" />
 
                                             @error('customer.city')
                                                 <x-forms.error>
@@ -133,7 +133,7 @@
                                             @enderror
 
                                             <x-forms.text-input type="text" name="customer[address]" placeholder="Адрес"
-                                                value="{{ old('customer.address') }}" required :isError="$errors->has('customer.address')" />
+                                                value="{{ old('customer.address') }}" :isError="$errors->has('customer.address')" />
 
                                             @error('customer.address')
                                                 <x-forms.error>

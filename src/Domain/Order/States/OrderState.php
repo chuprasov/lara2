@@ -38,7 +38,7 @@ abstract class OrderState
         }
 
         $this->order->updateQuietly([
-            'status' => $state->value()
+            'status' => $state->value(),
         ]);
 
         event(new OrderStateChanged(
@@ -47,5 +47,4 @@ abstract class OrderState
             $state
         ));
     }
-
 }

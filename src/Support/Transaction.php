@@ -3,34 +3,33 @@
 namespace Support;
 
 use Closure;
-use Throwable;
 use Illuminate\Support\Facades\DB;
+use Throwable;
 
 class Transaction
 {
     public static function run(
         Closure $callback,
-        Closure $finished = null,
-        Closure $onError = null
-    )
-    {
+        ?Closure $finished = null,
+        ?Closure $onError = null
+    ) {
         try {
             DB::beginTransaction();
 
             $result = $callback();
 
-            if (!is_null($finished)) {
+            if (! is_null($finished)) {
                 $finished($result);
             }
 
             DB::commit();
 
             return $result;
-            
+
         } catch (Throwable $e) {
             DB::rollBack();
 
-            if (!is_null($onError)) {
+            if (! is_null($onError)) {
                 $onError($e);
             }
 

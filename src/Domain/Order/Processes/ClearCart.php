@@ -4,13 +4,12 @@ namespace Domain\Order\Processes;
 
 use Domain\Order\Contracts\OrderProcessContract;
 use Domain\Order\Models\Order;
-use Domain\Order\States\PendigOrderState;
 
-class ChangeStateToPending implements OrderProcessContract
+class ClearCart implements OrderProcessContract
 {
     public function handle(Order $order, $next)
     {
-        $order->state->transitionTo(new PendigOrderState($order));
+        cart()->truncate();
 
         return $next($order);
     }

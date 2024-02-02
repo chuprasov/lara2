@@ -2,8 +2,8 @@
 
 namespace Domain\Order\Processes;
 
-use Domain\Order\Models\Order;
 use Domain\Order\Contracts\OrderProcessContract;
+use Domain\Order\Models\Order;
 
 class AssignCustomer implements OrderProcessContract
 {

@@ -19,10 +19,10 @@ enum OrderStates: string
     public function createState(Order $order): OrderState
     {
         return match ($this) {
-            OrderStates::New  => new NewOrderState($order),
-            OrderStates::Pending  => new PendigOrderState($order),
-            OrderStates::Paid  => new PaidOrderState($order),
-            OrderStates::Canceled  => new CanceledOrderState($order),
+            OrderStates::New => new NewOrderState($order),
+            OrderStates::Pending => new PendigOrderState($order),
+            OrderStates::Paid => new PaidOrderState($order),
+            OrderStates::Canceled => new CanceledOrderState($order),
         };
     }
 }

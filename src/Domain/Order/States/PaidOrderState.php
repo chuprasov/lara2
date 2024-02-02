@@ -22,5 +22,4 @@ class PaidOrderState extends OrderState
     {
         return 'Оплачен';
     }
-
 }

@@ -23,5 +23,4 @@ class PendigOrderState extends OrderState
     {
         return 'В обработке';
     }
-
 }
