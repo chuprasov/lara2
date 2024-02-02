@@ -78,7 +78,7 @@
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" href="#"
-                                        class="inline-flex items-center text-body hover:text-purple">
+                                        class="inline-flex items-center text-body hover:text-gray">
                                         <svg class="shrink-0 w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                                             viewBox="0 0 20 20">
                                             <path
@@ -94,7 +94,7 @@
                     </div>
                 @endauth
 
-                <a href="{{ route('cart') }}" class="flex items-center gap-3 text-darkblue hover:text-purple">
+                <a href="{{ route('cart') }}" class="flex items-center gap-3 text-darkblue hover:text-gray">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-6 md:w-7 md:h-7" fill="currentColor"
                         viewBox="0 0 52 52">
                         <path

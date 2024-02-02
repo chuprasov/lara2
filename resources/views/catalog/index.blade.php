@@ -3,8 +3,8 @@
 @section('content')
     <!-- Breadcrumbs -->
     <ul class="breadcrumbs flex flex-wrap gap-y-1 gap-x-4 mb-6">
-        <li><a href={{ route('home') }} class="text-gray hover:text-purple text-xs">Главная</a></li>
-        <li><a href={{ route('catalog') }} class="text-gray hover:text-purple text-xs">Каталог</a></li>
+        <li><a href={{ route('home') }} class="text-gray hover:text-darkblue text-xs">Главная</a></li>
+        <li><a href={{ route('catalog') }} class="text-gray hover:text-darkblue text-xs">Каталог</a></li>
 
         @if ($category->exists)
             <li>
@@ -38,7 +38,7 @@
             <!-- Filters -->
             <aside class="basis-2/5 xl:basis-1/4">
                 <form action="{{ route('catalog', $category) }}"
-                    class="overflow-auto max-h-[320px] lg:max-h-[100%] space-y-1 p-6 2xl:p-8 rounded-2xl bg-card">
+                    class="overflow-auto max-h-[320px] lg:max-h-[100%] space-y-1 p-8 rounded-lg border border-solid border-black bg-gray/5 text-dark >
 
                     <input type="hidden" name="sort" value="{{ request('sort') }}">
 
@@ -48,7 +48,7 @@
                     @endforeach
 
                     <div>
-                        <button type="submit" class="w-full !h-16 mt-4 btn btn-purple">Применить</button>
+                        <button type="submit" class="w-full !h-16 mt-4 btn btn-blue">Применить</button>
                     </div>
 
                     @if (request('filters'))
@@ -67,7 +67,7 @@
                         <div class="flex items-center gap-2">
 
                             <a href="{{ filters_url($category, ['view-products' => 'grid']) }}"
-                                class="{{ session()->get('view-products') === 'grid' ? 'pointer-events-none text-purple' : '' }} inline-flex items-center justify-center w-10 h-10 rounded-md bg-card hover:text-blue-600">
+                                class="{{ session()->get('view-products') === 'grid' ? 'pointer-events-none text-blue-600' : '' }} inline-flex items-center justify-center w-10 h-10 rounded-md bg-card hover:text-blue-600">
                                 <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                                     viewBox="0 0 52 52">
                                     <path fill-rule="evenodd"
@@ -77,7 +77,7 @@
                             </a>
 
                             <a href="{{ filters_url($category, ['view-products' => 'list']) }}"
-                                class="{{ session()->get('view-products') === 'list' ? 'pointer-events-none text-purple' : '' }} inline-flex items-center justify-center w-10 h-10 rounded-md bg-card hover:text-blue-600">
+                                class="{{ session()->get('view-products') === 'list' ? 'pointer-events-none text-blue-600' : '' }} inline-flex items-center justify-center w-10 h-10 rounded-md bg-card hover:text-blue-600">
                                 <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                                     viewBox="0 0 52 52">
                                     <path fill-rule="evenodd"
@@ -87,13 +87,13 @@
                             </a>
 
                         </div>
-                        <div class="text-gray text-xxs sm:text-xs">Найдено: {{ $products->total() }} товаров</div>
+                        <div class="text-dark text-xxs sm:text-xs">Найдено: {{ $products->total() }} товаров</div>
                     </div>
 
                     <div x-data="{ sort: '{{ filters_url($category, ['sort' => request('sort')]) }}' }" class="flex flex-col sm:flex-row sm:items-center gap-3">
-                        <span class="text-gray text-xxs sm:text-xs w-full">Сортировать по</span>
+                        <span class="text-dark text-xxs sm:text-xs w-full">Сортировать по</span>
                         <select name="sort" x-model="sort" x-on:change="window.location = sort"
-                            class="form-select w-full h-12 px-4 rounded-lg border border-body/10  bg-white/5 text-gray text-xxs sm:text-xs shadow-transparent outline-0 transition">
+                            class="form-select w-full h-12 px-4 rounded-lg border border-black  bg-gray/5 text-dark text-xxs sm:text-xs shadow-transparent outline-0 transition">
                             <option value="{{ filters_url($category, ['sort' => '']) }}" class="text-dark">
                                 умолчанию
                             </option>

@@ -34,7 +34,7 @@ module.exports = {
         pink: "#EC4176",
         dark: "#222",
         green: "#228B22",
-        gray: "#696969",
+        gray: "#6c7494",
         darkblue: "#1E1F43",
 				body: '#BDBECA',
 				card: '#323359',
