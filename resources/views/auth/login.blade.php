@@ -20,9 +20,9 @@
         <x-slot:buttons>
             <div class="mt-5 flex items-center justify-between">
                 <div class="text-xxs md:text-xs"><a href="{{ route('forgotPassword') }}"
-                        class="text-white hover:text-white/70 font-bold">Забыли пароль?</a></div>
+                        class="text-black hover:text-darkblue font-bold">Забыли пароль?</a></div>
                 <div class="text-xxs md:text-xs"><a href="{{ route('register') }}"
-                        class="text-white hover:text-white/70 font-bold">Регистрация</a></div>
+                        class="text-black hover:text-darkblue font-bold">Регистрация</a></div>
             </div>
         </x-slot:buttons>
 

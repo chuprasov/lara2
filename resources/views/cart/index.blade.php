@@ -120,7 +120,7 @@
                             <form action="{{ route('cart.truncate') }}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="text-black hover:text-white font-medium">
+                                <button type="submit" class="text-black hover:text-darkblue font-medium">
                                     Очистить корзину
                                 </button>
                             </form>
