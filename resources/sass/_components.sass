@@ -81,7 +81,7 @@ input[type=number]
 .form-control
 	width: 100%
 	padding: 24px 32px
-	border-radius: 8px
+	border-radius: 20px
 	border: 0
 	box-shadow: 0 4px 0 rgba($white, 0.2)
 	background-color: $white
@@ -177,8 +177,8 @@ input[type=number]
 		padding-top: 2px
 		margin-bottom: 0
 		padding-left: 36px
-		color: $white
-		font-size: 16px
+		color: $darkblue
+		font-size: 18px
 		line-height: 20px
 		&::before
 			content: ''
@@ -189,7 +189,7 @@ input[type=number]
 			width: 24px
 			height: 24px
 			border-radius: 50%
-			border: 1px solid rgba($body, 0.35)
+			border: 1px solid rgba($black, 0.50)
 			background-color: $trsp
 			transition: $trs
 		&::after
@@ -209,11 +209,11 @@ input[type=number]
 		&:hover
 			&::before,
 			&::after
-				border-color: $pink
+				border-color: $darkblue
 	input:checked + label
 		&::before
 			border-color: $trsp
-			background-color: $pink
+			background-color: $darkblue
 		&::after
 			opacity: 1
 
