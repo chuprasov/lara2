@@ -1,4 +1,4 @@
-<div class="pb-8">
+<div class="pb-4">
     <h5 class="mb-4 text-sm 2xl:text-md font-bold">{{ $filter->title() }}</h5>
 
     <div class="flex items-center justify-between gap-3 mb-2">
@@ -15,7 +15,7 @@
             class="w-full h-12 px-4 rounded-lg border border-black bg-gray/5 text-dark text-xs shadow-transparent outline-0 transition"
             value="9800" placeholder="От"
         >
-        <span class="text-body text-sm font-medium">–</span>
+        <span class="text-gray text-sm font-medium">–</span>
         <input
             id="{{ $filter->id('to') }}"
             name="{{ $filter->name('to') }}"

@@ -24,20 +24,20 @@
                         x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0"
                         x-transition:enter-end="opacity-100" x-transition:leave="ease-in duration-150"
                         x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"
-                        class="absolute z-50 top-0 -right-[100px] w-[280px] sm:w-[300px] mt-14 p-4 rounded-lg shadow-xl bg-card divide-y divide-gray-100">
+                        class="absolute z-50 top-2 -right-[100px] w-[280px] sm:w-[300px] mt-14 p-4 rounded-lg shadow-xl bg-bgheader divide-y divide-black">
                         <div class="pb-3">
                             <a href="{{ route('catalog') }}"
-                                class="text-white hover:text-gray bg-card text-xs font-medium">
+                                class="text-black hover:text-darkblue bg-bgheader text-xs font-medium">
                                 Все категории
                             </a>
                         </div>
                         <div class="pt-3">
                             <ul class="space-y-2">
                                 @foreach ($item->subMenu() as $subItem)
-                                    <div class={{ $subItem->isChecked() ? 'bg-pink' : 'bg-card' }}>
+                                    <div class="bg-bgheader">
                                         <li>
                                             <a href="{{ $subItem->link() }}"
-                                                class="text-white hover:text-purple  text-xs font-medium">
+                                                class="text-black hover:text-darkblue  text-xs font-medium">
                                                 {{ $subItem->label() }}
                                             </a>
                                         </li>

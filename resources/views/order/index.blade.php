@@ -4,7 +4,7 @@
 
 @section('content')
 
-    <main class="py-16 lg:py-20">
+    <main class="py-8">
         <div class="container">
 
             <!-- Breadcrumbs -->
@@ -171,7 +171,7 @@
 
 
                     <!-- Checkout -->
-                    <div class="p-6 2xl:p-8 rounded-lg bg-gray/5">
+                    <div class="p-6 2xl:p-8 rounded-lg bg-gray/5 border border-black">
                         <h3 class="mb-6 text-md 2xl:text-lg font-bold text-black">Заказ</h3>
                         <table class="w-full border-spacing-y-3 text-dark text-xxs text-left"
                             style="border-collapse: separate">
