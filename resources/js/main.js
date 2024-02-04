@@ -60,19 +60,24 @@ document.addEventListener('DOMContentLoaded', function() {
 		});
 	});
 
-	let quantity = document.querySelector('#quantity');
-	let plus = document.querySelector('#plus');
-	let minus = document.querySelector('#minus');
+	let quantity = document.querySelectorAll('.quantity');
+	let plus = document.querySelectorAll('.plus');
+	let minus = document.querySelectorAll('.minus');
 
-	plus.onclick = function() {
-		quantity.value = parseInt(quantity.value) + 1;
-	}
 
-	minus.onclick = function() {
-		if (quantity.value > 1) {
-			quantity.value = parseInt(quantity.value) - 1;
-		}
+	for (let i = 0; i < plus.length; i++) {
+	plus[i].onclick = function() {
+		quantity[i].value = parseInt(quantity[i].value) + 1;
+	};
 		
+	};
+
+	for (let i = 0; i < minus.length; i++) {	
+			minus[i].onclick = function() {
+			if (quantity[i].value > 1) {
+				quantity[i].value = parseInt(quantity[i].value) - 1;
+			};		
+		};
 	}
 
 });
