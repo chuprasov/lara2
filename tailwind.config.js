@@ -40,6 +40,7 @@ module.exports = {
 				card: '#323359',
         bgheader: '#cccccc',
         red: '#8B0000',
+        input: '#DCDCDC',
       },
     },
   },
