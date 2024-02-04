@@ -100,12 +100,12 @@
 
                             <div class="flex flex-wrap items-center gap-3">
                                 <div class="flex items-stretch h-[54px] lg:h-[72px] gap-1">
-                                    <button type="button"
+                                    <button type="button" id="minus"
                                         class="w-12 h-full rounded-lg border border-solid border-black bg-gray/5 text-dark text-xs shadow-transparent outline-0 transition">-</button>
-                                    <input name="quantity" type="number"
+                                    <input name="quantity" type="number" id="quantity"
                                         class="h-full px-2 md:px-4 text-center rounded-lg border border-solid border-black bg-gray/5 text-dark placeholder:text-dark text-xs  shadow-transparent outline-0 transition"
                                         min="1" max="999" value="1" placeholder="К-во">
-                                    <button type="button"
+                                    <button type="button" id="plus"
                                         class="w-12 h-full rounded-lg border border-solid border-black bg-gray/5 text-dark text-xs shadow-transparent outline-0 transition">+</button>
                                 </div>
                                 <button type="submit" class="!px-6 xs:!px-8 btn btn-gray">Добавить в корзину</button>

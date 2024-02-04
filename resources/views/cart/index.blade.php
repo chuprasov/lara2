@@ -75,14 +75,14 @@
                                             <div class="flex items-stretch h-[56px] gap-2">
                                                 <form action="{{ route('cart.quantity', $cartItem) }}" method="POST">
                                                     @csrf
-                                                    <button type="button"
-                                                        class="w-12 h-full rounded-lg border border-body/10 hover:bg-card/20 active:bg-card/50 focus:border-black bg-white/5 text-white text-xs text-center font-bold shadow-transparent outline-0 transition">-</button>
-                                                    <input name="quantity" type="number"
-                                                        class="h-full px-2 lg:px-4 rounded-lg border border-body/10 focus:border-black bg-white/5 text-white text-xs text-center font-bold shadow-transparent outline-0 transition"
+                                                    <button type="button" id="minus"
+                                                        class="w-12 h-full rounded-lg border border-black/20 hover:bg-card/20 active:bg-card/50  bg-white/5 text-white text-xs text-center font-bold shadow-transparent outline-0 transition">-</button>
+                                                    <input name="quantity" type="number" id="quantity"
+                                                        class="h-full px-2 lg:px-4 rounded-lg border  border-black/20 bg-white/5 text-white text-xs text-center font-bold shadow-transparent outline-0 transition"
                                                         min="1" max="999" value="{{ $cartItem->quantity }}"
                                                         placeholder="К-во">
-                                                    <button type="button"
-                                                        class="w-12 h-full rounded-lg border border-body/10 hover:bg-card/20 active:bg-card/50 focus:border-black bg-white/5 text-white text-xs text-center font-bold shadow-transparent outline-0 transition">+</button>
+                                                    <button type="button" id="plus"
+                                                        class="w-12 h-full rounded-lg border border-black/20 hover:bg-card/20 active:bg-card/50  bg-white/5 text-white text-xs text-center font-bold shadow-transparent outline-0 transition">+</button>
                                                 </form>
                                             </div>
                                         </td>

@@ -7,7 +7,7 @@
 
     <title>>@yield('title', $seo_title ?? env('APP_NAME'))</title>
 
-    @vite(['resources/css/app.css', 'resources/sass/main.sass', 'resources/js/app.js'])
+    @vite(['resources/css/app.css', 'resources/sass/main.sass', 'resources/js/app.js', 'resources/js/main.js'])
 
 </head>
 

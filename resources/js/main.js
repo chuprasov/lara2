@@ -60,4 +60,19 @@ document.addEventListener('DOMContentLoaded', function() {
 		});
 	});
 
+	let quantity = document.querySelector('#quantity');
+	let plus = document.querySelector('#plus');
+	let minus = document.querySelector('#minus');
+
+	plus.onclick = function() {
+		quantity.value = parseInt(quantity.value) + 1;
+	}
+
+	minus.onclick = function() {
+		if (quantity.value > 1) {
+			quantity.value = parseInt(quantity.value) - 1;
+		}
+		
+	}
+
 });
