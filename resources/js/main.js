@@ -63,18 +63,31 @@ document.addEventListener("DOMContentLoaded", function () {
     let quantity = document.querySelectorAll(".quantity");
     let plus = document.querySelectorAll(".plus");
     let minus = document.querySelectorAll(".minus");
+    let form = document.querySelector("#cart-form");
+
+    function quantityIncrement(i) {
+        quantity[i].value = parseInt(quantity[i].value) + 1;
+    }
+
+    function quantityDecrement(i) {
+        if (quantity[i].value > 1) {
+            quantity[i].value = parseInt(quantity[i].value) - 1;
+        }
+    }
 
     for (let i = 0; i < plus.length; i++) {
-        plus[i].onclick = function () {
-            quantity[i].value = parseInt(quantity[i].value) + 1;
-        };
+        plus[i].addEventListener("click", function (event) {
+            quantityIncrement(i);
+            event.stopImmediatePropagation();
+            form.submit();
+        });
     }
 
     for (let i = 0; i < minus.length; i++) {
-        minus[i].onclick = function () {
-            if (quantity[i].value > 1) {
-                quantity[i].value = parseInt(quantity[i].value) - 1;
-            }
-        };
+        minus[i].addEventListener("click", function (event) {
+            quantityDecrement(i);
+            event.stopImmediatePropagation();
+            form.submit();
+        });
     }
 });

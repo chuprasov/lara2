@@ -73,7 +73,7 @@
                                         </td>
                                         <td class="py-4 px-4 md:px-6 bg-gray">
                                             <div class="flex items-stretch h-[56px] gap-2">
-                                                <form action="{{ route('cart.quantity', $cartItem) }}" method="POST">
+                                                <form action="{{ route('cart.quantity', $cartItem) }}" method="POST" id="cart-form">
                                                     @csrf
                                                     <button type="button" id="minus"
                                                         class="minus w-12 h-full rounded-lg border border-black/20 hover:bg-bgheader/80 active:bg-card/50  bg-bgheader text-black text-xs text-center font-bold shadow-transparent outline-0 transition">-</button>
