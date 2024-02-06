@@ -9,8 +9,11 @@ use Filament\Tables\Table;
 use Domain\Catalog\Models\Brand;
 use Filament\Resources\Resource;
 use Domain\Product\Models\Product;
+use Domain\Product\Models\Property;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Toggle;
+use Filament\Forms\Components\Checkbox;
+use Filament\Forms\Components\Repeater;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
 use Filament\Tables\Columns\ImageColumn;
@@ -18,9 +21,12 @@ use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
 use Filament\Tables\Columns\ToggleColumn;
 use Illuminate\Database\Eloquent\Builder;
+use Filament\Forms\Components\CheckboxList;
+use Filament\Tables\Columns\CheckboxColumn;
 use App\Filament\Resources\ProductResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\ProductResource\RelationManagers;
+use Domain\Catalog\Models\Category;
 
 class ProductResource extends Resource
 {
@@ -33,15 +39,23 @@ class ProductResource extends Resource
         return $form
             ->schema([
                 TextInput::make('title'),
+                /* Select::make('brand_id')
+                    ->options(Brand::all()->pluck('title', 'id')), */
                 Select::make('brand_id')
-                    ->options(Brand::all()->pluck('title', 'id')),
+                    ->relationship('brand', 'title'),
                 FileUpload::make('thumbnail')
                     ->disk('images')
                     ->directory('products'),
-                Toggle::make('on_home_page'),
+                Checkbox::make('on_home_page'),
                 TextInput::make('price')
                     ->numeric(),
                 RichEditor::make('text'),
+                CheckboxList::make('categories')
+                    ->relationship('categories', 'title'),
+                CheckboxList::make('optionValues')
+                    ->relationship('optionValues', 'title'),
+                CheckboxList::make('properties')
+                    ->relationship('properties', 'title'),
             ]);
     }
 
@@ -52,7 +66,7 @@ class ProductResource extends Resource
                 TextColumn::make('title'),
                 /* ImageColumn::make('thumbnail')
                     ->disk('images'), */
-                ToggleColumn::make('on_home_page'),
+                CheckboxColumn::make('on_home_page'),
                 TextColumn::make('brand.title')
                     ->badge(),
                 TextColumn::make('price')
