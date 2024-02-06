@@ -15,9 +15,9 @@
         </h3>
         <div class="mt-auto pt-6 flex items-center justify-betwen">
             <div class="flex text-sm font-semibold w-full">
-                {{ $product->price }}
+                {{ $product->priceFormatted() }}
             </div>
-            
+
             <div class="flex items-center gap-2">
                 <a href="{{ route('product', $product) }}" class="w-[56px] !h-[56px] !px-0 btn btn-blue">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 52 52">

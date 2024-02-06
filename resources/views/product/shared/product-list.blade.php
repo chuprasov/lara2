@@ -24,7 +24,7 @@
         </ul>
         <div class="flex flex-col xl:flex-row xl:items-center xl:justify-between gap-6 mt-6">
             <div class="flex items-baseline gap-4">
-                <div class="text-white text-md xl:text-lg font-black">{{ $product->price }}</div>
+                <div class="text-white text-md xl:text-lg font-black">{{ $product->priceFormatted() }}</div>
             </div>
 
             <div class="flex flex-wrap items-center gap-2">

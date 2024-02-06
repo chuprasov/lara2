@@ -2,20 +2,21 @@
 
 namespace Domain\Product\Models;
 
+use Support\Casts\PriceCast;
+use Laravel\Scout\Searchable;
+use Support\ValueObjects\Price;
+use Domain\Catalog\Models\Brand;
+use Support\Traits\Models\HasSlug;
+use Domain\Catalog\Models\Category;
 use App\Jobs\ProductJsonPropertiesJob;
 use Database\Factories\ProductFactory;
-use Domain\Catalog\Models\Brand;
-use Domain\Catalog\Models\Category;
-use Domain\Product\QueryBuilders\ProductQueryBuilder;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Laravel\Scout\Attributes\SearchUsingFullText;
-use Laravel\Scout\Searchable;
-use Support\Casts\PriceCast;
-use Support\Traits\Models\HasSlug;
 use Support\Traits\Models\HasThumbnail;
+use Laravel\Scout\Attributes\SearchUsingFullText;
+use Domain\Product\QueryBuilders\ProductQueryBuilder;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Product extends Model
 {
@@ -37,7 +38,7 @@ class Product extends Model
     ];
 
     protected $casts = [
-        'price' => PriceCast::class,
+        'price' => 'int', //PriceCast::class,
         'json_properties' => 'array',
     ];
 
@@ -95,4 +96,10 @@ class Product extends Model
             'text' => $this->text,
         ];
     }
+
+    public function priceFormatted(): Price
+    {
+        return Price::make($this->price);
+    }
+
 }

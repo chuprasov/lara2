@@ -29,9 +29,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        /* Model::shouldBeStrict(!app()->isProduction());
+        Model::shouldBeStrict(! app()->isProduction());
 
-        if (app()->isProduction()) {
+        /* if (app()->isProduction()) {
 
             DB::listen(function ($query) {
                 if ($query->time > 1) {
@@ -53,12 +53,5 @@ class AppServiceProvider extends ServiceProvider
             );
         } */
 
-        /* DB::beforeExecuting(function($query, $params){
-            echo '<div>';
-            var_dump($query);
-            var_dump($params);
-            echo '<hr>';
-            echo '</div>';
-        }); */
     }
 }

@@ -68,7 +68,7 @@
                                         </td>
                                         <td class="py-4 px-4 md:px-6 bg-gray">
                                             <div class="font-medium whitespace-nowrap">
-                                                {{ $cartItem->product->price }}
+                                                {{ $cartItem->product->priceFormatted() }}
                                             </div>
                                         </td>
                                         <td class="py-4 px-4 md:px-6 bg-gray">

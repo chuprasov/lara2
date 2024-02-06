@@ -4,11 +4,12 @@ declare(strict_types=1);
 
 namespace Support\ValueObjects;
 
-use InvalidArgumentException;
 use Stringable;
+use Livewire\Wireable;
 use Support\Traits\Makeable;
+use InvalidArgumentException;
 
-class Price implements Stringable
+class Price implements Stringable //, Wireable
 {
     use Makeable;
 
@@ -25,7 +26,7 @@ class Price implements Stringable
             throw new InvalidArgumentException('Price < 0');
         }
 
-        if (! isset($this->currencies[$currency])) {
+        if (!isset($this->currencies[$currency])) {
             throw new InvalidArgumentException('Currency not allowed');
         }
     }
@@ -52,6 +53,16 @@ class Price implements Stringable
 
     public function __toString(): string
     {
-        return number_format($this->value(), 2, ',', ' ').' '.$this->symbol();
+        return number_format($this->value(), 2, ',', ' ') . ' ' . $this->symbol();
     }
+
+    /* public function toLivewire()
+    {
+        return [$this->value];
+    }
+
+    public static function fromLivewire($value)
+    {
+        return self::make($value[0]);
+    } */
 }
