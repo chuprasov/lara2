@@ -17,6 +17,7 @@
             <div class="flex text-sm font-semibold w-full">
                 {{ $product->priceFormatted() }}
             </div>
+            <div hidden>{{ $product->price }}</div> {{-- for test --}}
 
             <div class="flex items-center gap-2">
                 <a href="{{ route('product', $product) }}" class="w-[56px] !h-[56px] !px-0 btn btn-blue">

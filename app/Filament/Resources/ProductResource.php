@@ -6,13 +6,16 @@ use Filament\Forms;
 use Filament\Tables;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
+use Domain\Catalog\Models\Brand;
 use Filament\Resources\Resource;
 use Domain\Product\Models\Product;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Toggle;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\RichEditor;
 use Filament\Tables\Columns\ToggleColumn;
 use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\ProductResource\Pages;
@@ -30,12 +33,15 @@ class ProductResource extends Resource
         return $form
             ->schema([
                 TextInput::make('title'),
+                Select::make('brand_id')
+                    ->options(Brand::all()->pluck('title', 'id')),
                 FileUpload::make('thumbnail')
                     ->disk('images')
                     ->directory('products'),
                 Toggle::make('on_home_page'),
                 TextInput::make('price')
                     ->numeric(),
+                RichEditor::make('text'),
             ]);
     }
 
@@ -44,12 +50,13 @@ class ProductResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('title'),
-                ImageColumn::make('thumbnail')
-                    ->disk('images'),
+                /* ImageColumn::make('thumbnail')
+                    ->disk('images'), */
                 ToggleColumn::make('on_home_page'),
-                TextColumn::make('brand.title'),
+                TextColumn::make('brand.title')
+                    ->badge(),
                 TextColumn::make('price')
-                ->money('RUR', divideBy: 100),
+                    ->money('RUR', divideBy: 100),
             ])
             ->filters([
                 //

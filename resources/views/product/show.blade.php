@@ -129,8 +129,8 @@
             <section class="mt-12 xl:mt-8 pt-6 lg:pt-12 border-t border-white/10">
                 <h2 class="mb-8 text-lg lg:text-[32px] font-black text-dark">Описание</h2>
                 <article class="text-xs md:text-sm text-dark">
-                    {{-- {!! $product->text !!} --}}
-                    {{ $product->text }}
+                    {!! $product->text !!}
+                    {{-- {{ $product->text }} --}}
                 </article>
             </section>
 

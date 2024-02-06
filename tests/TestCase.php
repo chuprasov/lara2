@@ -2,13 +2,14 @@
 
 namespace Tests;
 
+use Illuminate\Support\Str;
 use Domain\Auth\Models\User;
 use Domain\Cart\CartManager;
-use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Queue;
-use Storage;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Notification;
+use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 
 abstract class TestCase extends BaseTestCase
 {
@@ -55,6 +56,7 @@ abstract class TestCase extends BaseTestCase
                 'name' => self::USER_NAME,
                 'email' => self::USER_EMAIL,
                 'password' => bcrypt(self::USER_PASSWORD),
+                'remember_token' => Str::random(10),
             ]);
         }
 
