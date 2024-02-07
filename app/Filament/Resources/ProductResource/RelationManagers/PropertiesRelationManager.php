@@ -14,6 +14,8 @@ class PropertiesRelationManager extends RelationManager
 {
     protected static string $relationship = 'properties';
 
+    protected static ?string $title = 'Свойства';
+
     public function form(Form $form): Form
     {
         return $form
@@ -50,7 +52,8 @@ class PropertiesRelationManager extends RelationManager
                             ->searchable()
                             ->preload(),
                         Forms\Components\TextInput::make('value')
-                            ->required(),
+                            ->required()
+                            ->maxLength(255),
                     ]),
             ])
             ->actions([
@@ -58,11 +61,14 @@ class PropertiesRelationManager extends RelationManager
                 Tables\Actions\EditAction::make()
                     ->form(fn (Tables\Actions\EditAction $action): array => [
                         Forms\Components\TextInput::make('value')
-                            ->required(),
-                    ]),
+                            ->required()
+                            ->maxLength(255),
+                    ])
+                    ->modalWidth('sm'),
             ])
             ->bulkActions([
                 Tables\Actions\DetachBulkAction::make(),
             ]);
     }
+
 }

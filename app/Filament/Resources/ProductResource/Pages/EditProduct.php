@@ -21,4 +21,10 @@ class EditProduct extends EditRecord
     {
         return static::getResource()::getUrl('index');
     }
+
+    public function hasCombinedRelationManagerTabsWithContent(): bool
+    {
+        return true;
+    }
+
 }
