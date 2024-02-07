@@ -4,7 +4,7 @@
             <!-- header-logo -->
             <div class="header-logo shrink-0">
                 <a href="{{ route('home') }}" rel="home">
-                    <img src={{ Vite::image('logo.svg') }}
+                    <img src="{{ Vite::image('logo.svg') }}"
                         class="w-[30px] xs:w-[36px] md:w-[100px] h-[30px] xs:h-[36px] md:h-[100px] absolute -mt-6"
                         alt="CutCode">
                 </a>
@@ -66,10 +66,20 @@
                             </div>
                             <div class="mt-4">
                                 <ul class="space-y-2">
-                                    <li><a href="orders.html" class="text-body hover:text-white text-xs font-medium">Мои
-                                            заказы</a></li>
-                                    <li><a href="edit-profile.html"
-                                            class="text-body hover:text-white text-xs font-medium">Редактировать профиль</a>
+                                    <li>
+                                        <a href="orders.html" class="text-body hover:text-white text-xs font-medium">
+                                            Мои заказы
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="edit-profile.html" class="text-body hover:text-white text-xs font-medium">
+                                            Редактировать профиль
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('filament.admin.pages.dashboard') }}" class="text-body hover:text-white text-xs font-medium">
+                                            Панель администратора
+                                        </a>
                                     </li>
                                 </ul>
                             </div>

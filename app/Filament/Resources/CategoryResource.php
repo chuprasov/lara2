@@ -21,6 +21,8 @@ class CategoryResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    protected static ?int $navigationSort = 300;
+
     public static function form(Form $form): Form
     {
         return $form
@@ -35,7 +37,6 @@ class CategoryResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('title'),
-                ToggleColumn::make('on_home_page'),
             ])
             ->filters([
                 //
