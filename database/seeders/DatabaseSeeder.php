@@ -46,7 +46,7 @@ class DatabaseSeeder extends Seeder
             ->has(
                 Product::factory(rand(3, 10))
                     ->hasAttached($properties, function () {
-                        return ['value' => ucfirst(fake()->word())];
+                        return ['value' => ucfirst(fake()->word()).'- prop-val'];
                     })
                     ->hasAttached($optionsValues)
             )

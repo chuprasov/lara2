@@ -2,9 +2,8 @@
 
 namespace Tests\Feature\App\Http\Controllers\Auth;
 
-use Tests\TestCase;
-use Illuminate\Support\Str;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
 class LoginControllerTest extends TestCase
 {

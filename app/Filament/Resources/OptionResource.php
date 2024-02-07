@@ -17,6 +17,8 @@ class OptionResource extends Resource
 
     protected static ?string $navigationLabel = 'Опции';
 
+    protected static ?string $navigationGroup = 'Магазин';
+
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     protected static ?int $navigationSort = 500;
@@ -51,5 +53,10 @@ class OptionResource extends Resource
             'create' => Pages\CreateOption::route('/create'),
             'edit' => Pages\EditOption::route('/{record}/edit'),
         ];
+    }
+
+    public static function getNavigationBadge(): ?string
+    {
+        return static::getModel()::count();
     }
 }

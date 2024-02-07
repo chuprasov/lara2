@@ -2,14 +2,14 @@
 
 namespace Tests;
 
-use Illuminate\Support\Str;
 use Domain\Auth\Models\User;
 use Domain\Cart\CartManager;
+use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Queue;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Notification;
-use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
+use Illuminate\Support\Str;
 
 abstract class TestCase extends BaseTestCase
 {

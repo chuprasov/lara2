@@ -2,21 +2,21 @@
 
 namespace Domain\Product\Models;
 
-use Support\Casts\PriceCast;
-use Laravel\Scout\Searchable;
-use Support\ValueObjects\Price;
-use Domain\Catalog\Models\Brand;
-use Support\Traits\Models\HasSlug;
-use Domain\Catalog\Models\Category;
 use App\Jobs\ProductJsonPropertiesJob;
 use Database\Factories\ProductFactory;
-use Illuminate\Database\Eloquent\Model;
-use Support\Traits\Models\HasThumbnail;
-use Laravel\Scout\Attributes\SearchUsingFullText;
+use Domain\Catalog\Models\Brand;
+use Domain\Catalog\Models\Category;
 use Domain\Product\QueryBuilders\ProductQueryBuilder;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Laravel\Scout\Attributes\SearchUsingFullText;
+use Laravel\Scout\Searchable;
+use Support\Casts\PriceCast;
+use Support\Traits\Models\HasSlug;
+use Support\Traits\Models\HasThumbnail;
+use Support\ValueObjects\Price;
 
 class Product extends Model
 {
@@ -70,7 +70,7 @@ class Product extends Model
     public function properties(): BelongsToMany
     {
         return $this->belongsToMany(Property::class)
-            ->withPivot('value');
+            ->withPivot(['value', 'property_id', 'product_id']);
     }
 
     public function optionValues(): BelongsToMany
@@ -101,5 +101,4 @@ class Product extends Model
     {
         return Price::make($this->price);
     }
-
 }

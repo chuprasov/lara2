@@ -21,6 +21,8 @@ class BrandResource extends Resource
 
     protected static ?string $navigationLabel = 'Брэнды';
 
+    protected static ?string $navigationGroup = 'Магазин';
+
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     protected static ?int $navigationSort = 200;
@@ -65,5 +67,10 @@ class BrandResource extends Resource
             'create' => Pages\CreateBrand::route('/create'),
             'edit' => Pages\EditBrand::route('/{record}/edit'),
         ];
+    }
+
+    public static function getNavigationBadge(): ?string
+    {
+        return static::getModel()::count();
     }
 }

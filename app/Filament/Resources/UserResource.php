@@ -17,6 +17,8 @@ class UserResource extends Resource
 
     protected static ?string $navigationLabel = 'Пользователи';
 
+    protected static ?string $navigationGroup = 'Настройки';
+
     protected static ?string $navigationIcon = 'heroicon-o-users';
 
     protected static ?int $navigationSort = 0;
@@ -74,5 +76,10 @@ class UserResource extends Resource
             'create' => Pages\CreateUser::route('/create'),
             'edit' => Pages\EditUser::route('/{record}/edit'),
         ];
+    }
+
+    public static function getNavigationBadge(): ?string
+    {
+        return static::getModel()::count();
     }
 }

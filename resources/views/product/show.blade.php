@@ -64,7 +64,7 @@
                             </li>
                         </ul>
                         <div class="flex items-baseline gap-4 mt-4">
-                            <div class="text-dark text-lg md:text-xl font-black">{{ $product->price }}</div>
+                            <div class="text-dark text-lg md:text-xl font-black">{{ $product->priceFormatted() }}</div>
                         </div>
                         <ul class="sm:max-w-[360px] space-y-2 mt-8">
                             @foreach ($product->properties as $property)
