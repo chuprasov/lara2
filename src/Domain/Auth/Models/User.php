@@ -4,13 +4,15 @@ namespace Domain\Auth\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
+use Filament\Panel;
+use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Notifications\Notifiable;
+use Filament\Models\Contracts\FilamentUser;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable
+class User extends Authenticatable implements FilamentUser
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -39,7 +41,7 @@ class User extends Authenticatable
     public function avatar(): Attribute
     {
         return Attribute::make(
-            get: fn () => 'https://ui-avatars.com/api/?background=0D8ABC&color=fff&name='.$this->name
+            get: fn () => 'https://ui-avatars.com/api/?background=0D8ABC&color=fff&name=' . $this->name
         );
     }
 
@@ -84,5 +86,19 @@ class User extends Authenticatable
     public function setGoogleIdAttribute(string $id)
     {
         $this->setSocialId('google', $id);
+    }
+
+    public function canAccessPanel(Panel $panel): bool
+    {
+        if (! app()->isProduction()) {
+            return true;
+        }
+
+        $email = env('MAIL_FROM_ADDRESS');
+
+        $domain = substr($email, strpos($email, '@') + 1);
+
+        return str_ends_with($this->email, '@'.$domain) && $this->hasVerifiedEmail();
+
     }
 }
