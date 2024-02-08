@@ -5,10 +5,11 @@ declare(strict_types=1);
 namespace Support\ValueObjects;
 
 use InvalidArgumentException;
+use Livewire\Wireable;
 use Stringable;
 use Support\Traits\Makeable;
 
-class Price implements Stringable
+class Price implements Stringable //, Wireable
 {
     use Makeable;
 
@@ -54,4 +55,14 @@ class Price implements Stringable
     {
         return number_format($this->value(), 2, ',', ' ').' '.$this->symbol();
     }
+
+    /* public function toLivewire()
+    {
+        return [$this->value];
+    }
+
+    public static function fromLivewire($value)
+    {
+        return self::make($value[0]);
+    } */
 }

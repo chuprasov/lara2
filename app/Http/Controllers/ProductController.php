@@ -14,6 +14,7 @@ class ProductController extends Controller
         $product->load(['optionValues.option']);
 
         $watchedProducts = Product::query()
+            ->with(['brand'])
             ->whereIn('id', session('watched') ?? [])
             ->get();
 

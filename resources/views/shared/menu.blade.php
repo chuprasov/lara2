@@ -2,14 +2,14 @@
     @foreach ($menu->all() as $item)
         @if (is_null($item->subMenu()))
             <a href="{{ $item->link() }}"
-                class="text-darkblue hover:text-pink @if ($item->isActive()) font-bold @endif">
+                class="text-darkblue hover:text-gray @if ($item->isActive()) font-bold @endif">
                 {{ $item->label() }}
             </a>
         @else
             <div class="header-actions flex items-center gap-3 md:gap-5">
-                <div x-data="{ {{ $item->id() }}: false }" class="relative inline-block">
+                <div x-data="{ {{ $item->id() }}: false }" class="relative inline-block -ml-4">
                     <button @click="{{ $item->id() }} = ! {{ $item->id() }}"
-                        class="flex items-center text-darkblue hover:text-pink transition">
+                        class="flex items-center text-darkblue hover:text-gray transition">
                         <span class="hidden md:block ml-2">
                             {{ $item->label() }}
                         </span>
@@ -24,20 +24,20 @@
                         x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0"
                         x-transition:enter-end="opacity-100" x-transition:leave="ease-in duration-150"
                         x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"
-                        class="absolute z-50 top-0 -right-20 xs:-right-8 sm:right-0 w-[280px] sm:w-[300px] mt-14 p-4 rounded-lg shadow-xl bg-card divide-y divide-gray-100">
+                        class="absolute z-50 top-2 -right-[100px] w-[280px] sm:w-[300px] mt-14 p-4 rounded-lg shadow-xl bg-bgheader divide-y divide-black">
                         <div class="pb-3">
                             <a href="{{ route('catalog') }}"
-                                class="text-white hover:text-white bg-card text-xs font-medium">
+                                class="text-black hover:text-darkblue bg-bgheader text-xs font-medium">
                                 Все категории
                             </a>
                         </div>
                         <div class="pt-3">
                             <ul class="space-y-2">
                                 @foreach ($item->subMenu() as $subItem)
-                                    <div class={{ $subItem->isChecked() ? 'bg-pink' : 'bg-card' }}>
+                                    <div class="bg-bgheader">
                                         <li>
                                             <a href="{{ $subItem->link() }}"
-                                                class="text-white hover:text-white  text-xs font-medium">
+                                                class="text-black hover:text-darkblue  text-xs font-medium">
                                                 {{ $subItem->label() }}
                                             </a>
                                         </li>

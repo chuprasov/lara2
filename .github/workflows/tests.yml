@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - 'stage2-3'
+      - 'dev'
 
 jobs:
   laravel-tests:

@@ -16,6 +16,7 @@ use Laravel\Scout\Searchable;
 use Support\Casts\PriceCast;
 use Support\Traits\Models\HasSlug;
 use Support\Traits\Models\HasThumbnail;
+use Support\ValueObjects\Price;
 
 class Product extends Model
 {
@@ -37,7 +38,7 @@ class Product extends Model
     ];
 
     protected $casts = [
-        'price' => PriceCast::class,
+        'price' => 'int', //PriceCast::class,
         'json_properties' => 'array',
     ];
 
@@ -69,7 +70,7 @@ class Product extends Model
     public function properties(): BelongsToMany
     {
         return $this->belongsToMany(Property::class)
-            ->withPivot('value');
+            ->withPivot(['value', 'property_id', 'product_id']);
     }
 
     public function optionValues(): BelongsToMany
@@ -94,5 +95,10 @@ class Product extends Model
             'title' => $this->title,
             'text' => $this->text,
         ];
+    }
+
+    public function priceFormatted(): Price
+    {
+        return Price::make($this->price);
     }
 }

@@ -16,9 +16,9 @@ class ProductFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => ucfirst($this->faker->words(2, true)),
+            'title' => ucfirst($this->faker->words(2, true)).'- prod',
             'brand_id' => Brand::query()->inRandomOrder()->value('id'),
-            'thumbnail' => $this->faker->fixturesImages('products', 'products'),
+            'thumbnail' => 'products/'.$this->faker->fixturesImages('products', 'products'),
             'price' => $this->faker->numberBetween(10000, 1000000),
             'on_home_page' => $this->faker->boolean(),
             'sorting' => $this->faker->numberBetween(1, 900),

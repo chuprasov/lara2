@@ -1,0 +1,37 @@
+{
+    "Login": "Giriş",
+    "Logout": "Çıkış",
+    "Language": "Dil",
+
+    "Yes": "Evet",
+    "No": "Hayır",
+    "Cancel": "İptal",
+    "Save": "Kaydet",
+    "Home": "Eve",
+    "Edit": "Düzenle",
+    "Delete": "Sil",
+    "Show": "Göster",
+    "Create": "Oluştur",
+    "Created": "Oluşturuldu",
+    "Refresh": "Yenile",
+    "Restore": "Kurtar",
+
+    "Cars": "Arabalar",
+    "Brands": "Markalar",
+    "Messages" : "Mesajlar",
+
+    "Car": "Araba",
+    "Brand": "Marka",
+    "Message" : "Mesaj",
+
+    "not selected": "seçilmedi",
+    "Model": "Model",
+    "Transmission": "Şanzıman",
+    "Tags": "Etiketler",
+    "Status": "Durum",
+    "Photo": "Fotoğraf",
+
+    "Client": "Müşteri",
+    "Operator": "Operatör"
+
+}

@@ -4,14 +4,14 @@
             <!-- header-logo -->
             <div class="header-logo shrink-0">
                 <a href="{{ route('home') }}" rel="home">
-                    <img src={{ Vite::image('logo.svg') }}
+                    <img src="{{ Vite::image('logo.svg') }}"
                         class="w-[30px] xs:w-[36px] md:w-[100px] h-[30px] xs:h-[36px] md:h-[100px] absolute -mt-6"
                         alt="CutCode">
                 </a>
             </div>
 
             <div class="header-menu grow hidden lg:flex items-center ml-8 gap-8">
-                <form action="{{ route('catalog') }}" class="hidden lg:flex ml-24 gap-4 w-1/2">
+                <form action="{{ route('catalog') }}" class="hidden lg:flex ml-24 gap-4 w-2/5">
                     <input name="search" value="{{ request('search') }}" type="search"
                         class="w-full h-12 px-4  rounded border border-black focus:border-black focus:shadow-[0_0_0_1px_#000000] bg-white/5 text-black text-xs shadow-transparent outline-0 transition"
                         placeholder="Поиск..." required>
@@ -66,10 +66,20 @@
                             </div>
                             <div class="mt-4">
                                 <ul class="space-y-2">
-                                    <li><a href="orders.html" class="text-body hover:text-white text-xs font-medium">Мои
-                                            заказы</a></li>
-                                    <li><a href="edit-profile.html"
-                                            class="text-body hover:text-white text-xs font-medium">Редактировать профиль</a>
+                                    <li>
+                                        <a href="orders.html" class="text-body hover:text-white text-xs font-medium">
+                                            Мои заказы
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="edit-profile.html" class="text-body hover:text-white text-xs font-medium">
+                                            Редактировать профиль
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('filament.admin.pages.dashboard') }}" class="text-body hover:text-white text-xs font-medium">
+                                            Панель администратора
+                                        </a>
                                     </li>
                                 </ul>
                             </div>
@@ -78,7 +88,7 @@
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" href="#"
-                                        class="inline-flex items-center text-body hover:text-purple">
+                                        class="inline-flex items-center text-body hover:text-gray">
                                         <svg class="shrink-0 w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                                             viewBox="0 0 20 20">
                                             <path
@@ -94,7 +104,7 @@
                     </div>
                 @endauth
 
-                <a href="{{ route('cart') }}" class="flex items-center gap-3 text-darkblue hover:text-purple">
+                <a href="{{ route('cart') }}" class="flex items-center gap-3 text-darkblue hover:text-gray">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-6 md:w-7 md:h-7" fill="currentColor"
                         viewBox="0 0 52 52">
                         <path
