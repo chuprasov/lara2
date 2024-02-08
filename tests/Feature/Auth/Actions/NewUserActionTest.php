@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature\Auth\DTOs;
+namespace Tests\Feature\Auth\Actions;
 
 use Domain\Auth\Contracts\RegisterUserContract;
 use Domain\Auth\DTOs\NewUserDTO;
