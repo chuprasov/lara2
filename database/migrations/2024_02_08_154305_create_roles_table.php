@@ -1,48 +1,45 @@
 <?php
 
-use Domain\Product\Models\Option;
-use Domain\Product\Models\OptionValue;
-use Domain\Product\Models\Product;
+use App\Models\Role;
+use Domain\Auth\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+
     public function up(): void
     {
-        Schema::create('option_values', function (Blueprint $table) {
+        Schema::create('roles', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Option::class)
-                ->constrained()
-                ->cascadeOnDelete()
-                ->cascadeOnUpdate();
             $table->string('title');
             $table->timestamps();
         });
 
-        Schema::create('option_value_product', function (Blueprint $table) {
+        Schema::create('role_user', function (Blueprint $table) {
             $table->id();
 
-            $table->foreignIdFor(OptionValue::class)
+            $table->foreignIdFor(Role::class)
                 ->constrained()
                 ->cascadeOnDelete()
                 ->cascadeOnUpdate();
 
-            $table->foreignIdFor(Product::class)
+            $table->foreignIdFor(User::class)
                 ->constrained()
                 ->cascadeOnDelete()
                 ->cascadeOnUpdate();
 
             $table->timestamps();
         });
+
     }
 
     public function down(): void
     {
         if (app()->isLocal()) {
-            Schema::dropIfExists('option_value_product');
-            Schema::dropIfExists('option_values');
+            Schema::dropIfExists('role_user');
+            Schema::dropIfExists('roles');
         }
     }
 };

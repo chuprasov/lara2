@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Filament\Resources\BrandResource\Pages;
+namespace App\Filament\Resources\OptionValueResource\Pages;
 
-use App\Filament\Resources\BrandResource;
+use App\Filament\Resources\OptionValueResource;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
 
-class EditBrand extends EditRecord
+class EditOptionValue extends EditRecord
 {
-    protected static string $resource = BrandResource::class;
+    protected static string $resource = OptionValueResource::class;
 
     protected function getHeaderActions(): array
     {

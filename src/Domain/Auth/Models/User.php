@@ -4,6 +4,7 @@ namespace Domain\Auth\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
+use App\Models\Role;
 use Filament\Panel;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
@@ -11,6 +12,7 @@ use Filament\Models\Contracts\FilamentUser;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class User extends Authenticatable implements FilamentUser
 {
@@ -36,6 +38,11 @@ class User extends Authenticatable implements FilamentUser
     public function socials()
     {
         return $this->hasMany(UserSocial::class);
+    }
+
+    public function roles(): BelongsToMany
+    {
+        return $this->belongsToMany(Role::class);
     }
 
     public function avatar(): Attribute
@@ -90,15 +97,10 @@ class User extends Authenticatable implements FilamentUser
 
     public function canAccessPanel(Panel $panel): bool
     {
-        if (! app()->isProduction()) {
+        if (in_array('admin', $this->roles->pluck('title')->toArray())) {
             return true;
         }
 
-        $email = env('MAIL_FROM_ADDRESS');
-
-        $domain = substr($email, strpos($email, '@') + 1);
-
-        return str_ends_with($this->email, '@'.$domain) && $this->hasVerifiedEmail();
-
+        return false;
     }
 }

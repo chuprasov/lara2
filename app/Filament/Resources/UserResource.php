@@ -2,14 +2,15 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\UserResource\Pages;
-use Domain\Auth\Models\User;
-use Filament\Forms\Components\TextInput;
-use Filament\Forms\Form;
-use Filament\Resources\Resource;
 use Filament\Tables;
-use Filament\Tables\Columns\TextColumn;
+use Filament\Forms\Form;
 use Filament\Tables\Table;
+use Domain\Auth\Models\User;
+use Filament\Resources\Resource;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\CheckboxList;
+use App\Filament\Resources\UserResource\Pages;
 
 class UserResource extends Resource
 {
@@ -38,6 +39,9 @@ class UserResource extends Resource
                     ->required()
                     ->password()
                     ->translateLabel(),
+                CheckboxList::make('roles')
+                    ->relationship('roles', 'title'),
+
             ]);
     }
 
