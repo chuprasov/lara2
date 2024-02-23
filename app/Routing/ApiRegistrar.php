@@ -16,7 +16,7 @@ class ApiRegistrar implements RouteRegistrar
         Route::middleware('api')->prefix('api')
             ->group(function () {
                 Route::get('/products/all', [ApiProductController::class, 'getAll'])->name('api.products.all');
-                Route::get('/products/page/{cnt}', [ApiProductController::class, 'getPage'])->name('api.products.page');
+                Route::get('/products/paginate/{cnt}', [ApiProductController::class, 'getPaginate'])->name('api.products.paginate');
                 Route::get('/products/{product:id}', [ApiProductController::class, 'getOne'])->name('api.products.show');
             });
     }

@@ -14,7 +14,7 @@ class ApiProductController extends Controller
         return new ProductCollection(Product::all());
     }
 
-    public function getPage(int $cnt)
+    public function getPaginate(int $cnt)
     {
         return new ProductCollection(Product::paginate($cnt));
     }
