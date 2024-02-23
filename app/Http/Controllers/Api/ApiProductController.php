@@ -9,9 +9,14 @@ use App\Http\Resources\ProductResource;
 
 class ApiProductController extends Controller
 {
-    public function getList()
+    public function getAll()
     {
-        return new ProductCollection(Product::paginate(3));
+        return new ProductCollection(Product::all());
+    }
+
+    public function getPage(int $cnt)
+    {
+        return new ProductCollection(Product::paginate($cnt));
     }
 
     public function getOne(Product $product)
