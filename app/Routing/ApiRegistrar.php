@@ -15,8 +15,8 @@ class ApiRegistrar implements RouteRegistrar
     {
         Route::middleware('api')->prefix('api')
             ->group(function () {
-                Route::get('/products', [ApiProductController::class, 'index'])->name('api.products');
-                Route::get('/product/{product:id}', [ApiProductController::class, 'show'])->name('api.products.show');
+                Route::get('/products', [ApiProductController::class, 'getList'])->name('api.products');
+                Route::get('/products/{product:id}', [ApiProductController::class, 'getOne'])->name('api.products.show');
             });
     }
 }
