@@ -8,7 +8,7 @@ class CanceledOrderState extends OrderState
 
     ];
 
-    public function canBeCanged(): bool
+    public function canBeChanged(): bool
     {
         return false;
     }

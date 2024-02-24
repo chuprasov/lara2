@@ -14,7 +14,7 @@ abstract class OrderState
 
     ];
 
-    abstract public function canBeCanged(): bool;
+    abstract public function canBeChanged(): bool;
 
     abstract public function value(): string;
 
@@ -27,7 +27,7 @@ abstract class OrderState
 
     public function transitionTo(OrderState $state): void
     {
-        if (! $this->canBeCanged()) {
+        if (! $this->canBeChanged()) {
             throw new InvalidArgumentException('Статус не может быть изменен');
         }
 
@@ -38,7 +38,7 @@ abstract class OrderState
         }
 
         $this->order->updateQuietly([
-            'status' => $state->value(),
+            'state' => $state->value(),
         ]);
 
         event(new OrderStateChanged(

@@ -2,21 +2,21 @@
 
 namespace Domain\Order\States;
 
-class PendigOrderState extends OrderState
+class PendingOrderState extends OrderState
 {
     protected array $allowedTransitions = [
         PaidOrderState::class,
         CanceledOrderState::class,
     ];
 
-    public function canBeCanged(): bool
+    public function canBeChanged(): bool
     {
         return true;
     }
 
     public function value(): string
     {
-        return 'pendig';
+        return 'pending';
     }
 
     public function humanValue(): string

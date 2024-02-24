@@ -11,7 +11,7 @@ class CheckProductQuantities implements OrderProcessContract
     public function handle(Order $order, $next)
     {
         foreach (cart()->items() as $item) {
-            if ($item->product->quantity > 1000) {
+            if ($item->quantity > 1000) {
                 throw new OrderProcessException('Недостаточно товара на складе');
             }
         }
