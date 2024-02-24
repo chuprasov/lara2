@@ -5,16 +5,15 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 use App\Models\Role;
-use Domain\Auth\Models\User;
-use Illuminate\Database\Seeder;
+use Database\Factories\BrandFactory;
+use Database\Factories\CategoryFactory;
+use Database\Factories\OptionFactory;
+use Database\Factories\OptionValueFactory;
+use Database\Factories\PropertyFactory;
+use Database\Factories\UserFactory;
 use Domain\Catalog\Models\Brand;
 use Domain\Product\Models\Product;
-use Database\Factories\BrandFactory;
-use Database\Factories\OptionFactory;
-use Database\Factories\CategoryFactory;
-use Database\Factories\PropertyFactory;
-use Database\Factories\OptionValueFactory;
-use Database\Factories\UserFactory;
+use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -25,7 +24,7 @@ class DatabaseSeeder extends Seeder
                 Role::factory()
                     ->count(1)
                     ->createOne([
-                        'title' => 'admin'
+                        'title' => 'admin',
                     ]),
             )
             ->createOne([
@@ -34,7 +33,6 @@ class DatabaseSeeder extends Seeder
                 'email' => 'admin@gmail.com',
                 'password' => '12345678',
             ]);
-
 
         // Brand::factory(20)->create();
 
@@ -58,7 +56,7 @@ class DatabaseSeeder extends Seeder
             ->has(
                 Product::factory(rand(3, 10))
                     ->hasAttached($properties, function () {
-                        return ['value' => ucfirst(fake()->word()) . '-prop-val'];
+                        return ['value' => ucfirst(fake()->word()).'-prop-val'];
                     })
                     ->hasAttached($optionsValues)
             )

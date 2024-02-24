@@ -2,20 +2,20 @@
 
 namespace App\Providers;
 
-use RuntimeException;
-use Illuminate\Http\Request;
+use App\Contracts\RouteRegistrar;
 use App\Routing\ApiRegistrar;
 use App\Routing\AppRegistrar;
 use App\Routing\AuthRegistrar;
 use App\Routing\CartRegistrar;
-use App\Routing\OrderRegistrar;
-use App\Contracts\RouteRegistrar;
 use App\Routing\CatalogRegistrar;
+use App\Routing\OrderRegistrar;
 use App\Routing\ProductRegistrar;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Contracts\Routing\Registrar;
-use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\RateLimiter;
+use RuntimeException;
 
 class RouteServiceProvider extends ServiceProvider
 {

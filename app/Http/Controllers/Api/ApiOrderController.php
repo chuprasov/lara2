@@ -11,6 +11,7 @@ class ApiOrderController extends Controller
 {
     public function getAll()
     {
+        // return new OrderCollection(Order::with('orderItems')->get());
         return new OrderCollection(Order::all());
     }
 
@@ -23,5 +24,4 @@ class ApiOrderController extends Controller
     {
         return new OrderResource($product);
     }
-
 }

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Api;
 
-use Domain\Product\Models\Product;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\ProductCollection;
 use App\Http\Resources\ProductResource;
+use Domain\Product\Models\Product;
 
 class ApiProductController extends Controller
 {
@@ -23,5 +23,4 @@ class ApiProductController extends Controller
     {
         return new ProductResource($product);
     }
-
 }

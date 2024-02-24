@@ -70,5 +70,4 @@ class PropertiesRelationManager extends RelationManager
                 Tables\Actions\DetachBulkAction::make(),
             ]);
     }
-
 }

@@ -5,11 +5,11 @@ declare(strict_types=1);
 namespace App\Routing;
 
 use App\Contracts\RouteRegistrar;
-use Illuminate\Support\Facades\Route;
-use Illuminate\Contracts\Routing\Registrar;
 use App\Http\Controllers\Api\ApiAuthController;
 use App\Http\Controllers\Api\ApiOrderController;
 use App\Http\Controllers\Api\ApiProductController;
+use Illuminate\Contracts\Routing\Registrar;
+use Illuminate\Support\Facades\Route;
 
 class ApiRegistrar implements RouteRegistrar
 {

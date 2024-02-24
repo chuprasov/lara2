@@ -26,5 +26,4 @@ class EditProduct extends EditRecord
     {
         return true;
     }
-
 }
