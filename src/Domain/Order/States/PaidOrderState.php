@@ -8,7 +8,7 @@ class PaidOrderState extends OrderState
         CanceledOrderState::class,
     ];
 
-    public function canBeCanged(): bool
+    public function canBeChanged(): bool
     {
         return true;
     }

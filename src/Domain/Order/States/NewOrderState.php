@@ -5,11 +5,11 @@ namespace Domain\Order\States;
 class NewOrderState extends OrderState
 {
     protected array $allowedTransitions = [
-        PendigOrderState::class,
+        PendingOrderState::class,
         CanceledOrderState::class,
     ];
 
-    public function canBeCanged(): bool
+    public function canBeChanged(): bool
     {
         return true;
     }

@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Contracts\RouteRegistrar;
+use App\Routing\ApiRegistrar;
 use App\Routing\AppRegistrar;
 use App\Routing\AuthRegistrar;
 use App\Routing\CartRegistrar;
@@ -27,6 +28,7 @@ class RouteServiceProvider extends ServiceProvider
         ProductRegistrar::class,
         CartRegistrar::class,
         OrderRegistrar::class,
+        ApiRegistrar::class,
     ];
 
     public function boot(): void

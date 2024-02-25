@@ -13,7 +13,7 @@ class OptionValueFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => ucfirst($this->faker->word()).'- opt - val',
+            'title' => ucfirst($this->faker->word()).'-opt-val',
             'option_id' => Option::query()->inRandomOrder()->value('id'),
         ];
     }

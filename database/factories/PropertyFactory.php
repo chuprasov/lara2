@@ -12,7 +12,7 @@ class PropertyFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => ucfirst($this->faker->word()).'- prop',
+            'title' => ucfirst($this->faker->word()).'-prop',
         ];
     }
 }

@@ -18,7 +18,7 @@
 
     <section class="mt-16 lg:mt-4">
         <!-- Section heading -->
-        <h2 class="text-lg lg:text-[32px] font-black text-darkblue">Каталог товаров</h2>
+        <h2 class="text-lg lg:text-[32px] font-black text-darkblue">Товары</h2>
 
         <!-- Products list -->
         <div
