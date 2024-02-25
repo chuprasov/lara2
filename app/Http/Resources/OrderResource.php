@@ -3,8 +3,12 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Request;
+use Domain\Order\Models\Order;
 use Illuminate\Http\Resources\Json\JsonResource;
 
+/**
+ * @mixin Order
+ */
 class OrderResource extends JsonResource
 {
     public function toArray(Request $request): array
@@ -19,6 +23,5 @@ class OrderResource extends JsonResource
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];
-
     }
 }

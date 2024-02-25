@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\Hash;
 
 class ApiAuthController extends Controller
 {
+    /**
+     * @unauthenticated
+     */
     public function register(Request $request)
     {
         $registerUserData = $request->validate([
@@ -27,6 +30,9 @@ class ApiAuthController extends Controller
         ]);
     }
 
+    /**
+     * @unauthenticated
+     */
     public function login(Request $request)
     {
         $loginUserData = $request->validate([
@@ -34,12 +40,12 @@ class ApiAuthController extends Controller
             'password' => 'required|min:8',
         ]);
         $user = User::where('email', $loginUserData['email'])->first();
-        if (! $user || ! Hash::check($loginUserData['password'], $user->password)) {
+        if (!$user || !Hash::check($loginUserData['password'], $user->password)) {
             return response()->json([
                 'message' => 'Invalid Credentials',
             ], 401);
         }
-        $token = $user->createToken($user->name.'-AuthToken')->plainTextToken;
+        $token = $user->createToken($user->name . '-AuthToken')->plainTextToken;
 
         return response()->json([
             'access_token' => $token,
