@@ -4,6 +4,7 @@ namespace Domain\Auth\Providers;
 
 // use Illuminate\Support\Facades\Gate;
 
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider;
 
 class ShopAuthServiceProvider extends AuthServiceProvider
@@ -20,6 +21,10 @@ class ShopAuthServiceProvider extends AuthServiceProvider
     public function boot(): void
     {
         $this->registerPolicies();
+
+        Gate::define('viewApiDocs', function () {
+            return true;
+        });
     }
 
     public function register(): void

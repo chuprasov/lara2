@@ -20,13 +20,10 @@ php artisan shop:install <br>
 <br>
 Fill with test data: <br>
 php artisan shop:refresh <br>
-<br>
 
 ## Project example
 https://lara2.fcqdaqp.online/
 
-## RESTful API example
-https://lara2.fcqdaqp.online/api/
-
-
+## RESTful API
+https://lara2.fcqdaqp.online/docs/api
 
