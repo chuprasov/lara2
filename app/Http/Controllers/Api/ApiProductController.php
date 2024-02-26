@@ -10,6 +10,8 @@ use Domain\Product\Models\Product;
 class ApiProductController extends Controller
 {
     /**
+     * Product list
+     *
      * @unauthenticated
      */
     public function getAll()
@@ -18,6 +20,8 @@ class ApiProductController extends Controller
     }
 
     /**
+     * Paginated product list
+     *
      * @unauthenticated
      */
     public function getPaginate(int $cnt)
@@ -26,6 +30,8 @@ class ApiProductController extends Controller
     }
 
     /**
+     * Single product
+     *
      * @unauthenticated
      */
     public function getOne(Product $product)

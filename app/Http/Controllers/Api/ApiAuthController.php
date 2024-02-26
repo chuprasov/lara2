@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Hash;
 class ApiAuthController extends Controller
 {
     /**
+     * Register new user
+     *
      * @unauthenticated
      */
     public function register(Request $request)
@@ -31,6 +33,8 @@ class ApiAuthController extends Controller
     }
 
     /**
+     * Login user (create token)
+     *
      * @unauthenticated
      */
     public function login(Request $request)
@@ -52,6 +56,9 @@ class ApiAuthController extends Controller
         ]);
     }
 
+    /**
+     * Logout (delete token)
+     */
     public function logout()
     {
         auth()->user()->tokens()->delete();
