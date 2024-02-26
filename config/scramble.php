@@ -65,7 +65,7 @@ return [
 
     'middleware' => [
         'web',
-        // RestrictedDocsAccess::class, //TODO Restrict access to API docs
+        RestrictedDocsAccess::class, //TODO Restrict access to API docs
     ],
 
     'extensions' => [],
