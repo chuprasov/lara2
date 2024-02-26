@@ -2,7 +2,7 @@
 
 ## About project
 
-Laravel project "Online store". Catalog with sorting and filtering, cart, orders, Filament admin panel, RESTful API example, etc. 
+Laravel project "Online store". Catalog with sorting and filtering, cart, orders, Filament admin panel, RESTful API example, Scramble, etc. 
 DDD approach.
 Tailwind layout.
 
@@ -18,7 +18,7 @@ Set database credential. <br>
 <br>
 php artisan shop:install <br>
 <br>
-Fill with test data: <br>
+Seeding with test data: <br>
 php artisan shop:refresh <br>
 
 ## Project example
