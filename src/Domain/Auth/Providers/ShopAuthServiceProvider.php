@@ -5,6 +5,7 @@ namespace Domain\Auth\Providers;
 use Domain\Auth\Models\User;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider;
+use Response;
 
 class ShopAuthServiceProvider extends AuthServiceProvider
 {
@@ -21,7 +22,7 @@ class ShopAuthServiceProvider extends AuthServiceProvider
     {
         $this->registerPolicies();
 
-        Gate::define('viewApiDocs', function (User $user) {
+        Gate::define('viewApiDocs', function (?User $user) {
             return true; //TODO Restrict access to API docs
         });
     }
