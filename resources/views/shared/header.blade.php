@@ -67,12 +67,12 @@
                             <div class="mt-4">
                                 <ul class="space-y-2">
                                     <li>
-                                        <a href="orders.html" class="text-body hover:text-white text-xs font-medium">
+                                        <a href="#" class="text-body hover:text-white text-xs font-medium">
                                             Мои заказы
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="edit-profile.html" class="text-body hover:text-white text-xs font-medium">
+                                        <a href="#" class="text-body hover:text-white text-xs font-medium">
                                             Редактировать профиль
                                         </a>
                                     </li>
