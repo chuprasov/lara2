@@ -4,7 +4,7 @@
 
 @section('content')
 
-    <main class="py-16 lg:py-8 min-h-screen">
+    <main class="pb-16 lg:py-8 min-h-screen">
         <div class="container">
 
             <!-- Breadcrumbs -->
@@ -21,11 +21,11 @@
                     <div class="py-3 px-6 rounded-lg bg-darkblue text-white">В корзине пусто</div>
                 @else
                     <!-- Adaptive table -->
-                    <div class="overflow-auto">
-                        <table class="min-w-full border-spacing-y-4 text-white text-sm text-left"
+                    <div class="lg:overflow-auto">
+                        <table class="mx-[-50px] lg:mx-0 min-w-full border-spacing-y-4 text-white text-sm text-left"
                             style="border-collapse: separate">
 
-                            <thead class="text-xs uppercase text-darkblue">
+                            <thead class="hidden lg:table-header-group lg:text-xs uppercase text-darkblue">
                                 <th scope="col" class="py-3 px-6">Товар</th>
                                 <th scope="col" class="py-3 px-6">Цена</th>
                                 <th scope="col" class="py-3 px-6">Количество</th>
@@ -36,11 +36,11 @@
                             <tbody>
 
                                 @foreach ($cartItems as $cartItem)
-                                    <tr>
-                                        <td scope="row" class="py-4 px-4 md:px-6 rounded-l-lg bg-gray">
-                                            <div class="flex flex-col lg:flex-row min-w-[200px] gap-2 lg:gap-6 items-center">
+                                    <tr class="mb-4 lg:mb-0 grid grid-cols-2 lg:table-row">
+                                        <td scope="row" class="col-span-2 py-4 px-4 md:px-6 rounded-t-lg lg:rounded-tr-none lg:rounded-l-lg bg-gray">
+                                            <div class="items-start flex lg:flex-row min-w-[200px] gap-2 lg:gap-6 lg:items-center">
                                                 <div
-                                                    class="shrink-0 overflow-hidden w-[64px] lg:w-[84px] h-[64px] lg:h-[84px] rounded-lg">
+                                                    class="shrink-0 overflow-hidden w-[150px] lg:w-[84px] h-[150px] lg:h-[84px] rounded-lg">
                                                     <img src="{{ $cartItem->product->makeThumbnail('original') }}"
                                                         class="object-cover w-full h-full"
                                                         alt="{{ $cartItem->product->title }}">
@@ -62,12 +62,11 @@
                                                             @endforeach
                                                         </ul>
                                                     @endif
-
                                                 </div>
                                             </div>
                                         </td>
                                         <td class="py-4 px-4 md:px-6 bg-gray">
-                                            <div class="font-medium whitespace-nowrap">
+                                            <div class="justify-center flex lg:block text-lg lg:text-sm mt-2 lg:mt-0 font-medium whitespace-nowrap">
                                                 {{ $cartItem->product->priceFormatted() }}
                                             </div>
                                         </td>
@@ -76,26 +75,26 @@
                                                 <form action="{{ route('cart.quantity', $cartItem) }}" method="POST" id="cart-form">
                                                     @csrf
                                                     <button type="button" id="minus"
-                                                        class="minus w-12 h-full rounded-lg border border-black/20 hover:bg-bgheader/80 active:bg-card/50  bg-bgheader text-black text-xs text-center font-bold shadow-transparent outline-0 transition">-</button>
+                                                        class="minus w-10 lg:w-12 h-10 lg:h-full rounded-lg border border-black/20 hover:bg-bgheader/80 active:bg-card/50  bg-bgheader text-black text-xs text-center font-bold shadow-transparent outline-0 transition">-</button>
                                                     <input name="quantity" type="number" id="quantity"
-                                                        class="quantity h-full px-2 lg:px-4 rounded-lg border  border-black/20 bg-bgheader text-black text-xs text-center font-bold shadow-transparent outline-0 transition placeholder:text-black"
+                                                        class="quantity h-10 lg:h-full px-2 lg:px-4 rounded-lg border  border-black/20 bg-bgheader text-black text-xs text-center font-bold shadow-transparent outline-0 transition placeholder:text-black"
                                                         min="1" max="999" value="{{ $cartItem->quantity }}"
                                                         placeholder="К-во">
                                                     <button type="button" id="plus"
-                                                        class="plus w-12 h-full rounded-lg border border-black/20 hover:bg-bgheader/80 active:bg-card/50  bg-bgheader text-black text-xs text-center font-bold shadow-transparent outline-0 transition">+</button>
+                                                        class="plus w-10 lg:w-12 h-10 lg:h-full rounded-lg border border-black/20 hover:bg-bgheader/80 active:bg-card/50  bg-bgheader text-black text-xs text-center font-bold shadow-transparent outline-0 transition">+</button>
                                                 </form>
                                             </div>
                                         </td>
-                                        <td class="py-4 px-4 md:px-6 bg-gray">
-                                            <div class="font-medium whitespace-nowrap">
+                                        <td class="rounded-bl-lg lg:rounded-none py-4 px-4 md:px-6 bg-gray">
+                                            <div class="text-xl ml-2 mt-[-14px] lg:mt-0 lg:ml-0 lg:text-sm font-medium whitespace-nowrap">
                                                 {{ $cartItem->amount }}
                                             </div>
                                         </td>
-                                        <td class="py-4 px-4 md:px-6 rounded-r-lg bg-gray">
+                                        <td class="py-4 px-4 md:px-6 rounded-br-lg lg:rounded-r-lg bg-gray">
                                             <form action="{{ route('cart.delete', $cartItem->id) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="w-12 !h-12 !px-0 btn btn-blue"
+                                                <button type="submit" class="w-12 !h-12 !px-0 mt-[-14px] lg:mt-0 btn btn-blue ml-28 lg:ml-0"
                                                     title="Удалить из корзины">
                                                     <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg"
                                                         fill="currentColor" viewBox="0 0 52 52">

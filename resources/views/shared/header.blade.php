@@ -5,7 +5,7 @@
             <div class="header-logo shrink-0">
                 <a href="{{ route('home') }}" rel="home">
                     <img src="{{ Vite::image('logo.svg') }}"
-                        class="w-[30px] xs:w-[36px] md:w-[100px] h-[30px] xs:h-[36px] md:h-[100px] absolute -mt-6"
+                        class="w-[30px] xs:w-[55px] md:w-[100px] h-[30px] xs:h-[55px] md:h-[100px] absolute -mt-6"
                         alt="CutCode">
                 </a>
             </div>

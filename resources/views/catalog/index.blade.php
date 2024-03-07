@@ -29,7 +29,7 @@
         </div>
     </section> --}}
 
-    <section class="mt-16 lg:mt-10">
+    <section class="xs:mt-2 mt-16 lg:mt-10">
         <!-- Section heading -->
         <h2 class="text-lg lg:text-[32px] font-black text-darkblue">Каталог товаров</h2>
 
