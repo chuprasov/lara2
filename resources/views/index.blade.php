@@ -16,7 +16,7 @@
     </section> --}}
 
 
-    <section class="mt-16 lg:mt-4">
+    <section class="xs:mt-2 mt-16 lg:mt-4">
         <!-- Section heading -->
         <h2 class="text-lg lg:text-[32px] font-black text-darkblue">Товары</h2>
 
