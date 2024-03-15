@@ -60,10 +60,12 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    let quantity = document.querySelectorAll(".quantity");
-    let plus = document.querySelectorAll(".plus");
-    let minus = document.querySelectorAll(".minus");
-    let form = document.querySelector("#cart-form");
+    let quantity = document.querySelectorAll("#quantity");
+    let plus = document.querySelectorAll("#plus");
+    let minus = document.querySelectorAll("#minus");
+    let form = document.querySelectorAll("#cart-form");
+
+    // console.log();
 
     function quantityIncrement(i) {
         quantity[i].value = parseInt(quantity[i].value) + 1;
@@ -75,19 +77,20 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    for (let i = 0; i < plus.length; i++) {
-        plus[i].addEventListener("click", function (event) {
-            quantityIncrement(i);
-            event.stopImmediatePropagation();
-            form.submit();
-        });
+    function quantityButtonsAddEventListeners(buttons) {
+        for (let i = 0; i < buttons.length; i++) {
+            buttons[i].addEventListener("click", function (event) {
+                this.id == 'plus' ? quantityIncrement(i) : quantityDecrement(i);
+
+                event.stopImmediatePropagation();
+
+                if (i < form.length) {
+                    form[i].submit();
+                }
+            });
+        }
     }
 
-    for (let i = 0; i < minus.length; i++) {
-        minus[i].addEventListener("click", function (event) {
-            quantityDecrement(i);
-            event.stopImmediatePropagation();
-            form.submit();
-        });
-    }
+    quantityButtonsAddEventListeners(plus);
+    quantityButtonsAddEventListeners(minus);
 });
