@@ -38,7 +38,7 @@
             <!-- Filters -->
             <aside class="basis-2/5 xl:basis-1/4">
                 <form action="{{ route('catalog', $category) }}"
-                    class="overflow-auto max-h-[320px] lg:max-h-[100%] space-y-1 p-4 rounded-lg border border-solid border-black bg-gray/5 text-dark >
+                    class="overflow-auto max-h-[320px] lg:max-h-[100%] space-y-1 p-4 rounded-lg border border-solid border-black bg-gray/5 text-dark" >
 
                     <input type="hidden" name="sort" value="{{ request('sort') }}">
 
