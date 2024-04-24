@@ -75,13 +75,13 @@
                                                 <form action="{{ route('cart.quantity', $cartItem) }}" method="POST" id="cart-form">
                                                     @csrf
                                                     <button type="button" id="minus"
-                                                        class="minus w-10 lg:w-12 h-10 lg:h-full rounded-lg border border-black/20 hover:bg-bgheader/80 active:bg-card/50  bg-bgheader text-black text-xs text-center font-bold shadow-transparent outline-0 transition">-</button>
+                                                        class="w-10 lg:w-12 h-10 lg:h-full rounded-lg border border-black/20 hover:bg-bgheader/80 active:bg-card/50  bg-bgheader text-black text-xs text-center font-bold shadow-transparent outline-0 transition">-</button>
                                                     <input name="quantity" type="number" id="quantity"
-                                                        class="quantity h-10 lg:h-full px-2 lg:px-4 rounded-lg border  border-black/20 bg-bgheader text-black text-xs text-center font-bold shadow-transparent outline-0 transition placeholder:text-black"
+                                                        class="h-10 lg:h-full px-2 lg:px-4 rounded-lg border  border-black/20 bg-bgheader text-black text-xs text-center font-bold shadow-transparent outline-0 transition placeholder:text-black"
                                                         min="1" max="999" value="{{ $cartItem->quantity }}"
                                                         placeholder="К-во">
                                                     <button type="button" id="plus"
-                                                        class="plus w-10 lg:w-12 h-10 lg:h-full rounded-lg border border-black/20 hover:bg-bgheader/80 active:bg-card/50  bg-bgheader text-black text-xs text-center font-bold shadow-transparent outline-0 transition">+</button>
+                                                        class="w-10 lg:w-12 h-10 lg:h-full rounded-lg border border-black/20 hover:bg-bgheader/80 active:bg-card/50  bg-bgheader text-black text-xs text-center font-bold shadow-transparent outline-0 transition">+</button>
                                                 </form>
                                             </div>
                                         </td>
