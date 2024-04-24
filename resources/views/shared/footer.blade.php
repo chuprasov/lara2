@@ -9,8 +9,8 @@
             </div>
 
             <div class="footer-copyright order-2 lg:order-1 basis-full lg:basis-1/3 mt-8 lg:mt-0">
-                <div class="text-darkblue text-xxs xs:text-xs sm:text-sm text-center">Fcqdaqp, 2023 © Все права
-                    защещены.
+                <div class="text-darkblue text-xxs xs:text-xs sm:text-sm text-center">
+                    Fcqdaqp, 2023
                 </div>
             </div><!-- /.footer-copyright -->
 
